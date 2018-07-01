@@ -1,0 +1,8 @@
+<div class="control-group">
+  <label for="venuedetails_description" class="control-label">Description:</label>
+  <div class="controls">
+    <input type="hidden" name="venuedetails[description]" class='submittable venuedetails_description' value="{{hoursProposedEdit}}" data-keyname='description' data-originalvalue="{{#if hoursProposedEdit}}{{hoursProposedEdit}}{{else}}empty{{/if}}"/>
+    <textarea class='submittable venuedetails_description span10' cols="50" rows="5" maxlength='300' data-originalvalue="{{#if venue.description}}{{venue.description}}{{else}}empty{{/if}}" data-keyname='description'>{{venue.description}}</textarea>
+  </div>
+</div>
+

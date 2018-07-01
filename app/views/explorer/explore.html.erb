@@ -1,0 +1,336 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'explorer' %>
+  <%= javascript_include_tag 'advancedsearch' %>
+
+  <script type="text/javascript"
+      src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=drawing,geometry">
+  </script>
+
+  <script type="text/javascript">
+    var lat =  <%= @lat %>
+    var lng =  <%= @lng %>
+    var token = '<%= cookies[:access_token] %>'
+    var sulevel = '<%= @current_user.level %>'
+    var categories = <%=raw @categories %>
+    var client_id = '<%= @client_id %>'
+  </script>
+
+<% end %>
+<% content_for :flagcount do %>
+<%= @flagcount == 0 ? "" : @flagcount %>
+<% end %>
+
+</p>
+<div class="row-fluid searchcontrols">
+  <div class="tabbable foursweep-search">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab-venuesearch" data-toggle="tab">Venue Search</a></li>
+      <li><a href="#tab-recentlycreated" data-toggle="tab">Recently Created</a></li>
+      <li><a href="#tab-globalsearch" data-toggle="tab">Global Search</a></li>
+      <li><a href="#tab-usersearch" data-toggle="tab">User Search</a></li>
+      <li><a href="#tab-specificvenuesearch" data-toggle="tab">Specific Venue</a></li>
+      <li><a href="#tab-uncategorizedsearch" data-toggle="tab">Uncategorized</a></li>
+      <li><a href="#tab-listsearch" data-toggle="tab">By List</a></li>
+      <li><a href="#tab-pagesearch" data-toggle="tab">By Chain / Page</a></li>
+      <li><a href="#tab-myhistory" data-toggle="tab">My History</a></li>
+      <li><a href="#tab-dupsearch" data-toggle="tab">Duplicate Search</a></li>
+      <% if @current_user.level.to_i >= 3 %>
+      <li><a href="#tab-queuesearch" data-toggle="tab">Superuser Queues</a></li>
+      <% end %>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab-venuesearch">
+        <form action="#" class="form form-inline form-nobottom">
+        <label for="query">Query: <input type="text" class="query" data-deserialize='query'></label>
+
+        <label for='categories'>Categories: </label>
+        <input type='hidden' name="categories" id="venuesearch-categories" data-deserialize='categories' multiple='multiple' data-placeholder="Select some categories (optional)" class='categories select2' style="width: 35em">
+
+        <span class='catRotateButtons'>
+          <a href="#" data-rotate='prev' class='catrotate prevcat icon-arrow-left' title='Previous Category'></a>
+          <a href="#" data-rotate='up' class='catrotate upcat icon-arrow-up' title="Parent Category"></a>
+          <a href="#" data-rotate='next' class='catrotate nextcat icon-arrow-right' title="Next Category"></a>
+        </span>
+
+        <span class='center loadmorecontainer'></span>
+        <button class="defaultsearch btn btn-primary">Search</button>
+        </form>
+      </div>
+      <div class="tab-pane" id="tab-globalsearch">
+        <form action="#" class="form form-inline form-nobottom">
+        <label for='query'>Query: <input type="text" class="query" data-deserialize='query' value="" required='required'></label>
+
+        <label for='categories'>Categories: </label>
+        <input type='hidden' name="categories" id="globalsearch-categories" multiple='multiple' data-placeholder="Select some categories (optional)" class='categories select2' data-deserialize='categories' style="width: 35em">
+
+        <span class='catRotateButtons'>
+          <a href="#" data-rotate='prev' class='catrotate prevcat icon-arrow-left' title='Previous Category'></a>
+          <a href="#" data-rotate='up' class='catrotate upcat icon-arrow-up' title="Parent Category"></a>
+          <a href="#" data-rotate='next' class='catrotate nextcat icon-arrow-right' title="Next Category"></a>
+        </span>
+
+        <button class="defaultsearch btn btn-primary">Search</button>
+        </form>
+      </div>
+      <div class="tab-pane" id="tab-specificvenuesearch">
+        <form action="#" class="form form-inline form-nobottom">
+
+
+        <select class="specificvenuessearch-type" data-deserialize="specificvenuetype">
+          <option value="specificvenue">Specific Venue ID:</option>
+          <option value="venuechildren">Children of Venue ID:</option>
+        </select>
+
+        <input type="text" class='venueid' value='' required='required' placeholder="Foursquare Venue ID" name='venueid' data-deserialize='venueid'>
+
+        <button class="defaultsearch btn btn-primary">Search</button>
+        </form>
+      </div>
+      <div class="tab-pane" id="tab-usersearch">
+        <form action="#" class="form form-inline form-nobottom">
+
+        <label for='user'>User:</label> <input name='user' type="text" class='userid' value='self' placeholder="User ID or Twitter" data-deserialize='user'>
+
+        <select class="usersearch-type" data-deserialize="usersearchtype">
+          <option value="venuescreated">Venues Created</option>
+          <option value="venuesliked">Venues Liked</option>
+          <option value="venuesphotoed">Venues Left a Photo At</option>
+          <option value="venuestipped">Venues Left a Tip At</option>
+          <!-- <option value="venueslisted">Venues Listed</option> -->
+        </select>
+
+        <span class='center loadmorecontainer'></span>
+
+        <button class="defaultsearch btn btn-primary">Search</button>
+        </form>
+      </div>
+      <div class="tab-pane" id="tab-listsearch">
+        <form action="#" class="form form-inline form-nobottom">
+
+        <label for='listurl'>List URL:</label> <input name='listurl' type="text" class="listurl span4" value="" data-deserialize='listUrl'>
+
+        <label for='categories'>Categories: </label>
+        <input type='hidden' name="categories" id="listsearch-categories" multiple='multiple' data-placeholder="Limit to categories (optional)" class='categories select2' style="width: 25em" data-deserialize='categories'>
+
+        <span class='catRotateButtons'>
+          <a href="#" data-rotate='prev' class='catrotate prevcat icon-arrow-left' title='Previous Category'></a>
+          <a href="#" data-rotate='up' class='catrotate upcat icon-arrow-up' title="Parent Category"></a>
+          <a href="#" data-rotate='next' class='catrotate nextcat icon-arrow-right' title="Next Category"></a>
+        </span>
+
+        <button class="searchurl defaultsearch btn btn-primary">Search by URL</button>
+        </form>
+      </div>
+      <div class="tab-pane" id="tab-pagesearch">
+        <form action="#" class="form form-inline form-nobottom">
+
+        <select class="pagesearch-type" data-deserialize="pagesearchtype">
+          <option value="id">Foursquare ID</option>
+          <option value="name">Name</option>
+          <option value="twitter">Twitter</option>
+          <option value="fbid">Facebook ID</option>
+        </select>
+
+        <input type="text" class='pagesearch-value' value='' required='required' data-deserialize='pageid'>
+
+        <span class='center loadmorecontainer'></span>
+
+        <button class="defaultsearch btn btn-primary">Search</button>
+
+        </form>
+      </div>
+      <div class="tab-pane" id="tab-uncategorizedsearch">
+        <form action="#" class="form form-inline form-nobottom">
+        <span class='center loadmorecontainer'></span>
+
+        <button class="defaultsearch btn btn-primary">Search</button>
+        </form>
+      </div>
+      <div class="tab-pane" id="tab-recentlycreated">
+        <form action="#" class="form form-inline form-nobottom">
+        <span class='center loadmorecontainer'></span>
+        <button class="defaultsearch btn btn-primary">Search</button>
+        </form>
+      </div>
+<% if @current_user.level.to_i >= 3 %>
+      <div class="tab-pane" id="tab-queuesearch">
+        <form action="#" class="form form-inline form-nobottom">
+        <select name="queue" id="queue-name" data-deserialize='queueType'>
+          <option value="attribute">Attributes</option>
+          <option value="category">Category Flags</option>
+          <option value="duplicate">Duplicate</option>
+          <option value="manualDuplicate">Manual Duplicate</option>
+          <option value="info">Venue Info</option>
+          <option value="missingaddress">Missing Address</option>
+          <option value="missingphone">Missing Phone</option>
+          <option value="uncategorized">Missing Category</option>
+          <option value="mislocated">Mislocated</option>
+          <!-- <option value="photo">Photo</option> -->
+          <option value="private">Make Private</option>
+          <option value="remove">Remove Venue</option>
+          <!-- <option value="tip">Tip</option> -->
+        </select>
+        <button class="defaultsearch btn btn-primary">Load</button>
+        </form>
+        <small>You cannot yet approve/reject flags in the queue.  Queue viewing is an SU3+ feature only for now.</small>
+      </div>
+<% end %>
+      <div class="tab-pane" id="tab-myhistory">
+        <form action="#" class="form form-inline form-nobottom">
+
+        <label for='history_from'>Date Range:</label>
+        <span class="input-daterange" id="datepicker">
+          <input type="text" class="input-medium myhistory-start" name="start" data-deserialize='start' placeholder="start (optional)">
+          <span class="add-on">to</span>
+          <input type="text" class="input-medium myhistory-end" name="end" data-deserialize='end' placeholder="end (optional)">
+        </span>
+
+        <label for='categories'>Categories: </label>
+        <input type='hidden' name="categories" id="myhistory-categories" multiple='multiple' data-placeholder="Limit to categories (optional)" class='categories select2' style="width: 25em" data-deserialize='categories'>
+
+        <span class='catRotateButtons'>
+          <a href="#" data-rotate='prev' class='catrotate prevcat icon-arrow-left' title='Previous Category'></a>
+          <a href="#" data-rotate='up' class='catrotate upcat icon-arrow-up' title="Parent Category"></a>
+          <a href="#" data-rotate='next' class='catrotate nextcat icon-arrow-right' title="Next Category"></a>
+        </span>
+        <span class='center loadmorecontainer'></span>
+
+        <button class="defaultsearch btn btn-primary">Load</button>
+        </form>
+      </div>
+      <div class="tab-pane" id="tab-dupsearch">
+        <form action="#" class="form form-inline form-nobottom">
+        <label for="query">Query:
+          <input type="text" class='query' data-deserialize='query'>
+        </label>
+        <label for="radius">
+          Default Search Radius:
+          <select name="radius" id="" data-deserialize='radius' class='radius input-small'>
+            <option value="100">100 m</option>
+            <option value="250">250 m</option>
+            <option value="500">500 m</option>
+            <option value="1000" selected>1 km</option>
+            <option value="2500">2.5 km</option>
+            <option value="5000">5 km</option>
+            <option value="10000">10 km</option>
+            <option value="25000">25 km</option>
+          </select>
+        </label>
+        <input type="hidden" name='curentPage' class='currentPage' data-deserialize='pagenum'>
+        <input type="hidden" name="locations" class='locations' data-deserialize='locationsString'>
+        <label for="locationsCount">Search Location:</label>
+        <div class="input-append input-medium">
+          <input type="text" name='locationsCount' class="span8 locationsCount input-small disabled" disabled='disabled'>
+          <button class="btn editLocations" type="button">Edit</button>
+        </div>
+        <button class="defaultsearch btn btn-primary">Search</button>
+        <button class="pull-right dupsearchhelp btn"><i class="icon-question-sign"></i> What is this?</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row-fluid">
+
+  <div class="venuediv span6">
+    <div class="venuelistcontrols">
+      <div>
+        <span class="center">
+          <span class="massactions center">
+            With <span class='selectedcount'>0</span> selected:
+
+            <span class="massaction-tooltip"><a href="#" class="btn btn-mini mass-private"><i class="icon-eye-close"></i></a></span>
+            <span class="massaction-tooltip"><a href="#" class="btn btn-mini mass-home"><i class="icon-home"></i></a></span>
+            <span class="massaction-tooltip"><a href="#" class="btn btn-mini mass-recategorize"><i class="icon-tags"></i></a></span>
+            <span class="massaction-tooltip"><a href="#" class="btn btn-mini mass-close"><i class="icon-lock"></i></a></span>
+            <span class="massaction-tooltip"><a href="#" class="btn btn-mini mass-remove"><i class="icon-remove"></i></a></span>
+            <span class="massaction-tooltip"><a href="#" class="btn btn-mini mass-merge"><i class="i-spread nudge"></i></a></span>
+            <span class='subtle'>|</span>
+            <span class="massaction-tooltip"><a href="#" class="btn btn-mini mass-refresh"><i class="nudge i-spin3"></i></a></span>
+            <span class="massaction-tooltip"><a href="#" class="btn btn-mini mass-export"><i class="i-export-alt nudge"></i></a></span>
+
+          </span>
+        </span>
+
+        <span class="btn-group pull-right sortresults">
+          <a data-toggle='dropdown' data-open='false' class="btn btn-info btn-mini activesort" data-sorttype='natural'>Sort: Natural</a>
+          <a href="#" class="btn btn-info btn-mini sortrefreshbutton"><i class="i-arrows-cw-2"></i></a>
+          <a href="#" class="btn btn-info btn-mini sortdirbutton" data-sortdir='up'><i class="i-sort-alt-up"></i></a>
+
+          <a href="" class="btn btn-info btn-mini dropdown-toggle" data-open="false" data-toggle="dropdown"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class='performsort' data-sorticon='alt' data-sortname="Natural" data-sorttype='natural'>Natural</a></li>
+            <li><a class='performsort' data-sorticon='alt' data-sortname="Distance" data-sorttype='distance'>Distance</a></li>
+            <li><a class='performsort' data-sorticon='name' data-sortname="Name" data-sorttype='name'>Name</a></li>
+            <li><a class='performsort' data-sorticon='name' data-sortname="Name (Fuzzy)" data-sorttype='namefuzzy'>Name (Fuzzy)</a></li>
+            <li><a class='performsort' data-sorticon='name' data-sortname="Address" data-sorttype='address'>Address</a></li>
+            <li><a class='performsort' data-sorticon='name' data-sortname="City" data-sorttype='city'>City</a></li>
+            <li><a class='performsort' data-sorticon='name' data-sortname="Phone" data-sorttype='phone'>Phone</a></li>
+            <li><a class='performsort' data-sorticon='number' data-sortname="Checkins" data-sorttype='checkins'>Checkins</a></li>
+            <li><a class='performsort' data-sorticon='number' data-sortname="Users" data-sorttype='users'>Users</a></li>
+            <li><a class='performsort' data-sorticon='number' data-sortname="Here Now" data-sorttype='herenow'>Here Now</a></li>
+            <li><a class='performsort' data-sorticon='name' data-sortname="Category" data-sorttype='category'>Category</a></li>
+            <li><a class='performsort' data-sorticon='number' data-sortname="Created At" data-sorttype='createdat'>Created At</a></li>
+          </ul>
+        </span>
+
+      </div>
+      <div class="center searchstats">—</div>
+
+      <div class="filtercontainer">
+        <div class="filterlink"><a href="#" class='showfilter'>Add a filter &raquo;</a></div>
+        <form action="" class="form-horizontal filterform hide">
+          <div class="control-group filtercontrol filterrow">
+            <div class="input-append span10">
+              <label for='filter' class='filtererror'>Filter:
+                <input type="text" name='filter' class='filter span11 input-small'><a class="btn editfilter" type="button">Edit</a> <i class="icon-question-sign filter-help"></i> <i class='hidefilter icon-remove' rel='tooltip' title='Hide Filter'></i>
+              </label>
+            </div>
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="allvenues" style="clear:both">
+      <ul class="pinnedvenues venues"></ul>
+      <div class="extrasholder"></div>
+      <div class="paginationholder"></div>
+      <div class="loading hide">
+        <strong>Loading Venues…</strong>
+        <div class="progress progress-striped active">
+          <div class="bar" style="width: 100%;"></div>
+        </div>
+      </div>
+      <div class="errorcontainer"></div>
+      <ul class="venues retrieved_venues"></ul>
+      <div class="center row loadmorewarning"></div>
+      <div class='center row loadmorecontainer'></div>
+      <div class="paginationholder"></div>
+    </div>
+  </div>
+  <div class="span6">
+    <div id="map_canvas"></div>
+  </div>
+  <div class="attach-popover"></div>
+  <div class="attach-widepopover"></div>
+</div>
+
+<div class="attach-modal"></div>
+<div class="filterpopovercontainer"></div>
+<div class="modal hide fade photozoom" id='photozoommodal'>
+  <div class="modal-body">
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+<% content_for :footer do %>
+  Submit flags:
+  <div class="btn-group submitwhen" data-toggle="buttons-radio">
+    <button type="button" class="btn btn-small submitautomatically">Automatically</button>
+    <button type="button" class="btn btn-small submitwait">Review on Flags Tab</button>
+  </div>
+  <i class="icon-question-sign submitwhen-help"></i>
+<% end %>

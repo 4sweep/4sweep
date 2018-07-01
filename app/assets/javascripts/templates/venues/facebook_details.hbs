@@ -1,0 +1,185 @@
+{{#if facebook}}
+{{#with facebook}}
+<div class="facebookdetails">
+  <div class="background">
+    <h3>{{name}} {{#if is_permanently_closed}}<span class='permanently-closed'>(Permanently Closed)</span>{{/if}} {{#if is_unclaimed}}<span class=''>(Unclaimed)</span>{{/if}}</h3>
+    {{#if category_list.[0]}}
+    <h5>
+      {{#each category_list}}
+      <span class="coolseparator">{{name}}</span>
+      {{/each}}
+    </h5>
+    {{/if}}
+  </div>
+  {{#if about}}<p class="about">{{truncate about 350 ' ' '…' true}}</p>{{/if}}
+  {{#if description}}<p class="description small">{{truncate description 150 ' ' '…' true}}</p>{{/if}}
+
+  {{#if website}}
+  <strong>Website</strong>: <span class='overflow-none'>{{replace website " " " · "}}</span>
+  {{/if}}
+  <div class="row-fluid">
+  <div class="span6">
+    <dl class="dl-horizontal">
+
+      {{#ifany location.street location.city location.state location.zip}}
+      <dt>Location</dt>
+      <dd>{{#if location.street}}{{location.street}}<br>{{/if}}
+          {{location.city}} {{location.state}} {{location.zip}}
+      </dd>
+      {{/ifany}}
+      {{#if founded}}
+      <dt>Founded</dt>
+      <dd>{{founded}} </dd>
+      {{/if}}
+
+      {{#if phone}}
+      <dt>Phone</dt>
+      <dd>{{phone}} </dd>
+      {{/if}}
+
+      {{#if attire}}
+      <dt>Attire</dt>
+      <dd>{{attire}} </dd>
+      {{/if}}
+
+      {{#if price_range}}
+      <dt>Price Range</dt>
+      <dd>{{price_range}} </dd>
+      {{/if}}
+
+      {{#ifany were_here_count likes checkins}}
+      <dt>Stats</dt>
+      <dd>
+        {{#if were_here_count}}{{were_here_count}} Were here<br>{{/if}}
+        {{#if likes}}{{likes}} Facebook Likes<br>{{/if}}
+        {{#if checkins}}{{checkins}} Facebook Checkins<br>{{/if}}
+        {{#if talking_about_count}}{{talking_about_count}} Talking about<br>{{/if}}
+      </dd>
+      {{/ifany}}
+      {{#if category}}
+      <dt>Category</dt>
+      <dd class='text-capitalize'>{{category}}</dd>
+      {{/if}}
+
+      {{#if parent_page}}
+      <dt>Chain / Parent</dt>
+      <dd>{{parent_page.name}}</dd>
+      {{/if}}
+    </dl>
+  </div>
+  <div class="span6">
+    <dl class="dl-horizontal">
+      {{#if public_transit}}
+      <dt>Public Transit</dt>
+      <dd>{{public_transit}}</dd>
+      {{/if}}
+
+      {{#ifany parking.valet parking.street parking.lot}}
+      <dt>Parking</dt>
+      <dd>
+        {{#if parking.valet}}<span class="coolseparator">Valet</span>{{/if}}
+        {{#if parking.street}}<span class="coolseparator">Street</span>{{/if}}
+        {{#if parking.lot}}<span class="coolseparator">Lot</span>{{/if}}
+      </dd>
+      {{/ifany}}
+
+      {{#if payment_options}}
+      <dt>Payment Options</dt>
+      <dd>
+        {{#if payment_options.cash_only}}<span class="coolseparator">Cash Only</span>{{/if}}
+        {{#if payment_options.visa}}<span class="coolseparator">Visa</span>{{/if}}
+        {{#if payment_options.mastercard}}<span class="coolseparator">MasterCard</span>{{/if}}
+        {{#if payment_options.discover}}<span class="coolseparator">Discover</span>{{/if}}
+        {{#if payment_options.amex}}<span class="coolseparator">American Express</span>{{/if}}
+      </dd>
+      {{/if}}
+
+      {{#if culinary_team}}
+      <dt>Culinary Team</dt>
+      <dd>{{nl2separator culinary_team " · "}}</dd>
+      {{/if}}
+
+      {{#if general_manager}}
+      <dt>General Manager</dt>
+      <dd>{{general_manager}}</dd>
+      {{/if}}
+
+
+      {{#if restaurant_specialties}}
+      {{#with restaurant_specialties}}
+      {{#ifany lunch drinks dinner coffee breakfast}}
+      <dt>Specialties</dt>
+      <dd>
+        {{#if breakfast}}<span class="coolseparator">Breakfast</span>{{/if}}
+        {{#if lunch}}<span class="coolseparator">Lunch</span>{{/if}}
+        {{#if dinner}}<span class="coolseparator">Dinner</span>{{/if}}
+        {{#if drinks}}<span class="coolseparator">Drinks</span>{{/if}}
+        {{#if coffee}}<span class="coolseparator">Coffee</span>{{/if}}
+      </dd>
+      {{/ifany}}
+      {{/with}}
+      {{/if}}
+
+      {{#if restaurant_services}}
+      {{#with restaurant_services}}
+      {{#ifany walkins deliver catering groups kids outdoor reserve takeout waiter}}
+      <dt>Services</dt>
+      <dd>
+        {{#if deliver}}<span class="coolseparator">Delivery Service</span>{{/if}}
+        {{#if catering}}<span class="coolseparator">Catering</span>{{/if}}
+        {{#if groups}}<span class="coolseparator">Group-friendly</span>{{/if}}
+        {{#if kids}}<span class="coolseparator">Kid-friendly</span>{{/if}}
+        {{#if outdoor}}<span class="coolseparator">Outdoor seating</span>{{/if}}
+        {{#if reserve}}<span class="coolseparator">Accepts Reservations</span>{{/if}}
+        {{#if takeout}}<span class="coolseparator">Takeout</span>{{/if}}
+        {{#if waiter}}<span class="coolseparator">Waiter Service</span>{{/if}}
+        {{#if walkins}}<span class="coolseparator">Walk-ins Welcome</span>{{/if}}
+      </dd>
+      {{/ifany}}
+      {{/with}}
+      {{/if}}
+
+      {{#ifany hours.mon_1_open hours.tue_1_open hours.wed_1_open hours.thu_1_open hours.fri_1_open hours.sat_1_open hours.sun_1_open}}
+      <dt>Hours</dt>
+      <dd>
+        <span class='daylabel'>Sun:</span> <span class='hourval'>{{formatFacebookHours hours "sun_1"}}
+          {{#if hours.sun_2_open}}<span class="hours2val"><br>{{formatFacebookHours hours "sun_2"}}</span>{{/if}}
+        </span><br>
+
+        <span class='daylabel'>Mon:</span> <span class='hourval'>{{formatFacebookHours hours "mon_1"}}
+          {{#if hours.mon_2_open}}<span class="hours2val"><br>{{formatFacebookHours hours "mon_2"}}</span>{{/if}}
+        </span><br>
+
+        <span class='daylabel'>Tue:</span> <span class='hourval'>{{formatFacebookHours hours "tue_1"}}
+          {{#if hours.tue_2_open}}<span class="hours2val"><br>{{formatFacebookHours hours "tue_2"}}</span>{{/if}}
+        </span><br>
+
+        <span class='daylabel'>Wed:</span> <span class='hourval'>{{formatFacebookHours hours "wed_1"}}
+          {{#if hours.web_2_open}}<span class="hours2val"><br>{{formatFacebookHours hours "wed_2"}}</span>{{/if}}
+        </span><br>
+
+        <span class='daylabel'>Thu:</span> <span class='hourval'>{{formatFacebookHours hours "thu_1"}}
+          {{#if hours.thu_2_open}}<span class="hours2val"><br>{{formatFacebookHours hours "thu_2"}}</span>{{/if}}
+        </span><br>
+
+        <span class='daylabel'>Fri:</span> <span class='hourval'>{{formatFacebookHours hours "fri_1"}}
+          {{#if hours.fri_2_open}}<span class="hours2val"><br>{{formatFacebookHours hours "fri_2"}}</span>{{/if}}
+        </span><br>
+
+        <span class='daylabel'>Sat:</span> <span class='hourval'>{{formatFacebookHours hours "sat_1"}}
+          {{#if hours.sat_2_open}}<span class="hours2val"><br>{{formatFacebookHours hours "sat_2"}}</span>{{/if}}
+        </span><br>
+      </dd>
+      {{/ifany}}
+    </dl>
+  </div>
+  </div>
+</div>
+{{/with}}
+{{else}}
+Loading...
+{{/if}}
+<div class="openstate-clickonly center">
+<a class='btn btn-primary' href="https://facebook.com/{{venue.contact.facebook}}" target="_blank"><i class="i-facebook-squared"></i> Open in Facebook (new window)</a>
+<button class="btn popover-close">Close</button>
+</div>

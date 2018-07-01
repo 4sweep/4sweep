@@ -1,0 +1,39 @@
+<h6>Add to a Foursquare list:</h6>
+
+<div class="alert alert-info loadinglists">
+  <i class="i-spin3 animate-spin"></i> Loading lists from Foursquare…
+</div>
+
+<input type='hidden' name="list-chooser" class='list-chooser' id='listadd-select' style="width: 23em">
+
+<div class="alert alert-error error hide"></div>
+
+<br><br>
+<div>
+  <button class="btn btn-primary addaction disabled">Add to List</button>
+</div>
+<hr class="thinmargin">
+<h6>Export to Elio Tools</h6>
+<p class="small">Elio tools is available at <a target="_blank" href="http://4sq.neuralab.cc/">http://4sq.neuralab.cc/</a>.  It is a Portuguese-only (use a translation browser plugin if you need to) tool for mass editing venue details.</p>
+<div class="form-inline">
+  <button class="btn btn-primary elioupload">Open Selected Venues in Elio Tools</button>
+</div>
+
+<hr class="thinmargin">
+<h6>Search for Duplicates:</h6>
+
+<div class='form-inline'>
+  <input type="text" name='dupquery' id='dupquery' class='input input-medium dupquery' value='{{dupquery}}'>
+  <button class="btn btn-primary searchfordups">Search for Duplicates</button>
+</div>
+
+
+<hr class='thinmargin'>
+<h6>Export to a file:</h6>
+
+<div>
+  <button class="btn btn-primary exportvenueids">Save Venue IDs</button>
+  <button class="btn btn-primary exportvenuecsv">Save as CSV</button>
+</div>
+
+<div class="hide linkdump"></div>

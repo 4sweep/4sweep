@@ -1,0 +1,61 @@
+
+<% content_for :flagcount do %>
+<%= @flagcount == 0 ? "" : @flagcount %>
+<% end %>
+
+<h1>About 4sweep: Frequently Asked Questions</h1>
+
+<br>
+
+<dl class='row-fluid'>
+<div class="span5 offset1">
+
+  <dt>How does flag submission work?</dt>
+  <dd>
+    <p>Once you create a flag, it'll be put in a queue to be submitted to Foursquare. The queue always waits 5 minutes before submitting your flag (it may take longer if there are a bunch of other flags in the queue). If you prefer to review your flags before submitting, there is a toggle in the footer of 4sweep to let you do that. You can always review and cancel flags before they're submitted on the <a href='/flags/'>Flags Tab</a>.</p>
+    <p>Your flags might not go through immediately. Depending on the number of checkins, your SU level, and other factors, your flag will need to be reviewed by Foursquare Superusers before it is accepted.</p>
+  </dd>
+
+  <dt>What do the numbers and colors mean in venue listings?</dt>
+  <dd>This is the ratio of checkins to unique users.  A high number means relatively few people have checked in there many times.  This is often, but not always, an indicator of an illigitimate or duplicate venue.  The number is in red if it is greater than 10 or if fewer than 5 people have checked in there, yellow if it is greater than 3 or if fewer than 15 people have checked in there, and green if less than 3 or if more than 50 people have checked in.</dd>
+
+  <dt>How do I cancel a flag once I've submitted it?</dt>
+  <dd>The Foursquare API doesn't allow that yet — once you've submitted a flag, another SU will review it.  Look at Foursquare's <a href='https://foursquare.com/admin/flag_status'>Check Yo Flags</a> to see its status. There's currently no way to remove a flag from the 4sweep list after you submit it, but you can hide it from your submitted list.</dd>
+
+  <dt>How do I schedule a venue close?</dt>
+  <dd>
+    If you know a venue will close in the future (say, a conference or a restaurant that announced its last day), you can select it, then choose the close icon, 'Schedule Date', and choose the date that the venue will close. 4sweep send your close flag to Foursquare at 4AM the next morning, in your time zone. Please include a comment explaining why you think the venue is closing – a URL can be really useful to the reviewer! Use this with the "Recently Created" search intent to close conference and event venues.
+  </dd>
+
+  <dt>Why do I have to connect to the Foursquare API?</dt>
+  <dd>
+    <p>4sweep is a tool for Foursquare Superusers. When you submit a flag through 4sweep, it is sent to Foursquare just as if you flagged it on the Foursquare site itself, using your login credentials.</p>
+    <p>4sweep will only use your API token to search venues, submit flags, and for related tasks. To help give you a better interface, it also uses your last check in (and centers the map there) and your superuser level, hometown, name, and profile photo. It will never check in for you, post tips or photos, or otherwise modify your account.  4sweep can add venues to a list if you request it to.</p>
+  </dd>
+</div>
+
+<div class="span5">
+  <dt>What do the symbols next to venue names mean?</dt>
+  <dd>
+    <p><i class="i-ok-circled"></i> – A verified venue. A manager has claimed the venue on Foursquare. It's not a guarantee that the venue is legitimate or up-to-date, and some venues are improperly claimed, but it often means the venue is higher quality than venues without check marks.</p>
+    <p><i class="i-lock"></i> – Locked venues. An SU3 or Foursquare staff member will have to approve your change to this venue.</p>
+    <p><i class="i-eye-off"></i> – Private venue. These venues are generally not shown in search results, except to the venue creator and their friends.</p>
+  </dd>
+
+  <dt>What are the red and yellow circles displayed around a venue?</dt>
+  <dd>These are indicators of the venue's rough size and concentration of checkins. In general, 50% of check ins at a given venue occur within the red circle and 90% occur within the yellow circle.  The circles may not appear for venues that have few checkins, are private homes, or have incomplete data. The circles may appear in the wrong place or be the wrong size for venues that have had their pin manually relocated or have been merged.</dd>
+
+  <dt>How does &quot;Load More&quot; work?</dt>
+  <dd>Load more divides your search area into smaller areas and performs search again within those areas. If Foursquare returns more than 50 venues for any of the new search areas, you can click on &quot;Load More&quot; again and it will further divide those areas and search within them. You can continue clicking this button to load more venues until it becomes unavailable, which means that there are no more subareas to search.</dd>
+  </dd>
+
+  <dt>What does "Alternate Resolution (Changed) mean?"</dt>
+  <dd>You may see this status on Edit Venue flags. It means that 4sweep can't be certain that your flag was accepted exactly as you submitted it, probably because Foursquare normalized some field for you. For example, Foursquare automatically expands or shortens certain abbreviations, adds country codes to phone numbers, and performs many other automatic cleanups. When this happens, we resolve the flag as "Alternate Resolution (Changed)" if any of the fields you edited changed from their previous values. The vast majority of the time this means that your flag was accepted.</dd>
+
+  <dt>Any legal or other disclosures you need to make?</dt>
+  <dd>(Okay, nobody actually asks this one, but here is what Foursquare asks me to write):  <p>This service uses the Foursquare® application programming interface but is not endorsed or certified by Foursquare Labs, Inc. All of the Foursquare® logos (including all badges) and trademarks displayed on this service are the property of Foursquare Labs, Inc.</p></dd>
+</div>
+
+</dl>
+
+<br><br><br>

@@ -1,0 +1,55 @@
+<% content_for :flagcount do %>
+<%= @flagcount == 0 ? "" : @flagcount %>
+<% end %>
+
+
+<div class="container">
+
+<h1>Category Changes</h1>
+<br>
+<div class="row">
+<div class="offset3 span6 alert alert-info">
+  Want more category goodness? Check out:
+  <ul>
+    <li><a href="https://developer.foursquare.com/categoryhistory">Official Foursquare Category History</a></li>
+    <li><a href="http://joffrey.me/c4tegories/">C4tegories</a>: Multilingual, Expandable, Searchable Category Tree</li>
+    <li><a href="https://www.changedetection.com/log/4sweep/category_changes_log2.html">ChangeDetection</a>: Set up an email alert when this page changes</li>
+  </ul>
+</div>
+</div>
+
+<% @diffs.each do |diff| %>
+
+<% next if diff[:added].size == 0 && diff[:removed].size == 0 %>
+<div class="row">
+
+<h2>Noticed at: <%= diff[:created_at].strftime("%F %H:%M") %></h2>
+
+<div class="span6">
+<% if diff[:added].size > 0 %>
+
+  <h3>Added</h3>
+
+  <pre>
+<%= diff[:added].join("\n") %>
+  </pre>
+<% else %>
+&nbsp;
+<% end %>
+
+</div>
+
+<div class="span6">
+<% if diff[:removed].size > 0 %>
+  <h3>Removed</h3>
+
+  <pre>
+<%= diff[:removed].join("\n") %>
+  </pre>
+<% end %>
+
+</div>
+</div>
+<% end %>
+
+</div>

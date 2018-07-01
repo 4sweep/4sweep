@@ -1,0 +1,30 @@
+{{venue.location.address}}
+{{#if venue.location.crossStreet}}({{venue.location.crossStreet}}){{/if}}
+{{venue.location.city}} {{venue.location.state}} {{venue.location.postalCode}}
+{{#if venue.parent.name}}[at <em><a target="_blank" href="#s=specificvenuesearch&amp;venueid={{venue.parent.id}}">{{venue.parent.name}}</a></em>]{{/if}}
+<br>
+
+{{#if venue.contact.formattedPhone}}<i class="i-phone-squared"></i>{{venue.contact.formattedPhone}} | {{/if}}
+{{#if venue.contact.twitter}} <a href="https://twitter.com/{{venue.contact.twitter}}" target="_blank"><i class="i-twitter-squared"></i>@{{venue.contact.twitter}}</a> | {{/if}}
+
+{{#if venue.contact.facebook}} <a href='#' class='facebooklink'><i class="i-facebook-squared"></i>{{#if venue.contact.facebookUsername}}{{truncate venue.contact.facebookUsername 20}}{{else}}{{truncate venue.contact.facebookName 20}}{{/if}}</a> | {{/if}}
+
+<a href="#" class="foursquare-description {{#if venue.description}}present{{else}}absent{{/if}}"><i class="i-quote-left" tooltip="Venue Description"></i></a>
+
+<a href="#" class="foursquare-attributes {{#if venue.attributes}}present{{else}}absent{{/if}}"><i class="i-tasks" tooltip="Attributes"></i></a>
+
+<a href="#" class="foursquare-hours {{#if venue.hours}}present{{else}}absent{{/if}}"><i class="i-clock" tooltip="Hours"></i></a>
+
+<a href="#" class="foursquare-users {{#ifany venue.beenhere venue.friendVisits.count venue.rating}}present{{else}}absent{{/ifany}}"><i class="i-group" tooltip="Users"></i></a>
+
+<a href="{{#if venue.url}}{{venue.url}}{{else}}#{{/if}}" {{#if venue.url}}target="_blank"{{/if}} class="{{#if venue.url}}present{{else}}absent{{/if}}"><i class="i-link-ext"></i></a>
+
+<a target="_blank" href="#{{#if created.user}}s=usersearch&amp;user={{created.user.id}}{{/if}}" class="foursquare-created {{#if created.user}}present{{else}}absent{{/if}}"><i class="i-user-add" tooltip="Venue Creator (if available)"></i></a>
+
+<a target="_blank" href="#{{#if children.totalChildren}}s=childrensearch&amp;venueid={{venue.id}}{{/if}}" class="foursquare-children {{#if children.totalChildren}}present{{else}}absent{{/if}}"><i class="i-flow-tree" tooltip="Places inside this venue"></i>{{#if children.totalChildren}}({{children.totalChildren}}){{/if}}</a>
+
+<a target="_blank" href="#{{#is venue.page.user.type "chain"}}s=pagesearch&amp;pageid={{venue.page.user.id}}{{/is}}" class="foursquare-chain {{#is venue.page.user.type "chain"}}present{{else}}absent{{/is}}"><i class="i-link" tooltip="Chain Information for this Venue"></i></a>
+
+{{!-- <a href="#" class="foursquare-menu"><i class="i-food {{#if venue.menu}}present{{else}}absent{{/if}}" tooltip="Menu"></i></a>
+<a href="#" class="foursquare-specials"><i class="i-certificate {{#if venue.specials.items.[0]}}present{{else}}absent{{/if}}" tooltip="Specials"></i></a>
+ --}}

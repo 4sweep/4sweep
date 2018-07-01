@@ -1,0 +1,6 @@
+{{#if displayPagination}}
+<ul class="pager pager-compact">
+  <li class="{{#is current 1}}disabled{{/is}}"><a href="#" data-pagenum='{{prevPage}}'>&larr; Previous</a></li>
+  <li class="{{#if onLastPage}}disabled{{/if}}"><a href="#" data-pagenum='{{nextPage}}'>&rarr; Next</a></li>
+</ul>
+{{/if}}

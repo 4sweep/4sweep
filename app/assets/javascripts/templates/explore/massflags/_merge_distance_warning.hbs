@@ -1,0 +1,8 @@
+{{#is venueCount '>=' 2}}
+  <p class='alert alert-{{warnClass}}'>
+  You are merging <strong>{{venueCount}}</strong> venues that are {{#is venueCount '>' 2}}at most {{/is}}<strong>{{num maxDistance}}m</strong>
+  away from {{#is venueCount '>' 2}}the most popular venue{{else}}each other{{/is}}.
+  </p>
+{{else}}
+  <p class="alert alert-info">Please select 2 or more venues to merge</p>
+{{/is}}

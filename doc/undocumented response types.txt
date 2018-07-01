@@ -1,0 +1,239 @@
+Foursquare undocumented response types:
+
+FlagTypes:
+  one of ["attribute", "category", "duplicate", "explorespam", "info", "missingaddress", "missingphone", "partnerMatch", "photo", "private", "remove", "svd", "tip", "uncategorized"]
+
+FlagStat
+  type: FlagType
+  count: integer
+
+LeaderboardItem
+  'count': integer
+  'user': CompactUser
+
+Woe
+  CompactVenue + new fields:
+    flags:
+      items: [Flag]
+      count
+    creator: CompactUser
+    editingMetadata: EditingMetadata
+
+Flag
+  ID
+  type: ['at' (attribute), 'info', 'category', 'primarycategory', 'removecategory', 'duplicate', 'missingaddress', 'missingphone', 'tip', 'privatevenue', 'remove', 'uncategorized', "suspicious", "price", "svd"]
+      [ "at" "category" "hours" "info" "mislocated" "missingaddress" "missingphone" "price" "primarycategory" "remove" "suspicious" "svd" "tip" "uncategorized"]
+  field:
+    [address city crossstreet description facebookId gs gm hours nh phone twitter_name url venuename zip]
+    ["americanExpress", "atm", "barService", "beer", "byo", "coatCheck", "cocktails", "creditCards", "discover", "driveThrough", "fullBar", "groupsOnlyReservations", "happyHour", "hasParking", "masterCard", "outdoorSeating", "privateLot", "publicLot", "reservations", "restroom", "sitDownDining", "smoking", "streetParking", "takeout", "takesDinersClub", "tvs", "valetParking", "visa", "wheelchairAccessible", "wifi", "wine"]
+  currentValue: String
+  value: FlagValue
+  displayValue: ?
+  displayName: String (human readable of field)
+  comments: [String?]
+  reporters: [User]
+  notes: [Note]
+  resolvedTime: ??
+  resolvedUsers: ??
+  canonicalPath:
+  reason: ["no_longer_relevant_tip", "offensive_tip", "spam_tip"]
+
+
+FlagValue:
+
+String, for string valued
+Hours
+CategoryValue:
+  action: ['removeCategory', 'primaryCategory', 'addCategory']
+  category: CompactCategory
+DuplicateValue:
+  CompactVenue +
+  + editingMetadata: EditingMetadata
+  + preview: CompactVenue
+TipValue:
+  CompactTip w/ CompactUser
+RemoveValue:
+   "reason": one of ['closed']
+
+Note:
+  type: one of ['recent', 'popular', 'robot', 'claimed', 'private']
+  text
+
+EditingMetadata
+  humanHours: {} ??
+  machineHours: {} ??
+  coordinates: [ [Lat, Lng]* ]
+  daysSinceLastCheckin: integer
+  checkinCounts: {
+    "60": integer
+  }
+
+
+Edit:
+  id
+  venueId
+  editType: one of ['rollback', 'merge', 'edit', 'create']
+  deltas: [ Delta ]
+  reportingUsers: [CompactUser* ]
+  approvingUsers: [CompactUser* ]
+  isAutomatedEdit: Boolean
+  createdAt: timestamp
+  comment:
+  oldVenue: CompactVenue
+  mergeInfo: Text
+  mergeAttemps: [{
+    status: ["Success"]
+    attemptCount: 1
+  }*]
+
+
+Delta:
+  op: ['modify', 'remove', 'add', 'change_head']
+  name: one of:
+    "address (Address)"
+    "attributes.atm (ATM)"
+    "attributes.barService (Bar Service)"
+    "attributes.beer (Beer)"
+    "attributes.byo (BYO)"
+    "attributes.coatCheck (Coat Check)"
+    "attributes.cocktails (Cocktails)"
+    "attributes.delivery (Delivery)"
+    "attributes.driveThrough (Drive-through)"
+    "attributes.essentialReservations (Essential)"
+    "attributes.fullBar (Full Bar)"
+    "attributes.groupsOnlyReservations (Groups Only)"
+    "attributes.hasMusic (Music)"
+    "attributes.liveMusic (Live Music)"
+    "attributes.outdoorSeating (Outdoor Seating)"
+    "attributes.price (Price)"
+    "attributes.privateRoom (Private Room)"
+    "attributes.reservations (Reservations)"
+    "attributes.restroom (Restroom)"
+    "attributes.servesBarSnacks (Bar Snacks)"
+    "attributes.servesBreakfast (Breakfast)"
+    "attributes.servesBrunch (Brunch)"
+    "attributes.servesDessert (Dessert)"
+    "attributes.servesDinner (Dinner)"
+    "attributes.servesHappyHour (Happy Hour)"
+    "attributes.servesLunch (Lunch)"
+    "attributes.servesTastingMenu (Tasting Menu)"
+    "attributes.sitDownDining (Table Service)"
+    "attributes.smoking (Smoking)"
+    "attributes.takeout (Take-out)"
+    "attributes.takesAmex (American Express)"
+    "attributes.takesCreditCards (Credit Cards)"
+    "attributes.takesDinersClub (Diners Club)"
+    "attributes.takesDiscover (Discover)"
+    "attributes.takesMasterCard (MasterCard)"
+    "attributes.takesUnionPay (Union Pay)"
+    "attributes.takesVisa (Visa)"
+    "attributes.tvs (TVs)"
+    "attributes.wifi (Wi-Fi)"
+    "badgeTags ()"
+    "categories (Category)"
+    "categories (Primary Category)"
+    "chainUrl ()"
+    "city (City)"
+    "cityGeoId (City)"
+    "countrycode (Country)"
+    "countyGeoId (County)"
+    "crossstreet (Cross street)"
+    "description (Description)"
+    "fbId (Facebook ID)"
+    "fbName ()"
+    "fbUsername (Facebook Username)"
+    "flags (flags)"
+    "geomobile ()"
+    "georadius ()"
+    "hours (Hours)"
+    "latlng (Lat/Lng)"
+    "macrohoodGeoId (Neighborhood)"
+    "neighborhoodGeoId (Neighborhood)"
+    "phone (Phone)"
+    "state (State)"
+    "stateGeoId (State)"
+    "subhoodGeoId (Neighborhood)"
+    "twitterName (Twitter)"
+    "tz ()"
+    "url (Url)"
+    "userId ()"
+    "venuename (Name)"
+    "zip (Zip code)"
+  old: {
+    value: String
+  }
+  new: {
+    value: String
+  }
+  listObj: {
+
+  }
+
+  displayName: String
+
+QUEUES TO BUILD OUT:
+   "attribute",
+1   "category",
+   "duplicate",
+NO   "explorespam",
+   "info",
+   "missingaddress",
+   "missingphone",
+NO   "partnerMatch",
+    "photo",
+    "private",
+    "remove",
+NO    "svd",
+    "tip",
+    "uncategorized"
+
+COULD NOT GET VALUES FOR:
+  duplicate
+  photo
+  partnerMatch
+
+
+
+Known Flag Values
+1 PhoneNA
+2 AddressNA
+4
+8 CrossNA
+16 CityNA
+32
+64 ZipNA
+128 TwitterNA
+256
+512 PriceNA
+1024  PrivateVenue
+2048
+4096 CountryCodeOverridden
+8192 DontCanonicalizeAddress
+16384 UserEnteredNeighborhoodAsCity
+32768
+65536 UserEnteredMacrohoodAsCity
+131072  IsCityFromRevGeo
+262144  IsCountyFromRevGeo
+524288  IsStateFromRevGeo
+1048576 UserEnteredNeighborhood
+2097152
+4194304 UserEnteredMacrohood
+8388608 UserEnteredCountyAsCity
+16777216
+
+
+
+---
+
+/venues/XXX/validatehours responses
+
+status: "ERROR"
+message: "Improper hours format"
+
+
+status: "POPULARHOURSWARNING"
+message: "Hours don't cover times when location is popular"
+
+status: "OK"
+hours: [HUMAN READABLE HOURS FORMAT]
+

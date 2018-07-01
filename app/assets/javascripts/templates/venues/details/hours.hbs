@@ -1,0 +1,36 @@
+{{#ifany venue.hours venue.popular}}
+{{#with venue.hours}}
+
+<span class="6">
+<dl class="dl-horizontal">
+  <dt>Currently</dt>
+  <dd>{{status}}</dd>
+  {{#each timeframes}}
+  <dt>{{days}}</dt>
+  <dd>
+    {{#each open}}
+    {{renderedTime}}<br>
+    {{/each}}
+  </dd>
+  {{/each}}
+</dl>
+</span>
+{{/with}}
+{{!-- {{#with venue.popular}}
+<dl class="dl-horizontal">
+  <dt>Popular Hours</dt>
+  <dd></dd>
+
+  {{#each timeframes}}
+  <dt>{{days}}</dt>
+  <dd>
+    {{#each open}}
+    {{renderedTime}}<br>
+    {{/each}}
+  </dd>
+  {{/each}}
+</dl>
+{{/with}} --}}
+{{else}}
+No hours specified
+{{/ifany}}

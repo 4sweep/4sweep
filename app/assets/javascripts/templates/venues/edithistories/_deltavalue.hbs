@@ -1,0 +1,8 @@
+{{#if ll}}Lat: {{ll.lat}}<br>Lng: {{ll.lng}}{{/if}}
+{{#if venue}}
+  {{venue.name}}
+{{else}}
+  {{#if value}}{{value}}{{/if}}
+{{/if}}
+{{#if values}} {{#each values}}{{this}}<br>{{/each}} {{/if}}
+{{#if category}}{{#with category}}{{>venues/edithistories/_category}}{{/with}}{{/if}}

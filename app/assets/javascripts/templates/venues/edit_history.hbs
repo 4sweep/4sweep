@@ -1,0 +1,63 @@
+<h6>Showing {{edits.length}} of {{editsCount}} edits</h6>
+<div class="limitedheight">
+<table class='table edit_history table-condensed'>
+{{#each edits}}
+<tr class='begin_change info'>
+  <td rowspan='{{plus deltas.length 1}}'><strong class='text-capitalize'>{{editType}}</strong><br>
+      {{moment createdAt}}<br>
+      ({{#if isAutomatedEdit}}Automated{{else}}Manual{{/if}})
+  </td>
+  <td colspan='4' class=''>
+    <div class='editors'>
+    {{#if reportingUsers.[0]}}<span class='pull-left coolseparator'>Reporters: {{#each reportingUsers}}{{>venues/edithistories/_user}}{{/each}}</span>{{/if}}
+    {{#if approvingUsers.[0]}}<span class='pull-right'>Approvers: {{#each approvingUsers}}{{>venues/edithistories/_user}}{{/each}}</span>{{/if}}
+    {{#if app}}<span class='pull-left coolseparator'>via {{app.name}}</span>{{/if}}
+    </div>
+    <div class="clear"></div>
+    {{#is editType 'merge'}}
+    <div class='mergeinfo alert alert-danger'>
+      <strong>Merge with {{oldVenue.name}}</strong> ({{pointDistance ../../venue.location oldVenue.location}} {{pointsDirection ../../venue.location oldVenue.location}} from current location)<br>
+      <span>{{#each oldVenue.location.formattedAddress}}{{this}}<br>{{/each}}</span>
+      <span class="stats">{{oldVenue.stats.checkinsCount}} Checkin(s) | {{oldVenue.stats.usersCount}} User(s) | {{oldVenue.stats.tipCount}} Tip(s)</span>
+    </div>
+    {{/is}}
+  </td>
+</tr>
+  {{#each deltas}}
+    {{#is @index '>' -1}}<tr class="{{#is op "add"}}success{{/is}} {{#is op "modify"}}warning{{/is}} {{#is op "remove"}}error{{/is}} {{#is op "change_head"}}warning{{/is}} ">{{/is}}
+    <td class="deltaop">
+      {{#is op "modify"}}<i class="changeicon icon-info-sign"></i>Change{{/is}}
+      {{#is op "change_head"}}<i class="changeicon icon-info-sign"></i>Change{{/is}}
+      {{#is op "add"}}<i class="addicon icon-plus-sign"></i> Add{{/is}}
+      {{#is op "remove"}}<i class="removeicon icon-minus-sign"></i> Remove{{/is}}
+    </td>
+    <td>{{#if displayName}}{{displayName}}{{else}}{{name}}{{/if}}</td>
+    {{#if listObj}}
+    <td colspan='2'>
+      {{#if listObj.value}}
+        {{listObj.value}}
+      {{else}}
+        {{#each listObj.categories}}
+        {{>venues/edithistories/_category}}
+        {{/each}}
+      {{/if}}
+    </td>
+    {{else}}
+    <td class='oldvalue'>
+      {{#with old}}{{> venues/edithistories/_deltavalue}}{{/with}}
+      <i class="icon-arrow-right pull-right"></i>
+    </td>
+    <td class='newvalue'>
+      {{#with new}}{{> venues/edithistories/_deltavalue}}{{/with}}
+      {{#ifall old.ll new.ll}}<br>({{pointDistance old.ll new.ll}}){{/ifall}}
+    </td>
+    {{/if}}
+    {{#is @index '>' 0}}</tr>{{/is}}
+  {{/each}}
+</tr>
+<tr class='spacer'>
+</tr>
+{{else}}No edits known
+{{/each}}
+</table>
+</div>

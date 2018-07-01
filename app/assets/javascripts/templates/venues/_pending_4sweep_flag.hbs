@@ -1,0 +1,45 @@
+  <td>{{friendly_name}}</td>
+  <td>{{moment created_at}}</td>
+  <td class='text-capitalize status'>{{status}} {{resolved_details}}</td>
+  <td class='details break-word'>
+    {{#is flag_type "MergeFlag"}}
+      {{#is id venueId}}
+      With: <a href="#s=specificvenuesearch&amp;venueid={{secondaryVenueId}}" target="_blank">{{secondaryName}}</a>
+      {{else}}
+      With: <a href="#s=specificvenuesearch&amp;venueid={{venueId}}" target="_blank">{{primaryName}}</a>
+      {{/is}}
+    {{/is}}
+    {{#is flag_type "EditVenueFlag"}}
+      {{#each details}}
+      {{this}}<br>
+      {{/each}}
+    {{/is}}
+    {{#is status "scheduled"}}
+    Scheduled for {{moment scheduled_at}}
+    {{/is}}
+
+    {{#if comment}}<p class='commenttext'>Comment: {{comment}}</p>{{/if}}
+  </td>
+  <td class='lastchecked'>{{#if last_checked}}{{moment last_checked}}{{else}}–{{/if}}</td>
+  <td class='actions'>
+    {{#isin status "new" "queued"}}
+    <button data-action="run" class="btn btn-primary btn-mini flagaction submitflag">Submit</button>
+    <br>
+    {{/isin}}
+    {{#isin status "new" "queued" "scheduled" "submitted"}}
+    <button data-action="check"  class="btn btn-primary btn-mini flagaction checkflag">Check</button>
+    <br>
+    {{/isin}}
+    {{#isin status "submitted"}}
+    <button data-action="resubmit" class="btn btn-danger btn-mini flagaction resubmitflag">Resubmit</button>
+    <br>
+    {{/isin}}
+    {{#isin status "new" "queued" "scheduled"}}
+    <button data-action="cancel" class="btn btn-danger btn-mini flagaction cancelflag">Cancel</button>
+    <br>
+    {{/isin}}
+    {{#isin status "submitted"}}
+    <button data-action="hide" class="btn btn-warning btn-mini flagaction hideflag">Hide</button>
+    <br>
+    {{/isin}}
+  </td>

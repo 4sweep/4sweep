@@ -1,0 +1,9 @@
+{{#each categories.existing}}
+  <span class='cat_container'><span class="full_category {{#if foursweepRemovePending}}removed{{/if}} {{#if foursweepMakePrimaryPending}}madeprimary{{/if}}" data-catid="{{id}}" data-primary="{{primary}}">{{name}}</span></span>
+{{else}}
+  No Category
+{{/each}}
+{{#each categories.pending}}
+  <span class='pending_cat'><span class="pending_category">(Pending: {{name}})</span></span>
+{{/each}}
+<br>

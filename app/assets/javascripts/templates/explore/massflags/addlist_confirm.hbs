@@ -1,0 +1,6 @@
+{{#if success}}
+Added <strong><a target="_blank" href="#s=specificvenuesearch&amp;venueid={{venue.id}}">{{venue.name}}</a></strong> to list <em><a href="#s=listsearch&amp;listurl={{uc list.canonicalUrl}}">{{list.name}}</a></em>
+{{else}}
+Failed to add <strong><a target="_blank" href="#s=specificvenuesearch&amp;venueid={{venue.id}}">{{venue.name}}</a></strong> to list <em><a href="#s=listsearch&amp;listurl={{uc list.canonicalUrl}}">{{list.name}}</a></em>
+<small>This often means the venue was already on the list.</small>
+{{/if}}

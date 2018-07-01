@@ -1,0 +1,636 @@
+@import "compass/css3/columns";
+
+.foursweep-search {
+  .nav-tabs li a {
+    font-size: 80%;
+    border: 1px dashed #ddd;
+    line-height: 10px;
+    border-bottom: 1px solid transparent;
+  }
+  .nav-tabs li.active a {
+    background-color: #efdfbd;
+    font-weight: bold;
+  }
+
+  .tab-pane {
+    padding: 1em;
+    background-color: #efdfbd;
+  }
+
+  .tab-content {
+    overflow: visible;
+  }
+}
+
+.cat_container + .cat_container::before {
+  content: " · "
+}
+
+.coolseparator + .coolseparator::before {
+  content: " · "
+}
+
+.venue.gone, .venue.merged {
+  .venueactions, .venuebuttons, .label.ratio {
+    display: none;
+  }
+  .venuemissing {
+    min-height: 3em;
+    padding-top: 1em;
+    a {
+      border-bottom: 1px dashed black;
+    }
+  }
+}
+
+.venuelistcontrols {
+  text-align: center;
+}
+
+.edit_history {
+  .deltaop {
+    width: 6em;
+  }
+  .spacer {
+    height: 1em;
+  }
+
+  .editors {
+    font-size: 80%;
+  }
+  .editor + .editor::before {
+    content: " · "
+  }
+  .oldvalue, .newvalue {
+    word-break: break-word;
+  }
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.facebookdetails {
+  .permanently-closed {
+    font-weight: bold;
+    color: red;
+  }
+  .small {
+    font-size: 85%;
+  }
+  .hours2val {
+    margin-left: 3em;
+  }
+}
+
+.addressrow {
+  .absent i {
+    color: gray;
+  }
+}
+
+i.nudge {
+  position: relative;
+  bottom: 1px;
+  right: 1px;
+}
+
+#radiusdropdown {
+  position: relative;
+  top: 5px;
+
+  height: 26px;
+  line-height: 26px;
+  background-clip: padding-box;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.29804) 0px 1px 4px -1px;
+  border: 1px solid rgba(0, 0, 0, 0.14902);
+  border-radius: 2px;
+  padding: 3px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.namerow, .itemcontainer .details {
+  i {
+    margin-right: -5px;
+  }
+  .locked .i-lock {
+    color: darkblue;
+  }
+  .verified .i-ok-circled {
+    color: green;
+  }
+}
+
+.friendVisits li {
+  float: left;
+  font-size: 95%;
+  margin-bottom: 5px;
+  width: 170px;
+  line-height: 1.1;
+  img {
+    border-radius:3px;
+    height: 40px;
+    width: 40px;
+    padding-right: 5px;
+  }
+  .liked {
+    color: orange;
+  }
+  .disliked {
+    color: brown;
+  }
+  .visitcount {
+    color: #999999;
+  }
+}
+
+.sortdirbutton {
+  border-left: none;
+}
+.sortrefreshbutton {
+  border-left: none;
+}
+
+
+.pendingflagslist {
+  border-collapse: separate;
+  border-spacing: 0.5em;
+  width: 100%;
+
+  th.flagtype {
+    border: 1px solid black;
+  }
+  td {
+    padding-left: 1em;
+  }
+  .small {
+    font-size: 80%;
+  }
+  .reporters {
+    background-color: #ddd;
+    height: 1.2em;
+  }
+
+  .categoryicon {
+    border: 1px solid gray;
+    border-radius: 5px;
+    // margin-left: 1em;
+  }
+
+  .flagtype {
+    text-align: center;
+    width: 25%;
+    font-weight: bold;
+    padding: 1em;
+    font-size: 120%;
+    .details {
+      font-size: 65%;
+    }
+  }
+
+  .dl-horizontal {
+    margin: 0;
+  }
+
+  .flagtype-at {
+    background-color: #7FCAFF;
+  }
+  .flagtype-info, .flagtype-editName, .flagtype-menu {
+    background-color: #7F97FF;
+  }
+  .flagtype-duplicate {
+    background-color: #FF9C7E;
+  }
+  .flagtype-manualDuplicate {
+    background-color: #FF7FB0;
+  }
+  .flagtype-hours {
+    background-color: #F3FF7E;
+  }
+  .flagtype-remove.reason-event_over, .flagtype-remove.reason-closed {
+    background-color: #E77FFF;
+  }
+
+  .flagtype-remove.reason-inappropriate, .flagtype-remove.reason-doesnt_exist, .flagtype-remove.reason-remove_home, .flagtype-remove.reason-created_in_error {
+    background-color: #FF9C7E;
+  }
+
+  .flagtype-uncategorized {
+    background-color: #7FCAFF;
+  }
+
+  .flagtype-category {
+    background-color: #CAF562;
+  }
+  .flagtype-removecategory {
+    background-color: #FFF17E;
+  }
+  .flagtype-primarycategory {
+    background-color: #62F5C8;
+  }
+  .flagtype-privatevenue, .flagtype-publicvenue {
+    background-color: #FF7FB0;
+  }
+  .flagtype-missingphone, .flagtype-missingaddress, .flagtype-mi {
+    background-color: #FFBD7E;
+  }
+  .flagtype-mislocated {
+    background-color: #FFD77E;
+  }
+  .flagtype-unremove {
+    background-color: #CAF562;
+  }
+}
+
+.dl-compact {
+  dd {
+    margin-bottom: 0.1em;
+  }
+}
+
+h5.attributeheader {
+  background-color: tan;
+  padding: 0.3em;
+}
+
+div.attributes {
+  @include columns(3);
+  .attributeheader {
+    @include column-break-after(avoid);
+    break-after: avoid;
+    margin: 0;
+  }
+  dl {
+    @include column-break-before(avoid);
+    break-before: avoid;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+  dd, dt {
+    @include column-break-before(avoid);
+    break-before: avoid;
+  }
+}
+
+.venuediv .pagination, .venuediv .pager {
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+.globalButton {
+  padding-top: 5px;
+}
+
+.globalButton>div {
+  background-clip: padding-box;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+  border: 1px solid rgba(0, 0, 0, 0.14902);
+  border-radius: 2px;
+  padding: 3px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  :hover {
+    background-color: rgb(235, 235, 235);
+  }
+}
+
+.noselect {
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.fitButtons div {
+  background-clip: padding-box;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+  border: 1px solid rgba(0, 0, 0, 0.14902);
+  border-radius: 2px;
+  padding: 3px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  :hover {
+    background-color: rgb(235, 235, 235);
+  }
+  .fitButton {
+    display: inline;
+    padding: 1px 3px 1px 3px;
+  }
+}
+
+.globalButton.clicked>div {
+  font-weight: bold;
+  border-color: black;
+  padding: 2px 8px;
+  border-width: 2px;
+}
+
+.nearButton {
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  padding-top: 5px;
+  &.open {
+    padding-top: 1px;
+    .ellipsis {
+      display: none;
+    }
+  }
+  div {
+    background-clip: padding-box;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+    border: 1px solid rgba(0, 0, 0, 0.14902);
+    border-radius: 2px;
+    padding: 3px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    :hover {
+      background-color: rgb(235, 235, 235);
+    }
+
+    .input-append {
+      margin-bottom: 0;
+    }
+
+    input {
+      height: 16px;
+    }
+  }
+}
+
+.loading {
+  text-align: center;
+  padding-top: 3em;
+  margin: auto;
+  width: 50%;
+  .progress {
+    margin-top: 0.5em;
+  }
+}
+
+.extras {
+  margin-bottom: 3px;
+  min-height: 68px;
+  padding: 5px;
+  h5 {
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
+
+  .photocontainer {
+    text-align: center;
+    img {
+      margin-left: 1em;
+      // margin-top: 1em;
+    }
+  }
+  .relationship {
+    color: blue;
+  }
+  i.i-facebook {
+    margin-left: -5px;
+  }
+}
+
+.listextras {
+  img {
+    height: 150px;
+  }
+}
+
+.list_preview {
+  list-style: none;
+  background-color: #eedebd;
+  border-radius: 5px;
+  margin: 5px;
+  margin-left: 0;
+  padding: 0.5em 1em 0.5em 1em;
+
+  img {
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 5px;
+    margin-right: 10px;
+    height: 150px;
+  }
+}
+
+.previewphoto {
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 5px;
+  margin-right: 10px;
+}
+
+div.clear {
+  height: 0;
+  clear: both;
+}
+
+.form-nobottom {
+  margin-bottom: 0;
+}
+
+.unselectable {
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.searcherror {
+  margin-top: 2em;
+  .retry {
+    margin-top: 1em;
+  }
+}
+
+.childvenue {
+  padding-bottom: 5px;
+  img {
+    border-radius: 8px;
+    border: 1px solid black;
+  }
+}
+
+.select2-results {
+
+  .optionbold {
+    font-weight: bold;
+  }
+  .category-indent-2 {
+    padding-left: 1em;
+  }
+  .category-indent-3 {
+    padding-left: 2em;
+  }
+  .category-indent-4 {
+    padding-left: 3em;
+  }
+  .category-indent-5 {
+    padding-left: 4em;
+  }
+
+}
+
+.venueedit {
+  .select2-choice {
+    line-height: 18px;
+    min-height: 40px;
+  }
+  .select2-choice.select2-default {
+    min-height: inherit;
+    line-height: 26px;
+  }
+}
+
+.parentcandidate {
+  img {
+    float: left;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-top: 2px;
+    margin-right: 5px;
+  }
+  .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  .address {
+    color: gray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.distance-warning .distance {
+  color: red;
+}
+
+.subtle {
+  color: #aaa;
+  margin-right: -3px;
+}
+
+.truncateurl {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loadinglists {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+.input-daterange .add-on {
+  border-left: none;
+}
+
+ul.haspins {
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.compactchain {
+  margin-bottom: 1em;
+  border-radius: 5px;
+  padding: 3px;
+
+  .btn.selectpage {
+    margin-top: 1em;
+  }
+  &:nth-child(2n) {
+    background-color: #ddd;
+  }
+}
+
+hr.thinmargin {
+  margin: 10px 0;
+}
+
+.venuebuttons .foursweepflagsbutton {
+  opacity: 0.7 !important;
+}
+
+.pending4sweepflags {
+  .commenttext {
+    color: orange;
+  }
+  .flagaction {
+    margin-bottom: 1px;
+  }
+  .break-word {
+    word-wrap: break-all;
+  }
+}
+
+.limitedheight {
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+.openstate-clickonly, .openstate-hoveronly {
+  display: none;
+}
+
+.openstate-hover .openstate-hoveronly, .openstate-clicked .openstate-clickonly {
+  display: inherit;
+}
+
+.openstate-clicked .popover-title a.facebookmini {
+  margin-left: 0.5em;
+  border-bottom: none;
+  margin-top: -3px;
+  display: inline-block;
+}
+
+.popover.openstate-clicked {
+  border: 1px solid black;
+  .arrow {
+    border-right-color: black;
+  }
+}
+
+.monospaced {
+  font-family: monospace;
+}
+
+.allvenues .loadmorecontainer {
+  margin-bottom: 0.5em;
+}
+
+#dupsearch-help a {
+  border-bottom: 1px dashed gray;
+}
+
+.nopadding #wrap > .container-fluid {
+  padding-top: 0;
+}
+
+div.relocateMap {
+  height: 500px;
+  width: 100%;
+}
+
+.gmnoprint img {
+  // http://stackoverflow.com/questions/9904379/google-map-zoom-controls-not-displaying-correctly
+  max-width: none;
+}

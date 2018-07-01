@@ -1,0 +1,104 @@
+<br>
+<div class="control-group">
+  <label for="venuedetails_name" class="control-label">Name:</label>
+  <div class="controls">
+    <div class="input-append">
+      <input type="text" name='venuedetails[name]' class='submittable venuedetails_name' data-keyname='name' value="{{venue.name}}">
+      <a class="btn btn-info googlesearch editpopoverexternal tooltiptrigger" target="_blank" title='Search Google in new tab'><i class="icon-white icon-search"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_address" class="control-label">Address:</label>
+  <div class="controls">
+    <input type="text" name='venuedetails[address]' class='submittable venuedetails_address' data-keyname='address' value="{{venue.location.address}}">
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_crossstreet" class="control-label">Cross Street:</label>
+  <div class="controls">
+    <input type="text" name='venuedetails[crossstreet]' class='submittable venuedetails_crossstreet' data-keyname='crossStreet' value="{{venue.location.crossStreet}}">
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_city" class="control-label">City:</label>
+  <div class="controls">
+    <input type="text" name='venuedetails[city]' class='submittable venuedetails_city' data-keyname='city' value="{{venue.location.city}}">
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_state" class="control-label">State:</label>
+  <div class="controls">
+    <input type="text" name='venuedetails[state]' class='submittable venuedetails_state' data-keyname='state' value="{{venue.location.state}}">
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_postalcode" class="control-label">Postal Code:</label>
+  <div class="controls">
+    <input type="text" name='venuedetails[zip]' class='submittable venuedetails_postalcode' data-keyname='zip' value="{{venue.location.postalCode}}">
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_phone" class="control-label">Phone:</label>
+  <div class="controls">
+    <input type="text" name='venuedetails[phone]' class='submittable venuedetails_phone' data-keyname='phone' value="{{venue.contact.formattedPhone}}">
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_twitter" class="control-label">Twitter:</label>
+  <div class="controls">
+    <div class="input-prepend input-append">
+      <span class="add-on">@</span>
+      <input type="text" name='venuedetails[twitter]' class='submittable venuedetails_twitter' data-keyname='twitter' value="{{venue.contact.twitter}}">
+      <a class="btn disabled btn-info tooltiptrigger twitter-link editpopoverexternal" title="Open Twitter page in new tab" href="#" target="_blank"><i class="icon-white icon-chevron-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_facebook" class="control-label">Facebook:</label>
+  <div class="controls">
+    <div class="input-append">
+      <input type="text" name='venuedetails[facebookUrl]' class='submittable venuedetails_facebook' data-keyname='facebookUrl' value="{{#if venue.contact.facebookUsername}}https://facebook.com/{{venue.contact.facebookUsername}}{{else}}{{#if venue.contact.facebook}}https://facebook.com/{{venue.contact.facebook}}{{/if}}{{/if}}">
+      <a class="btn disabled btn-info tooltiptrigger facebook-link editpopoverexternal" title="Open Facebook page in new tab" href="#" target="_blank"><i class="icon-white icon-chevron-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_url" class="control-label">Web Site:</label>
+  <div class="controls">
+    <div class="input-append">
+      <input type="text" name='venuedetails[url]' class='submittable venuedetails_url' data-keyname='url' value="{{venue.url}}">
+      <a class="btn disabled btn-info tooltiptrigger webpage-url-link editpopoverexternal" title="Open web page in new tab" href="#" target="_blank"><i class="icon-white icon-chevron-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_url" class="control-label">Menu URL:</label>
+  <div class="controls">
+    <div class="input-append">
+      <input type="text" name='venuedetails[menuUrl]' class='submittable venuedetails_menuUrl' data-keyname='menuUrl' value="{{venue.menuUrl}}">
+      <a class="btn disabled btn-info tooltiptrigger webpage-menuurl-link editpopoverexternal" title="Open menu page in new tab" href="#" target="_blank"><i class="icon-white icon-chevron-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="control-group">
+  <label for="venuedetails_url" class="control-label">Inside:</label>
+  <div class="controls">
+    <input type="hidden" name='venuedetails[parentId]' data-originalvalue='{{#if venue.parent}}{{venue.parent.id}}{{else}}empty{{/if}}' value='{{venue.parent.id}}' class='submittable venuedetails_parentId' data-keyname='parentId' style="width: 383px">
+  </div>
+</div>
+
+
+<br>
+

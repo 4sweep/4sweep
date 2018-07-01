@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  level: MyString
+  token: MyString
+  enabled: false
+
+two:
+  name: MyString
+  level: MyString
+  token: MyString
+  enabled: false

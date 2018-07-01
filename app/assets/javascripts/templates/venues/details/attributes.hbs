@@ -1,0 +1,11 @@
+<div class="attributes">
+{{#each attributes.attributes.groups}}
+  <h5 class='attributeheader'>{{name}}</h5>
+  <dl class='dl-horizontal dl-compact dl-twocolumn'>
+    {{#each items}}
+    <dt>{{displayName}}:</dt>
+    <dd>{{#if displayValue}}{{displayValue}}{{else}}{{availability}}{{/if}}</dd>
+    {{/each}}
+  </dl>
+{{/each}}
+</div>

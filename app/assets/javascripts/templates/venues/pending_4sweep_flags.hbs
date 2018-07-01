@@ -1,0 +1,32 @@
+<h5>
+{{#is flags.length 1}}
+You have {{flags.length}} pending flag at {{venue.name}}
+{{else}}
+You have {{flags.length}} pending flags at {{venue.name}}
+{{/is}}
+</h5>
+
+{{#if flags.length}}
+<table class="table-striped table pending4sweepflags">
+<tr>
+  <th>Type</th>
+  <th>Created At</th>
+  <th>Status</th>
+  <th>Details</th>
+  <th>Last Checked</th>
+  <th>Actions</th>
+</tr>
+{{#each flags}}
+<tr data-flagid="{{id}}" class='flagrow'>
+{{>venues/_pending_4sweep_flag}}
+</tr>
+{{/each}}
+<tfoot>
+  <tr>
+    <td colspan='6' class='center'>
+    <button class="btn popover-close">Close</button>
+    </td>
+  </tr>
+</tfoot>
+</table>
+{{/if}}

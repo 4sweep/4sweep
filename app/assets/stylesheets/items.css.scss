@@ -1,0 +1,278 @@
+.itemsmodal {
+  .sizeradios {
+    input, label {
+      display: inline;
+    }
+    input {
+      position: relative;
+      bottom: 3px;
+    }
+    label: {
+      margin-left: 2em;
+    }
+    margin-left: 5em;
+    position: relative;
+    bottom: 3px;
+  }
+  .item.selected {
+    background-color: #FFAF7A;
+  }
+
+  .items {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .items .span3, .photos .span4 {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  &.photomodal .items {
+    .photos_large {
+      margin-right: 10px;
+      margin-left: 0;
+    }
+    .photos_medium {
+      margin-right: 10px;
+      margin-left: 0;
+    }
+    .photos_small {
+      margin-right: 5px;
+      margin-left: 0;
+    }
+    .photos_tiny {
+      margin-right: 3px;
+      margin-left: 0;
+    }
+  }
+  .details {
+    text-align: right;
+    font-size: 75%;
+    line-height: 1.1;
+    a {
+      border-bottom: 1px dashed gray;
+    }
+  }
+  .photos_small .details {
+    font-size: 70%;
+  }
+  .photos_tiny .details {
+    display: none;
+  }
+  .itemactions {
+    a.btn:visited {
+      color: black;
+    }
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .items .item:hover:not(.selected) {
+    background-color: #b7cda9;
+  }
+  .items .alreadyflagged {
+    background-color: #eee !important;
+    img {
+      opacity: 0.33;
+    }
+    color: gray;
+    a {
+      color: gray;
+    }
+  }
+  .placeholder {
+    .loadmorestatus {
+      font-size: 1.3em;
+      text-align: center;
+      display: none;
+    }
+    &.nomore .nomoretext {
+      display: block;
+    }
+    &.loading .loadingtext {
+      display: block;
+    }
+  }
+  &.photomodal .placeholder .loadmorestatus {
+    padding-top: 100px;
+    min-height: 150px;
+  }
+  &.tipmodal .placeholder {
+    text-align: center;
+  }
+}
+
+.notifythumbnailcontainer {
+  margin-left: 0;
+}
+
+.tipmodal {
+  width: 60%;
+  left: 20% !important;
+  margin-top: 0 !important;
+  height: 75%;
+  .modal-body {
+    margin: auto;
+    min-height: 70%;
+  }
+  .tipfiltercontainer {
+    margin-left: 2em;
+  }
+  .tipphoto img {
+    top: 0;
+    margin-right: 1em;
+  }
+  .bubblecontainer {
+    width: 700px;
+    .bubble {
+      width: 600px;
+    }
+  }
+}
+
+.photomodal {
+  width: 90%;
+  left: 5% !important;
+  top: 5% !important;
+  margin-top: 0 !important;
+  height: 90% !important;
+  .modal-body {
+    min-height: 80%;
+  }
+}
+
+#photozoommodal {
+  width: 70%;
+  height: 85%;
+  left: 35% !important;
+  top: 10% !important;
+  .modal-body {
+    min-height: 90%;
+    img {
+      border: 1px solid black;
+    }
+  }
+  .zoomdetails {
+    margin-right: 1em;
+    padding: 1em;
+    background-color: #eee;
+    .photo_cat_icon {
+      background-color: #ccc;
+    }
+  }
+}
+
+.zoomableimage {
+  position: relative;
+  .zoomicon, .tipicon {
+    position: absolute;
+    background-color: gray;
+    &:hover {
+      background-color: orange;
+    }
+  }
+}
+
+.photos_tiny .zoomicon {
+  top: 20px;
+  left: 0px;
+  width: 20px;
+}
+.photos_small .zoomicon {
+  top: 64px;
+  left: 0px;
+  width: 25px;
+}
+.photos_medium .zoomicon {
+  top: 110px;
+  left: 0px;
+  width: 30px;
+}
+.photos_large .zoomicon {
+  top: 150px;
+  left: 0px;
+  width: 40px;
+}
+
+.noknowntip .tipicon {
+  visibility: hidden;
+}
+.hasTip .tipicon {
+  visibility: visible;
+}
+.hasTip .tooltip .tooltip-inner {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.photos_tiny .tipicon {
+  top: 20px;
+  right: 0px;
+  width: 20px;
+}
+.photos_small .tipicon {
+  top: 64px;
+  right: 0px;
+  width: 25px;
+}
+.photos_medium .tipicon {
+  top: 110px;
+  right: 0px;
+  width: 30px;
+}
+.photos_large .tipicon {
+  top: 150px;
+  right: 0px;
+  width: 40px;
+}
+
+
+.itemsmodal {
+  .toggles a {
+    border-bottom: 1px dashed gray;
+  }
+  .item {
+    margin-bottom: 2px;
+  }
+  .item_deleted, .item_closed, .item_home, .item_private, .item_no_longer_relevant {
+    background-color: #ddd;
+    // border: 1px solid red;
+  }
+  margin-left: 0;
+  .modal-body {
+    margin: auto;
+  }
+  .item_home .details .photo_cat_icon {
+    border-color: red;
+  }
+  .tip .attribution {
+    line-height: 1.1;
+  }
+  .warn {
+    color: red;
+  }
+  .details {
+    .photo_cat_icon, .photo_user_icon {
+      height: 3em;
+      width: 3em;
+      border: 1px solid #999;
+      border-radius: 0.5em;
+      margin-left: 3px;
+      background-color: #ccc;
+    }
+    .photo_cat_icon {
+      margin-top: 6px;
+    }
+    .photo_user_icon {
+      margin-top: 2px;
+    }
+    max-height: 4.1em;
+    min-height: 4.1em;
+    overflow-y: hidden;
+  }
+}
+
+.tipholder {
+  border-bottom: 1px dotted gray;
+  font-weight: bold;
+}

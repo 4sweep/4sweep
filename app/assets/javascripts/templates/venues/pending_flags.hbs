@@ -1,0 +1,171 @@
+{{#if hasOldMajorFlags}}<p>This list contains old (>30 days) pending flags that probably will never surface in the queues and are effectively rejected.</p>{{/if}}
+<p>Pending flags are informational only – you can only approve or reject flags in the Foursquare queues.</p>
+<div class="limitedheight">
+<table class="pendingflagslist tbl">
+{{#each flags}}
+<tr class="flag flag-{{type}}">
+  <th class='flagtype flagtype-{{type}} {{#is type "remove"}}reason-{{value.reason}}{{/is}}' rowspan='3'>
+    {{#if canonicalPath}}
+    <a target="_blank" href="https://foursquare.com{{canonicalPath}}" class=''>
+    {{/if}}
+    {{#isin type "at"}}Attribute{{/isin}}
+    {{#isin type "info"}}Venue Info{{/isin}}
+    {{#isin type "duplicate"}}Duplicate{{/isin}}
+    {{#isin type "manualDuplicate"}}Duplicate <span class='details'><br>(Both Claimed)</span>{{/isin}}
+    {{#isin type "remove"}}
+      {{#isin value.reason "closed" "event_over"}}Closed{{/isin}}
+      {{#isin value.reason "inappropriate" "doesnt_exist" "remove_home" "created_in_error"}}Delete{{/isin}}
+      {{#is value.reason undefined}}Remove{{/is}}
+    {{/isin}}
+    {{#isin type "unremove"}}
+      {{#isin value "notclosed"}}Reopen <br><span class='details'>(Not Closed)</span>
+      {{else}}
+        {{#isin value "undelete"}}Undelete venue
+        {{else}}
+        Unremove
+        {{/isin}}
+      {{/isin}}
+    {{/isin}}
+    {{#isin type "privatevenue"}}Make Private{{/isin}}
+    {{#isin type "publicvenue"}}Make Public{{/isin}}
+
+    {{#isin type "primarycategory"}}Primary Category{{/isin}}
+    {{#isin type "category"}}Add Category{{/isin}}
+    {{#isin type "removecategory"}}Remove Category{{/isin}}
+    {{#isin type "missingaddress" "missingphone" "mi" "menu"}}Missing Info{{/isin}}
+    {{#isin type "uncategorized"}}Uncategorized{{/isin}}
+    {{#isin type "hours"}}Hours{{/isin}}
+    {{#isin type "mislocated"}}Mislocated{{/isin}}
+    {{#isin type "editName"}}Alternate Name{{/isin}}
+
+    {{#if canonicalPath}} </a> {{/if}}
+  </th>
+  <td class='small reporters'>
+    {{#if reporters.[0]}}<span class=''>Reporters: {{#each reporters}}
+      <span class="coolseparator">{{firstName}} {{lastName}}</span>
+    {{/each}}
+    </span>{{else}}[User Missing]{{/if}}
+    <span class='pull-right'> {{timeFromMongoId id}}
+      {{#if app.name}}· via {{app.name}}{{/if}}
+    </span>
+  </td>
+</tr>
+<tr >
+  <td class='change'>
+  {{#isin type "at" "info" "editName"}}
+    {{#if currentValue}}
+    Change <strong>{{#if displayName}}{{displayName}}{{else}}{{field}}{{/if}}</strong> from "<strong>{{currentValue}}</strong>" to "<strong>{{displayValue}}</strong>"
+    {{else}}
+    Add <strong>{{#if displayName}}{{displayName}}{{else}}{{field}}{{/if}}</strong>: <strong>{{displayValue}}</strong>
+    {{/if}}
+  {{/isin}}
+
+  {{#isin type "duplicate" "manualDuplicate"}}
+    Merge with: <strong>{{value.duplicate.name}}</strong><br>
+    {{#if value.duplicate.categories.0.name}}{{value.duplicate.categories.0.name}}<br>{{/if}}
+    {{value.duplicate.location.address}}
+    {{#if value.duplicate.location.crossStreet}}({{value.duplicate.location.crossStreet}}){{/if}}
+    {{value.duplicate.location.city}} {{value.duplicate.location.state}} {{value.duplicate.location.postalCode}} <br>
+    {{pointDistance ../../venue.location value.duplicate.location}} {{pointsDirection ../../venue.location value.duplicate.location}} from current location
+  {{/isin}}
+
+  {{#isin type "hours"}}
+    Set hours to:
+    <dl class='dl-horizontal'>
+    {{#each value.hours.timeframes}}
+    <dt>{{days}}</dt>
+    <dd> {{#each open}}{{renderedTime}}<br>{{/each}} </dd>
+    {{/each}}
+    </dl>
+  {{/isin}}
+
+  {{#isin type "remove"}}
+    {{#isin value.reason "closed"}}
+    This venue should be <strong>closed</strong> because it is <strong>out of business</strong> or permanently closed.
+    {{/isin}}
+    {{#isin value.reason "event_over"}}
+    This venue should be <strong>closed</strong> because it refers to an <strong>event that is over</strong>.
+    {{/isin}}
+    {{#isin value.reason "inappropriate"}}
+    This venue should be <strong>deleted</strong> because it is <strong>inappropriate</strong>.
+    {{/isin}}
+    {{#isin value.reason "doesnt_exist"}}
+    This venue should be <strong>deleted</strong> because it <strong>does not exist</strong>.
+    {{/isin}}
+    {{#isin value.reason "remove_home"}}
+    This venue should be <strong>deleted</strong> because it <strong>is a home</strong>.
+    {{/isin}}
+    {{#isin value.reason "created_in_error"}}
+    This venue should be <strong>deleted</strong> because it <strong>was created in error</strong>.
+    {{/isin}}
+    {{#is value.reason undefined}}
+    This venue should be removed.
+    {{/is}}
+  {{/isin}}
+
+  {{#isin type "unremove"}}
+    {{#isin value "notclosed"}}
+    This venue should be <strong>reopened</strong> because it is not closed.
+    {{/isin}}
+    {{#isin value "undelete"}}
+    This venue should be undeleted.
+    {{/isin}}
+  {{/isin}}
+
+  {{#isin type "uncategorized"}}
+    This venue is <strong>uncategorized</strong>.
+  {{/isin}}
+
+  {{#isin type "category" "removecategory" "primarycategory"}}
+    {{#is value.action "addCategory"}}<strong>Add category:</strong>{{/is}}
+    {{#is value.action "removeCategory"}}<strong>Remove category:</strong>{{/is}}
+    {{#is value.action "primaryCategory"}}<strong>Make primary category:</strong>{{/is}}
+    <br>
+    <img src='{{value.category.icon.prefix}}bg_32{{value.category.icon.suffix}}' class='categoryicon' alt="{{value.category.name}}"> {{value.category.name}}
+  {{/isin}}
+
+  {{#isin type "missingaddress"}}
+    This venue is <strong>missing an address</strong>.
+  {{/isin}}
+
+  {{#isin type "missingphone"}}
+    This venue is <strong>missing a phone number</strong>.
+  {{/isin}}
+
+  {{#isin type "mi"}}
+    This venue is <strong>missing</strong> a <strong>{{#if displayName}}{{displayName}}{{else}}{{field}}{{/if}}</strong>.
+    {{#if motivation}}<br><i class="i-quote-left"></i>{{motivation}}<i class="i-quote-right"></i>{{/if}}
+  {{/isin}}
+
+  {{#isin type "menu"}}
+    The menu is incorrect.
+  {{/isin}}
+
+  {{#isin type "privatevenue"}}
+    This venue should be <strong>marked private</strong>.
+  {{/isin}}
+
+  {{#isin type "publicvenue"}}
+    This venue should be <strong>marked public</strong>.
+  {{/isin}}
+
+  {{#isin type "mislocated"}}
+  This venue should be <strong>moved</strong> to a different location.<br>
+  The proposed location is <strong>{{pointDistance ../../venue.location value}} {{pointsDirection ../../venue.location value}}</strong> from the current location.
+  {{/isin}}
+  </td>
+</tr>
+<tr>
+  <td class='comments'>{{#each comments}}<i class="i-quote-left"></i>{{this}}<i class="i-quote-right"></i> <br>{{/each}}</td>
+</tr>
+{{else}}
+<tr>
+  <td>No Flags Seen</td>
+</tr>
+{{/each}}
+</table>
+</div>
+
+<div class="openstate-clickonly center">
+  <button class="btn popover-close">Close</button>
+</div>

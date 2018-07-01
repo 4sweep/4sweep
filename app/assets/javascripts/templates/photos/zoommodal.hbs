@@ -1,0 +1,36 @@
+
+<div class="pull-left zoomdetails">
+{{#with photo}}
+  {{#if venue}}
+    {{#if venue.categories.[0]}}
+    <img class='pull-right photo_cat_icon' src="{{venue.categories.[0].icon.prefix}}32{{venue.categories.[0].icon.suffix}}" alt="{{venue.categories.[0].name}}" title="{{venue.categories.[0].name}}">
+    {{else}}
+    <img src="https://foursquare.com/img/categories_v2/none_bg_32.png" alt="Uncategorized Venue" title="Uncategorized Venue" class="pull-right photo_cat_icon">
+    {{/if}}
+  {{/if}}
+  {{#if user}}
+  <img class='pull-right photo_user_icon' src="{{user.photo.prefix}}36x36{{user.photo.suffix}}">
+  {{/if}}
+  {{#if user}}
+  by <a target="_blank" href="#s=usersearch&amp;user={{user.id}}">{{user.firstName}} {{user.lastName}}</a>
+  {{/if}}
+  {{#if venue}}
+  At <a target="_blank"  href="#s=specificvenuesearch&amp;venueid={{venue.id}}">{{venue.name}}</a><br>
+    {{#if venue.categories.[0]}}
+    <span class='{{#is venue.categories.[0].id "4bf58dd8d48988d103941735"}}warn{{/is}}'>
+      {{venue.categories.[0].name}}
+    </span>
+    {{else}}Uncategorized Venue
+    {{/if}} in {{#location venue.location}}{{/location}}{{#if venue.private}} <span class='warn'>(Private)</span>{{/if}}{{#if venue.closed}} <span class='warn'>(Closed)</span>{{/if}}{{/if}}<br>{{#moment createdAt}}{{/moment}} via <span title="{{source.name}}">{{source.name}}</span>
+{{/with}}
+{{#if tip}}
+<div>
+  <strong>Tip:</strong>
+  <p><i class="i-quote-left"></i>{{tip.text}}<i class="i-quote-right"></i></p>
+</div>
+{{/if}}
+</div>
+
+<div class="center pull-left">
+  <img src="{{photo.prefix}}original{{photo.suffix}}">
+</div>

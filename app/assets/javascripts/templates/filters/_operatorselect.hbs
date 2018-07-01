@@ -1,0 +1,34 @@
+{{#is type "bool"}}
+  <select name="booloperators[]" id="" class="span2 opselect">
+    <option data-optext="" data-arity='1' value="true">yes</option>
+    <option data-optext="" data-arity='1' value="false" class="negated">no</option>
+  </select>
+{{/is}}
+{{#isin type "numeric" "duration"}}
+  <select name="numericoperators[]" id="" class="span2 opselect">
+    <option data-optext="=" data-arity='2' value="equals">=</option>
+    <option data-optext="<" data-arity='2' value="less">&lt;</option>
+    <option data-optext=">" data-arity='2' value="greater">&gt;</option>
+    <option data-optext="<=" data-arity='2' value="lessequals">&lt;=</option>
+    <option data-optext=">=" data-arity='2' value="greaterequals">&gt;=</option>
+    <option data-optext="=" data-arity='2' value="notequals" class="negated">!=</option>
+  </select>
+{{/isin}}
+{{#is type "text"}}
+  <select name="textoperators[]" id="" class="span2 opselect">
+    <option data-optext=":" data-arity="2" value="contains">contains</option>
+    <option data-optext=":" data-arity="2" value="notcontains" class="negated">does not contain</option>
+    <option data-optext=":blank" data-arity="1" value="blank">blank</option>
+    <option data-optext=":blank" data-arity="1" value="notblank" class="negated">not blank</option>
+    <option data-optext="=" data-arity="2" value="exact">equals</option>
+    <option data-optext="=" data-arity="2" value="notequal" class="negated">not equals</option>
+    <option data-optext=" MATCH " data-arity="2" value="matches">matches</option>
+    <option data-optext=" MATCH " data-arity="2" value="notmatches" class="negated">does not match</option>
+    <option data-optext=":mixedcase" data-arity="1" value="mixedcase">has mixed case (aA)</option>
+    <option data-optext=":mixedcase" data-arity="1" value="notmixedcase" class="negated">not mixed case</option>
+    <option data-optext=":uppercase" data-arity="1" value="uppercase">all uppercase</option>
+    <option data-optext=":uppercase" data-arity="1" value="notuppercase" class="negated">not all uppercase</option>
+    <option data-optext=":lowercase" data-arity="1" value="lowercase">all lowercase</option>
+    <option data-optext=":lowercase" data-arity="1" value="notlowercase" class="negated">not all lowercase</option>
+  </select>
+{{/is}}

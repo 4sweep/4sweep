@@ -1,0 +1,33 @@
+<div class="btn-group venueactions pull-right">
+  <a class="btn btn-danger btn-mini" data-toggle='dropdown' data-open='false'>Actions</a>
+  <a class="btn btn-danger btn-mini dropdown-toggle" data-open='false' data-toggle="dropdown" href="#"><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    {{#if venue.private}}
+    <li class='normalaction makepublic'><a href="#" data-flagtype='MakePublicFlag' data-problem='public' class='makepublic flag'><i class="icon-eye-open"></i> Make Public</a></li>
+    {{else}}
+    <li class='normalaction makeprivate'><a href="#" data-flagtype='MakePrivateFlag' data-problem='private' class='makeprivate flag'><i class="icon-eye-close"></i> Make Private</a></li>
+    {{/if}}
+
+    <li class='normalaction'><a href="#" data-flagtype='MakeHomeFlag' class='makehome flag'><i class="icon-home"></i> Make Home</a></li>
+    <li class="divider normalaction"></li>
+    {{#if venue.closed}}
+    <li class='closedaction '><a href="#" data-flagtype='ReopenFlag' data-problem='not_closed' class='flagreopen flag hide '><i class="icon-asterisk"></i> Re-open Venue</a></li>
+    {{else}}
+    <li class='normalaction'><a href="#" data-flagtype='CloseFlag' data-problem='closed' class='flagclosed flag'><i class="icon-lock"></i> Flag Closed</a></li>
+    <li class='normalaction'><a href="#" data-flagtype='CloseFlag' data-problem='event_over' class='flageventover flag'><i class="icon-time"></i> Flag Event Over</a></li>
+    {{/if}}
+    {{#if venue.deleted}}
+    <li class='deletedaction'><a href="#" data-flagtype='UndeleteFlag' data-problem='un_delete' class='flagundelete flag'><i class="icon-asterisk"></i> Undelete Venue</a></li>
+    {{else}}
+    <li class='normalaction'><a href="#" data-flagtype='DeleteFlag' data-problem='inappropriate' class='flaginappropriate flag'><i class="icon-thumbs-down"></i> Flag Inappropriate</a></li>
+    <li class='normalaction'><a href="#" data-flagtype='DeleteFlag' data-problem='doesnt_exist' class='flagdoesnotexist flag'><i class="icon-remove"></i> Flag Does Not Exist</a></li>
+    {{/if}}
+    <li class='divider'></li>
+    <li><a href="https://www.google.com/search?q={{uc venue.name}}+{{uc venue.location.address}}+{{uc venue.location.city}}+{{uc venue.location.state}}" class="googlesearch" target="_blank"><i class='icon-search'></i> Search Google</a></li>
+    <li><a href="https://maps.google.com/maps?q={{uc venue.name}}+near+{{uc venue.location.lat}},{{uc venue.location.lng}}" class="googlemaps" target="_blank"><i class='icon-map-marker'></i> Search Google Maps</a></li>
+    <li class='divider'></li>
+    <li><a href="https://foursquare.com/v/{{venue.id}}/" class='venuepage' target="_blank" ><i class='icon-share-alt'></i> Venue Page</a></li>
+    <li><a href="https://foursquare.com/v/{{venue.id}}/edit" class='editpage' target="_blank" ><i class='icon-share-alt'></i> Manage Venue</a></li>
+    <li><a href="https://foursquare.com/v/{{venue.id}}/history" class='historypage' target="_blank" ><i class='icon-share-alt'></i> Venue History</a></li>
+  </ul>
+</div>

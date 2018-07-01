@@ -1,0 +1,55 @@
+// Place all the styles related to the Flags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tab-content {
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+ul.nav-tabs {
+  margin-bottom: 0;
+  margin-top: 1em;
+}
+
+td.flagname {
+  max-width: 15%;
+  width: 15%;
+}
+
+.currentlyprocessing {
+  width: 30em;
+  margin: auto;
+}
+
+.editeddetails {
+  font-size: 90%;
+  color: blue;
+  margin-left: 2em;
+}
+
+.flagcomment {
+  font-size: 90%;
+  color: orange;
+  margin-left: 2em;
+}
+
+.flaggedItem a {
+  border-bottom: 1px dashed gray;
+}
+
+.flags .tiptext {
+  font-size: 90%;
+  margin-left: 2em;
+}
+
+.include_types input[type=checkbox] {
+  margin-top: 0px;
+}
+
+.flags i.i-foursquare {
+  font-size: 90%;
+  margin-left: -4px;
+  margin-right: -4px;
+  color: #F94877;
+}

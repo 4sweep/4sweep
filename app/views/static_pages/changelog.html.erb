@@ -1,0 +1,514 @@
+<% content_for :flagcount do %>
+<%= @flagcount == 0 ? "" : @flagcount %>
+<% end %>
+
+<h1>4sweep: Changelog</h1>
+
+<br>
+<div class="changelist">
+  <h2>Version 0.30.16</h2>
+  <div>
+    <ul>
+      <li>Foursquare quota exceeded errors are now handled more smartly.  If your account reaches the Foursquare rate limit, your flags will be rescheduled to run at a time they're more likely to succeed.  Rerun times are distributed randomly over a span that is determined by the rate limit and the number of queued flags you currently have.</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.30.15</h2>
+  <div>
+    <ul>
+      <li>You can now suggest a new venue location in the venue details editor</li>
+      <li>External menu URLs are now editable in 4sweep, also in the venue details editor</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.14</h2>
+  <div>
+    <ul>
+      <li>Add venue sorting by telephone and city</li>
+      <li>Add direct Foursquare links in flags page</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.13</h2>
+  <div>
+    <ul>
+      <li>Make locked venues clearer in photo and tip venue by user by including "(Locked)" in venue description and using icons.</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.12</h2>
+  <div>
+    <ul>
+      <li>Three new user search types: See all venues where a specific user liked, left a photo, or left a tip</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.11</h2>
+  <div>
+    <ul>
+      <li>Specific venue search can now be set to search for subvenues of a venue with a particular ID</li>
+      <li>Subvenue hover popover (<i class="i-flow-tree"></i>) now links to subvenue search</li>
+      <li>Cleaned up wording on merge flag popover</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.10</h2>
+  <div>
+    <ul>
+      <li>Add some warnings when making popular venues (>15 users) private or homes</li>
+      <li>Added new &quot;menu&quot; flag type to flag popover</li>
+      <li>Updated some legalese type stuff that was missing from the FAQ and intro screen.</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.9</h2>
+  <div>
+    <ul>
+      <li>Show tips associated with photos in venue and user photo modals, if available</li>
+      <li>Updates to splash page to highlight 0.30 improvements</li>
+      <li>Add new &quot;missing information&quot; flag type to flag popover</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.8</h2>
+  <div class="change">
+    <ul>
+      <li>Support for additional Foursquare flag types in pending flags popover</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.7</h2>
+  <div class="change">
+    <ul>
+      <li>Fixes to alternate resolution: more correct behavior for hours edits and category changes</li>
+      <li>Export links now work correctly in Firefox</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.6</h2>
+  <div class="change">
+    <ul>
+      <li>Alternate resolutions for photos (when the venue has been deleted, closed, or made into a home)</li>
+      <li>Flags page now links back to explorer when possible</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.5</h2>
+  <div class="change">
+    <ul>
+      <li>Bugfixes and upgrades</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.4</h2>
+  <div class="change">
+    <ul>
+      <li>Direct integration with <a href="http://4sq.neuralab.cc">Elio Tools</a>: select venues and click on the export icon (<i class="i-export-alt"></i>) to open them in Elio Tools</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.3</h2>
+  <div class="change">
+    <ul>
+      <li>Speed up chain venues "Load More", thanks to a Foursquare bug fix</li>
+      <li>Bugfix to pagination for My Checkin History</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.2</h2>
+  <div class="change">
+    <ul>
+      <li>Added sort by number of users currently at the venue (thanks, Bart V.L.)</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.1</h2>
+  <div class="change">
+    <ul>
+      <li>Performance improvements to multi venue selection</li>
+      <li>Fix bug that caused empty flag to show up in pending Foursquare remove flags when no remove reason was set.</li>
+    </ul>
+  </div>
+  <h2>Version 0.30.0 [Major Release]</h2>
+  <div class="change">
+    <ul>
+      <li>Complete rewrite of the explorer frontend</li>
+      <li>New search bar with brand new search types and refinements to existing ones</li>
+      <li>Load venues by list</li>
+      <li>Search for uncategorized venues</li>
+      <li>When an item is hidden or filtered, it is no longer considered "selected" for flagging purposes</li>
+      <li>Refresh venue status can reflect changes from Foursquare and Foursweep's backend</li>
+      <li>Select/deselect multiple venues, tips, and photos with shift+click</li>
+      <li>Pending flag count and popover with those flags</li>
+      <li>Last major edit date and popover showing 5 recent edits</li>
+      <li>Facebook data shown on popover</li>
+      <li>Count of lists that include a venue with popover showing several of those lists</li>
+      <li>Search by chain affiliation</li>
+      <li>Draw circle search areas on the map</li>
+      <li><a href="http://blog.foursquare.com/post/95836771103">Ephemeral tips</a> now show their expiration date. Merchant tips are labeled as such.</li>
+      <li>Venue counts and toggles expanded (already flagged, closed, deleted). Only relevant toggles are displayed for each search.</li>
+      <li>"Fuzzy name" sort ignores articles ("a", "the"), ignores most symbols, and uses <a href="http://en.wikipedia.org/wiki/Greeklish">Greeklish transliteration.</a> <a href="/about/contact">Get in touch</a> if you'd like other transliteration systems added or to support articles in other languages.</li>
+      <li>My history searches through your checkins</li>
+      <li>Paginated search results when available</li>
+      <li>Sort by distance changed to be from the center of the map and can be updated when the map is panned</li>
+      <li>Fixed a bug that caused stale map markers to remain on map</li>
+      <li>Category selection dropdown replaced with <a href="http://ivaynberg.github.io/select2/">select2</a>, fixing various display bugs</li>
+      <li>Venue creation popover if creation happened within the last 20 edits (<i class="i-user-add"></i>).  Click on the icon to see all venues created by the user.</li>
+      <li>Include link to venue web page, if available (<i class="i-link-ext"></i>)</li>
+      <li>Show children of current venue in popover, if any (<i class="i-flow-tree"></i>)</li>
+      <li>Show ratings and friends who have visited a venue (<i class="i-group"></i>)</li>
+      <li>Display venue attributes (<i class="i-tasks"></i>)</li>
+      <li>Display venue description, if available (<i class="i-quote-left"></i>)</li>
+      <li>Display venue hours, if available (<i class="i-clock"></i>)</li>
+      <li>Display venue chain information, including store ID, if available (<i class="i-link"></i>). Click on the icon to see all venues in the chain</li>
+      <li>Edit parent venues allows you to search for parent by venue name</li>
+      <li>Refresh selected venues button</li>
+      <li>Edit hours and venue descriptions</li>
+      <li>Radius dropdown now appears inside map and shows size of custom drawn circles</li>
+      <li>Help text for recategorize venue flag</li>
+      <li>"Near" searches are incorporated into the map and work better with "Load More" and the radius dropdown</li>
+      <li>Persist searches in URL hash</li>
+      <li>Require extra confirmation when deleting popular venues (> 15 users) or merging lots of venues together (> 5 venues).</li>
+      <li>Add items to your Foursquare lists</li>
+      <li>Polygon search areas (these act as post-search filters, essentially)</li>
+      <li>Circle and Polygon searches are now smarter about which subregions to search when you click "Load More"</li>
+      <li>Option to reselect venues that have been flagged from confirmation dialog</li>
+      <li>Search using your checkin history by date or category</li>
+      <li>Buttons to fit map to venues found and to search location, shown on map</li>
+      <li>Pinned venue logic completely rewritten, fixing several known bugs</li>
+      <li>Export selected venues to a file suitable for importing into <a href="http://4sq.neuralab.cc">Elio Tools</a></li>
+      <li>Search for chains by name, Twitter, or Facebook ID</li>
+      <li>Show your pending 4sweep category changes on venue items (strikeout: pending remove category, bold: pending make primary)</li>
+      <li>Flag button (<i class="i-flag"></i>) lets you see your pending 4sweep flags, check their status, submit them, or cancel them for each venue.</li>
+      <li>Export selected venues to text file or duplicate search</li>
+      <li>Your pending category flags displayed in the category list (strikeout for remove category, bold for primary, in parentheses for add)</li>
+      <li>Distance measures and warnings in merge flag dialog</li>
+      <li>Add option to sort submitted (unresolved) flags by last checked date</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.14</h2>
+  <div class="change">
+    <ul>
+      <li>Improvements to venue detail flag checking for Facebook links. More of those should show up as "accepted" instead of "alternate resolution".</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.13</h2>
+  <div class="change">
+    <ul>
+      <li>Add "locked" to filters</li>
+      <li>Store additional information on flagged venues (look for upcoming new stats features!)</li>
+      <li>Bugfix: title in "run immediately" notification was cut off</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.12</h2>
+  <div class="change">
+    <ul>
+      <li>When hovering over a venue, a red and a yellow circle now appear on the map. 50% of check ins at a venue occur within the red circle and 90% of check ins occur within the yellow circle. See the FAQ for more details. </li>
+    </ul>
+  </div>
+  <h2>Version 0.28.11</h2>
+  <div class="change">
+    <ul>
+      <li>Added a "run immediately" option in the flag confirmation notification. Click this to bypass the 5-minute undo window.</li>
+      <li>Added a "locked" icon for venues that can only be edited with SU3 approval.</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.10</h2>
+  <div class="change">
+    <ul>
+      <li>User search now shows venues created by the user instead of mayorships. More improvements, including pagination, coming soon.</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.9</h2>
+  <div class="change">
+    <ul>
+      <li>Bug fixes that correct problem with loading "alreadyflagged" status to correct problems introduced in 0.28.8</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.8</h2>
+  <div class="change">
+    <ul>
+      <li>Bug fixes in photo flagging.</li>
+      <li>Already flagged styling (gray background, semi-transparency) for photos now persist correctly when you toggle sizes.</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.7</h2>
+  <div class="change">
+    <ul>
+      <li>Flags page has more tabs to fine-tune your search for flags</li>
+      <li>Flags that generate Foursquare server errors repeatedly over 6 hours are now moved to "failed" status</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.6</h2>
+  <div class="change">
+    <ul>
+      <li>Show/hide advanced search and filter is now remembered in your cookies</li>
+      <li>Lots of small bugfixes</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.5</h2>
+  <div class="change">
+    <ul>
+      <li>Complete rewrite of tip and photo flagging</li>
+      <li>New feature: flag tips and photos by user</li>
+      <li>Toggle tips and photo visibility by various criteria (left at a private home, for example)</li>
+      <li>Choose photo display size: tiny, small, medium, large</li>
+      <li>Mass remove category now supported</li>
+      <li>Cleaner confirmation box for venue detail edits</li>
+      <li>More details in photo zoom window</li>
+      <li>Allow retry when photo or tip loading fails</li>
+      <li>Minor cleanups on flag page loads</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.4</h2>
+  <div class="change">
+    <ul>
+      <li>Add comments on tip flags (they now display in the queues!)</li>
+      <li>Display comment on flags status page, if set</li>
+      <li>Fixed bug in comments for venue detail edits</li>
+      <li>Performance improvements and better instrumentation</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.3</h2>
+  <div class="change">
+    <ul>
+      <li>Zoom in on photos in photo modal</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.2</h2>
+  <div class="change">
+    <ul>
+      <li>Filter flag by type</li>
+      <li>Add Facebook to filters (try: <code>facebook:empty</code> to find missing ones only)</li>
+      <li>Add link to discussion thread if one exists (on hover over a venue)</li>
+      <li>Bug and formatting fixes for tip flags, photo flags, and general layout</li>
+      <li>Code cleanups and performance improvements</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.1</h2>
+  <div class="change">
+    <ul>
+      <li>Added Facebook ("FB") indicator and link in search results</li>
+      <li>Added Facebook URL field to edit venue popover</li>
+      <li>Minor bugfixes for edit venue details flag</li>
+    </ul>
+  </div>
+  <h2>Version 0.28.0</h2>
+  <div class="change">
+    <ul>
+      <li>Add new Photo Flagging Feature</li>
+      <li>Clean up flags status page; Add photo popovers on photo flags</li>
+      <li>Add new Tip Flagging features and show flagged tip text on flags page</li>
+    </ul>
+  </div>
+  <h2>Version 0.27.3</h2>
+  <div class="change">
+    <ul>
+      <li>Update core libraries</li>
+      <li>Minor formatting improvements</li>
+    </ul>
+  </div>
+  <h2>Version 0.27.2</h2>
+  <div class="change">
+    <ul>
+      <li>Changed behavior for clicking on venue in map. Clicking on a venue now scrolls to it in the list instead of selecting it.</li>
+    </ul>
+  </div>
+  <h2>Version 0.27.1</h2>
+  <div class="change">
+    <ul>
+      <li>Filter by country name and code</li>
+      <li>Disable scroll to venue on hover for now</li>
+      <li>Fixed a bug when showing list of private and home venues by user, when the user is mayor of > 100 private or home venues.</li>
+      <li>Fixed a bug that caused the "Actions" drop-down menu to appear behind other venues when a venue has already been flagged</li>
+    </ul>
+  </div>
+  <h2>Version 0.27.0</h2>
+  <div class="change">
+    <ul>
+      <li>Expressive post-search filters with a filter editor</li>
+      <li>Make venue list larger, for easier clicking and more features</li>
+      <li>Search nearby venues</li>
+      <li>When hovering on a marker in the map, the venue list scrolls to that marker</li>
+      <li>Layout fixes</li>
+      <li>Google Moderator link</li>
+      <li>New landing page for logged-out users</li>
+      <li>Venue links to <a href='http://www.tools4sq.com/'>tools4sq</a></li>
+      <li>HTTPS default</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.11</h2>
+  <div class="change">
+    <ul>
+      <li>Updates to session handling code</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.10</h2>
+  <div class="change">
+    <ul>
+      <li>Fix a bug that prevented users with Emoji and some other <a href='http://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane'>non-BMP</a> characters from using 4sweep</li>
+      <li>Add two additional background workers to make flag submission faster</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.9</h2>
+  <div class="change">
+    <ul>
+      <li>Added a maintenance page</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.8</h2>
+  <div class="change">
+    <ul>
+      <li>Keep venue counts above the venue list so they don't scroll off page</li>
+      <li>Keep less information on users in our database, for speed and privacy</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.7</h2>
+  <div class="change">
+    <ul>
+      <li>Add search for specific venue by ID to advance search</li>
+      <li>Add 3 new flag types: Make Public, Undelete Venue, and Reopen Venue. These are available only in specific contexts.</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.6</h2>
+  <div class="change">
+    <ul>
+      <li>Fix some UI bugs with tip and photo popovers</li>
+      <li>Add a bit about API access to the FAQ</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.5</h2>
+  <div class="change">
+    <ul>
+      <li>Hover over a venue's tip or photo count to see top tips and photos!</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.4</h2>
+  <div class="change">
+    <ul>
+      <li>Fewer edit flags should result in incorrect alternate resolutions</li>
+      <li>Bugfix: Load more now works when multiple categories are selected</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.3</h2>
+  <div class="change">
+    <ul>
+      <li>FAQ describes "Alternate Resolution (Changed)" status</li>
+      <li>Better parsing of Edit Venue Details URL changes</li>
+      <li>Add link to new venue history page in "Actions" drop-down</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.2</h2>
+  <div class="change">
+    <ul>
+      <li>4sweep remembers the last 4 categories you used</li>
+    </ul>
+  </div>
+  <h2>Version 0.26.1</h2>
+  <div class="change">
+    <ul>
+      <li>If using "Load More", don't waste memory on hidden homes or private venues.</li>
+      <li>Speed improvements when creating flags</li>
+      <li>Prevent creation of invalid flags</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.26.0 [Major release]</h2>
+  <div class="change">
+    <strong>New:</strong>
+    <ul>
+      <li>New 2-click workflow for submitting flags to reduce errors and allow comments/options</li>
+      <li>Edit venue details flag</li>
+      <li>Popover dialogs for all flag types</li>
+      <li>Schedule close date for venues</li>
+      <li>Flags are now submitted using a background process. Choose whether to submit immediately or review flags.</li>
+      <li>Load More button: Want more search results? Recursively divides up your search area automatically</li>
+      <li>Search really big areas now by dividing them up automatically. Added 250km, 500km, and 1000km radiuses.</li>
+      <li>New footer with options</li>
+      <li>Use a layout that doesn't waste space in the margins</li>
+      <li>Better flag confirmations and an undo button</li>
+      <li>Always display venue creation date, sort by creation date</li>
+    </ul>
+    <strong>Minor additions/bugfixes:</strong>
+    <ul>
+      <li>Fitting map to venues now only considers non-hidden venues (not homes and private venues) </li>
+      <li>It is not longer possible to select top-level categories in the "Add Category" popover</li>
+      <li>Cancel all action in flags</li>
+      <li>Show phone number and twitter address</li>
+      <li>Clean up address format</li>
+      <li>Clean up search bar a bit</li>
+      <li>Start renaming "venues" to "places"</li>
+      <li>Loads up to 200 recently created venues instead of 50</li>
+      <li>Category update checking no longer slows down requests</li>
+      <li>Better monitoring</li>
+    </ul>
+  </div>
+
+  <hr>
+  <h2>Version 0.25.11</h2>
+  <div class="change">
+    <ul>
+      <li>Fixed bug that caused ReplaceAllCategories flags not to go through</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.25.10</h2>
+  <div class="change">
+    <ul>
+      <li>Better performance monitoring</li>
+      <li>Update various libraries</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.25.9</h2>
+  <div class="change">
+    <ul>
+      <li>Bugfixes to session handling and fit map to venues</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.25.8</h2>
+  <div class="change">
+    <ul>
+      <li>Fix a bug that affected users who previously revoked 4sweep API credentials</li>
+      <li>Fix a bug with venue markers</li>
+      <li>Better calculation of map bounds on Fit Map to Search. Hidden venues no longer considered.</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.25.7</h2>
+  <div class="change">
+    <ul>
+      <li>Added a public changelog!</li>
+      <li>Show &quot;here now&quot; counts for all venues</li>
+      <li>Show chains and pages on expanded venues, when present</li>
+      <li>Remove some outdated content</li>
+      <li>Added some space around mass action buttons in explorer (thanks, @Jeff68005)</li>
+      <li>Bugfix: Only display "here now" counts if available</li>
+      <li>Change default zoomed-in level to give more context</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.25.6</h2>
+  <div class="change">
+    An internal change to make venue lists cleaner. Unless there are bugs, everything should look and work the same.
+  </div>
+
+  <h2>Version 0.25.5</h2>
+  <div class="change">
+    If venues did not load from Foursquare for some reason, you'll now get a more readable and informative messages instead of simply "error".
+  </div>
+
+  <h2>Version 0.25.4</h2>
+  <div class="change">
+    <ul>
+      <li>Make Home flags now use different Foursquare API endpoints. This should remove "Not Authorized" errors
+        for non-SUs and SU1s and submit these flags through the regular review channels.</li>
+      <li>Show friendlier dates and times for Flags, set to your local timezone.</li>
+      <li>Other back-end changes to flag submission</li>
+      <li>Typos fixed</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.25.3</h2>
+  <div class="change">
+    <ul>
+      <li>Speed improvements and fewer API calls</li>
+      <li>"Check all flags" and "submit all flags" batches up calls to the 4sweep server, making everything faster!</li>
+    </ul>
+  </div>
+
+  <h2>Version 0.25.2</h2>
+  <div class="change">
+    <ul>
+      <li>Don't show category changes where category singular names did not change</li>
+      <li>Various bugfixes to category setting</li>
+    </ul>
+  </div>
+</div>

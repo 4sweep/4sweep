@@ -1,0 +1,23 @@
+<div class="modal hide fade" id="locationseditor">
+  <div class="modal-header">
+    <h2>Edit Search Locations</h2>
+  </div>
+  <div class="modal-body">
+    <label for="locationsbox">Search Locations:</label>
+    <div class="control-group">
+    <textarea name="locationsbox" id="locationsbox" class='input-large span4 monospaced' cols="40" rows="13" placeholder='latitude,longitude'>
+{{#each locations}}{{this}}
+{{/each}}</textarea>
+    </div>
+
+    <p class="alert alert-warning hide locationlisterror">Please specify locations as a list of lat,lon pairs.</p>
+
+    <p class='help-block'>Please specify a list of locations to search.  Locations should be latitude,longitude pairs.  Separate latitude and logitude with a comma, and different locations with a new line.</p>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary setlocations" aria-hidden="true">Set Locations</button>
+
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  </div>
+</div>

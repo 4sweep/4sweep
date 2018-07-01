@@ -1,0 +1,23 @@
+<div class="listed">
+{{#each lists.groups}}
+{{#if count}}
+  <h5>{{name}}</h5>
+    <ul>
+    {{#each items}}
+    <li class='list_preview'>
+      {{#if photo}}
+      <img src="{{photo.prefix}}300x300{{photo.suffix}}" alt="Photo by {{photo.user.firstName}} {{photo.user.lastName}}" class='photopreview pull-left'>
+      {{/if}}
+        <h5>{{name}} by {{user.firstName}} {{user.lastName}}</h5>
+        {{#if description}}<p>{{description}}</p>{{/if}}
+        <span class='coolseparator'>{{listItems.count}} items</span> <span class='coolseparator'>{{followers.count}} followers</span><br>
+        <span class="coolseparator">Created: {{moment-ago createdAt}}</span>
+        <span class="coolseparator">Updated: {{moment-ago updatedAt}}</span>
+        <div class="clear"></div>
+    </li>
+    {{/each}}
+    </ul>
+{{/if}}
+{{/each}}
+<strong>This venue is listed on {{lists.count}} lists. Click to see all.</strong>
+</div>

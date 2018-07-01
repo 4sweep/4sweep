@@ -1,0 +1,32 @@
+<form class="venueedit form-horizontal">
+
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class='active'><a href="#basics" data-toggle='tab'>Basic Details</a></li>
+      <li><a href="#desc" data-toggle='tab'>Description</a></li>
+      <li><a href="#relocate" data-toggle='tab'>Location</a></li>
+      <li><a href="#hours" data-toggle='tab'>Hours</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="basics">
+        {{>venues/edit_venue_details/_basics}}
+      </div>
+      <div class="tab-pane" id="desc">{{>venues/edit_venue_details/_description}}</div>
+      <div class="tab-pane" id="relocate">
+        {{>venues/edit_venue_details/_relocate}}
+      </div>
+      <div class="tab-pane" id="hours">{{>venues/edit_venue_details/_hours}}</div>
+    </div>
+  </div>
+
+  <div class="describesubmitwhen"></div>
+  <div class="form-actions">
+    <span class="span8 offset1">
+      <textarea name='comment' class="span12 venuedetails_comment" placeholder="Comment for the reviewer (optional)"></textarea>
+    </span>
+    <span class="span3">
+      <button type='submit' data-flagtype='EditVenueFlag' class='btn pull-right disabled btn-default btn-danger editdetails-action pushflag submitbtn'>Submit Edit</button>
+      <button type='cancel' class='btn pull-right popover-close'>Cancel</button>
+    </span>
+  </div>
+</form>

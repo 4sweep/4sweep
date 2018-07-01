@@ -1,0 +1,92 @@
+Documentation for Foursquare Queues
+----
+
+Endpoints:
+
+
+/venues/flagstats
+====
+
+parameters:
+  explict-lang
+  near
+
+response:
+  flagstats: [FlagStat]
+  leaderboard: [LeaderboardItem]
+
+
+/venues/flagged
+====
+parameters:
+  near
+  type: one of ["attribute", "category", "duplicate", "explorespam", "info", "missingaddress", "missingphone", "partnerMatch", "photo", "private", "remove", "svd", "tip", "uncategorized", "manualDuplicate"]
+  limit
+  ll
+  (no radius or bounding box as far as I can tell)
+  mode: [history, all] (history = place you've been)
+response:
+  count: integer
+  venues.items:[Woe]
+
+
+
+/users/XXX/flaggedvenues
+====
+parameters:
+  options to it
+  reporter = true -- user reported it
+  reporter = false -- user voted on it
+  limit/offset
+  resolved: true/false/missing (missing means both, or at least, will after today)
+  decision: accepted/rejected
+  woeType: info/duplicate/etc (only one at a time)
+response:
+  [Flag?]
+
+====
+
+Other endpoints:
+
+/venues/XXX/edits
+- Shows historical edits
+parameters:
+  ???
+response:
+
+/venues/XXX/flags
+
+/venueedits/YYYY
+  edits:
+    count: integer
+    items:Edit
+
+POST /venueedits/YYY/rollback
+
+
+====
+
+/venues/XXX/attributes
+
+response:
+attributeSections: [
+  {section: String
+  displayType: ("standard" is only value seen)
+  machineName: ('experience', 'foodAndDrink', 'features')
+  items: [
+    name:
+    displayName:
+    lineItems: [
+      {name:
+      availability: 'unknown'/'yes'/'no'
+      displayName:}, ....
+    ]
+  ]
+  }, ...
+]
+
+
+POST /venues/XXX/validatehours
+/venues/XXX/likes
+
+/users/XXX/venuelikes

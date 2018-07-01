@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--[if lt IE 9]>
+  <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <title>Foursweep</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= yield(:javascripts) %>
+
+  <%= yield(:csses) %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{{#each items.items}}
+  <span class='{{../size.span}} photos_{{../size.size}} itemcontainer'>
+    <div class="thumbnail venuephoto item item_{{id}} noknowntip">
+      <span class="zoomableimage">
+        <img src="{{prefix}}{{../size.request}}{{suffix}}" class="venueimage" height='{{../size.height}}' width='{{../size.width}}'>
+        <img src='/img/zoom_in.png' class='zoomicon'>
+        <img src='/img/hastip.png' class='tipicon'>
+      </span>
+      <div class="details">
+        {{#if venue}}
+          {{#if venue.categories.[0]}}
+          <img class='pull-right photo_cat_icon' src="{{venue.categories.[0].icon.prefix}}32{{venue.categories.[0].icon.suffix}}" alt="{{venue.categories.[0].name}}" title="{{venue.categories.[0].name}}">
+          {{else}}
+          <img src="https://foursquare.com/img/categories_v2/none_bg_32.png" alt="Uncategorized Venue" title="Uncategorized Venue" class="pull-right photo_cat_icon">
+          {{/if}}
+        {{/if}}
+        {{#if user}}
+        <img class='pull-right photo_user_icon' src="{{user.photo.prefix}}36x36{{user.photo.suffix}}">
+        {{/if}}
+        {{#if user}}
+        – <a target="_blank" href="#s=usersearch&amp;user={{user.id}}">{{user.firstName}} {{user.lastName}}</a>
+        {{/if}}
+        {{#if venue}}
+        At  <a target="_blank"  href="#s=specificvenuesearch&amp;venueid={{venue.id}}">{{venue.name}}</a>
+        {{#if venue.locked}}
+          <span class="lockedline locked"><i class="i-lock" title="This Venue is Locked to Edits by non-SU3s" data-placement="bottom" rel="tooltip"></i></span>
+          {{/if}}
+          {{#if venue.verified}}
+          <span class='verifiedline verified'><i class='i-ok-circled' title='Verified Venue' data-placement='bottom' rel='tooltip'></i></span>
+          {{/if}}
+          {{#if venue.private}}
+          <span class='privateline private'><i class='i-eye-off' title='Private Venue' data-placement='bottom' rel='tooltip'></i></span>
+          {{/if}}
+          <br>
+          {{#if venue.categories.[0]}}
+          <span class='{{#is venue.categories.[0].id "4bf58dd8d48988d103941735"}}warn{{/is}}'>
+            {{venue.categories.[0].name}}
+          </span>
+          {{else}}Uncategorized Venue
+          {{/if}} in {{#location venue.location}}{{/location}}{{#if venue.private}} <span class='warn'>(Private)</span>{{/if}}{{#if venue.locked}} <span class='warn'>(Locked)</span>{{/if}}{{#if venue.closed}} <span class='warn'>(Closed)</span>{{/if}}{{/if}}
+          <br>{{#moment createdAt}}{{/moment}} via <span title="{{source.name}}">{{source.name}}</span><br>
+          <span class='tipholder'></span>
+      </div>
+    </div>
+  </span>
+{{/each}}
+<span class='span3 placeholder {{hasmoreclass}} photos_{{size.size}}'>
+  <div class="nomoretext thumbnail loadmorestatus ">
+    All Photos Displayed <br> <br> (Your own photos may not be displayed)
+  </div>
+  <div class="loadingtext thumbnail loadmorestatus ">
+    Loading More Photos <br><br>
+    <div class="progress progress-striped active">
+      <div class="bar" style="width: 100%;"></div>
+    </div>
+  </div>
+</span>

@@ -1,0 +1,23 @@
+{{#is arity 1}}
+  &nbsp;
+{{else}}
+  <span class="{{type}}input">
+  {{#is type "numeric"}}
+    <input required='required' type="number" class="operand" pattern="[0-9]+" min='0' step='1'>
+  {{/is}}
+  {{#is type "duration"}}
+    <input required='required' type="number" class="operand span1" placeholder="">
+    <select name="durationtype" id="durationtype" class='durationtype span2'>
+      <option value="minute">minute(s)</option>
+      <option value="hour">hour(s)</option>
+      <option value="day">day(s)</option>
+      <option value="week">week(s)</option>
+      <option value="month">month(s)</option>
+      <option value="year">year(s)</option>
+    </select>
+  {{/is}}
+  {{#is type "text"}}
+    <input required='required' type="text" class="operand" placeholder="e.g., &quot;Broadway Ave.&quot;,&quot;Zoo&quot;">
+  {{/is}}
+  </span>
+{{/is}}

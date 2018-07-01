@@ -1,0 +1,7 @@
+*
+!*/
+!/.gitignore
+!/MIT-LICENSE
+!/README.md
+!/pegjs.gemspec
+!/lib/**/*.rb

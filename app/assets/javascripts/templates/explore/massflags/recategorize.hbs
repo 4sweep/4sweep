@@ -1,0 +1,21 @@
+<div class="form-group">
+  <input type='hidden' name="cat-chooser" class='cat-chooser' id='recategorize-select' style="width: 23em">
+
+  <br><br>
+  <div class="recentlychosen">
+  </div>
+
+  <p class='addcomment'><a>Add a comment for reviewers? &raquo;</a>
+  </p>
+  <div class="commentfield hide">
+    Comment:<br>
+    <textarea name='comment' placeholder='' style='' class='comment'></textarea>
+  </div>
+  <div class="describesubmitwhen"></div>
+
+  <button type='submit' data-flagtype='ReplaceAllCategoriesFlag' class='btn btn-default btn-danger changecat-action change-cat-replaceall pushflag'>Replace All</button>
+  <button type='submit' data-flagtype='MakePrimaryCategoryFlag' class='btn btn-default btn-primary changecat-action change-cat-makeprimary pushflag'>Make Primary</button>
+  <button type='submit' data-flagtype='AddCategoryFlag' class='btn btn-default btn-info changecat-action change-cat-add pushflag'>Add</button>
+  <button type='submit' data-flagtype='RemoveCategoryFlag' class='btn btn-default btn-warning changecat-action change-cat-add pushflag'>Remove</button>
+  <i class="icon-question-sign recategorize-help"></i>
+</div>

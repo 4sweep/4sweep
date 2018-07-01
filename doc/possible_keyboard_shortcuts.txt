@@ -1,0 +1,41 @@
+If popover open:
+===
+
+
+<esc> close it
+<enter> submit flag
+<c> comment
+
+
+Normal:
+===
+
+<j> / <k>  up/down
+<z> zoom
+<space> select/deselect
+</> search
+<shift + p> mark private popup
+<shift + h> make home
+<shift + c> change category on selected
+<shift + s> select category
+<shift + l> close selected:
+  <shift + o> event over
+  <shift + b> closed
+<shift + r> remove selected:
+  <shift + i> inappropriate
+  <shift + n> nonexistent
+<e> edit current
+<p> pin/unpin
+<?> help / keyboard shortcuts
+<a> actions on current:
+  p
+  h
+  b?
+  o
+  e
+  g
+  m
+  f
+
+<,> nav cat left
+<.> nav cat right

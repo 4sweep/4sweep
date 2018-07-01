@@ -1,0 +1,15 @@
+<div class="control-group">
+  <label for="venuedetails_hours" class="control-label">Hours:</label>
+  <div class="controls">
+    <input type="hidden" name="venuedetails[hours]" class='submittable venuedetails_hours' value="{{hoursProposedEdit}}" data-keyname='hours' data-originalvalue="{{#if hoursProposedEdit}}{{hoursProposedEdit}}{{else}}empty{{/if}}"/>
+    <textarea class='hours-freeform span10' id="hours-freeform" cols="50" rows="5" placeholder="Enter free-form venue hours. For example, Mon-Sat 5pm-11pm">{{#each venue.hours.timeframes}}{{days}} {{#each open}}{{renderedTime}} {{/each}}
+{{/each}}</textarea>
+    <hr>
+    <div class="existinghours">
+      {{#with venue}}
+        {{>venues/edit_venue_details/_humanhours}}
+      {{/with}}
+    </div>
+  </div>
+</div>
+

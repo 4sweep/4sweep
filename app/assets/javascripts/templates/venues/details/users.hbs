@@ -1,0 +1,25 @@
+{{#if venue.friendVisits}}
+<h4>{{venue.friendVisits.summary}}</h4>
+<ul class='friendVisits inline unstyled'>
+  {{#each venue.friendVisits.items}}
+  <li>
+    <img class='pull-left' src="{{user.photo.prefix}}48x48{{user.photo.suffix}}"> <strong>{{#is user.relationship 'self'}}You{{else}}{{user.firstName}} {{user.lastName}}{{/is}}</strong>{{#is user.relationship 'facebook'}}(<i class="i-facebook-squared"></i>){{/is}}<br>{{#if liked}}<i class="liked i-heart"></i>{{/if}}{{#if disliked}}<i class="i-heart-broken disliked"></i>{{/if}}<span class="visitcount">{{#if visitedCount}}{{visitedCount}} Visits{{/if}}
+    {{#is user.relationship 'self'}}<br>{{moment-ago ../../../venue.beenHere.lastVisitedAt}}{{/is}}
+
+  </span>
+  </li>
+  {{/each}}
+</ul>
+{{/if}}
+
+<div class="clear"></div>
+{{#if venue.rating}}
+<h4>Rating</h4>
+  <p>
+    <strong>Rating:</strong>
+    <span class='venuerating'><strong>{{venue.rating}}</strong> / 10.0</span> (based on {{venue.ratingSignals}} votes)
+  </p>
+
+  {{#if venue.likes.summary}}  <p><strong>Likes:</strong> {{venue.likes.summary}}</p> {{/if}}
+{{/if}}
+

@@ -1,0 +1,50 @@
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+{{#is sourceType "venue"}}
+<h4 id="photo-title">Review tips at <a href="https://foursquare.com/v/{{source.id}}/" target="_blank">{{source.venuedata.name}}</a></h4>
+{{/is}}
+{{#is sourceType "user"}}
+<h4 id="photo-title">Review tips by <a href="https://foursquare.com/u/{{source.id}}/" target="_blank">{{source.user.firstName}} {{source.user.lastName}}</a></h4>
+{{/is}}
+
+
+<div class="tipsactions itemactions">
+Flag <span class='selectedcount'>0</span> selected tips for removal:
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="nolongerrelevant">No Longer Relevant</a>
+    <span class="description hide">
+      <p>Are these tips outdated (for example about an event that's already happened, or something that is no longer true of the venue)?</p>
+      <p><strong>Important!:</strong> Do not remove a tip because you disagree with it or because it is negative.</p>
+      Comment (optional):<br>
+      <textarea name='comment' placeholder='Why are these comments no longer relevant?' style='' class='comment'></textarea>
+    </span>
+  </span>
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="spam">Spam</a>
+    <span class="description hide">
+      <p>Are these tips spam? Spam includes unrelated promotional content.</p>
+      <p><strong>Important!:</strong> Do not remove a tip because you disagree with it or because it is negative.</p>
+
+      Comment (optional):<br>
+      <textarea name='comment' placeholder='Why are these tips spam?' style='' class='comment'></textarea>
+    </span>
+  </span>
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="offensive">Offensive</a>
+    <span class="description hide">
+      <p>Are these tips offensive, hateful, vulgar, harassing, or obscene?</p>
+      <p><strong>Important!:</strong> Do not remove a tip because you disagree with it or because it is negative.</p>
+
+      Comment (optional):<br>
+      <textarea name='comment' placeholder='Why are these tips offensive?' style='' class='comment'></textarea>
+    </span>
+  </span>
+</div>
+
+{{#is sourceType "user"}}
+<div class="toggles center">
+  <span class="total_count"></span> Tips Loaded |
+  <span class="no_longer_relevant_count"></span> no longer relevant (<a data-visibility-type="no_longer_relevant" class="item_visible_toggle no_longer_relevant_toggle">{{#if statusVisibility.no_longer_relevant}}shown{{else}}hidden{{/if}}</a>) |
+  <span class="home_count"></span> at homes (<a data-visibility-type="home" class="item_visible_toggle homes_toggle">{{#if statusVisibility.home}}shown{{else}}hidden{{/if}}</a>) |
+  <span class="private_count"></span> at private venues (<a data-visibility-type="private" class="item_visible_toggle private_toggle">{{#if statusVisibility.private}}shown{{else}}hidden{{/if}}</a>)
+</div>
+{{/is}}

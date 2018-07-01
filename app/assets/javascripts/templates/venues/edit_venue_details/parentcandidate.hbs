@@ -1,0 +1,14 @@
+{{#with candidate}}
+  <div class="parentcandidate">
+  {{#if categories.[0]}}
+  <img src="{{categories.0.icon.prefix}}bg_32{{categories.0.icon.suffix}}" alt="{{categories.0.name}}" height='32' width='32'>
+  {{else}}
+  <img src="https://foursquare.com/img/categories_v2/none_bg_32.png" alt="Unknown Category" height='32' width='32'>
+  {{/if}}
+  </span>
+  <div class='name'>{{name}}</div>
+  <div class="address">
+  {{#if categories.0.name}}{{categories.0.name}}{{else}}No Category{{/if}} | <span class='distance'>{{pointDistance ../venue.location location}} {{pointsDirection ../venue.location location}}</span>
+  </div>
+</div>
+{{/with}}

@@ -1,0 +1,13 @@
+<div class="offset2 span8 alert alert-error searcherror">
+  <p><strong>{{errorText}}</strong></p>
+
+  {{#if errorDetails}}
+  <tt>{{errorDetails}}</tt>
+  {{/if}}
+
+  {{#if retryable}}
+  <div class="center">
+    <a href="#" class="btn btn-danger retry">Retry</a>
+  </div>
+  {{/if}}
+</div>

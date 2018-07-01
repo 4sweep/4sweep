@@ -1,0 +1,55 @@
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+{{#is sourceType "venue"}}
+<h4 id="photo-title">Review photos at <a href="https://foursquare.com/v/{{source.id}}/" target="_blank">{{source.venuedata.name}}</a></h4>
+{{/is}}
+{{#is sourceType "user"}}
+<h4 id="photo-title">Review photos by <a href="https://foursquare.com/u/{{source.id}}/" target="_blank">{{source.user.firstName}} {{source.user.lastName}}</a></h4>
+{{/is}}
+
+<div class="photoactions itemactions">
+Flag <span class='selectedcount'>0</span> selected photos for removal:
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="spam_scam">Spam / Scam</a>
+    <span class="description hide">Is this photo spammy or scammy?  Spam photos include unrelated promotional content.</span>
+  </span>
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="nudity">Nudity</a>
+    <span class="description hide">Is there nudity in this photo?</span>
+  </span>
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="hate_violence">Hate / Violence</a>
+    <span class="description hide">Does this photo depict hate or violence?</span>
+  </span>
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="illegal">Illegal</a>
+    <span class="description hide">Is this photo illegal?</span>
+  </span>
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="blurry">Blurry</a>
+    <span class="description hide">Is this photo blurry or too low quality to be useful?</span>
+  </span>
+  </span>
+  <span class="item-popover-trigger">
+    <a href="#" class="btn btn-mini" rel='tooltip' data-problem="unrelated">Unrelated</a>
+
+    <span class="description hide">
+      <strong>Unrelated photos include:</strong>
+      <ul>
+        <li>Photos not of the venue or not relevant to the venue</li>
+        <li>Photos of people and pets, unless they help to get a sense of the venue</li>
+        <li><a href="http://en.wikipedia.org/wiki/Selfie" target="_blank">Selfies</a></li>
+        <li>Screenshots and memes</li>
+      </ul>
+    </span>
+  </span>
+</div>
+
+{{#is sourceType "user"}}
+<div class="toggles center">
+  <span class="total_count"></span> Photos Loaded |
+  <span class="deleted_count"></span> at deleted venues (<a data-visibility-type="deleted" class="item_visible_toggle deleted_toggle">{{#if statusVisibility.deleted}}shown{{else}}hidden{{/if}}</a>) |
+  <span class="home_count"></span> at homes (<a data-visibility-type="home" class="item_visible_toggle homes_toggle">{{#if statusVisibility.home}}shown{{else}}hidden{{/if}}</a>) |
+  <span class="private_count"></span> at private venues (<a data-visibility-type="private" class="item_visible_toggle private_toggle">{{#if statusVisibility.private}}shown{{else}}hidden{{/if}}</a>) |
+  <span class="closed_count"></span> at closed venues (<a data-visibility-type="closed" class="item_visible_toggle closed_toggle">{{#if statusVisibility.closed}}shown{{else}}hidden{{/if}}</a>)
+</div>
+{{/is}}

@@ -1,0 +1,55 @@
+<% content_for :bodyclasses do %>session nopadding<% end %>
+
+<div class="jumbotron masthead">
+  <div class="container">
+    <h1>4sweep</h1>
+
+    <h2>A power tool for Foursquare Superusers</h2>
+
+    <div class="center">
+      <%= link_to "Log In with Foursquare", @authorize_url, :class=> "btn btn-primary btn-large center"%>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="container haspadding">
+  <div class="row">
+
+  <div class="span4">
+    <p><strong>Find and Report Duplicate, Closed, Miscategorized, Private, and Inappropriate Venues, Photos, and Tips Quickly</strong></p>
+    <img src="/img/flagdup.png" alt="Duplicate Flag" width='400px'>
+  </div>
+  <div class="span5">
+    <p><strong>Filled with useful features:</strong></p>
+    <ul>
+      <li>Search by name, categories, location, recently created, creating user, lists, uncategorized, flagged venues, your checkin history, chains, and more</li>
+      <li>Load hundreds or thousands of venues in an area at once</li>
+      <li>Edit venue details and categories</li>
+      <li>Quickly hover to see top photos, tips, recent edits, pending flags, Facebook profiles, venue creator, lists, child venues, attributes, hours, ratings, and more.</li>
+      <li>Report outdated, spammy, inappropriate, and unrelated photos and tips by venue or user</li>
+      <li>Schedule venue closings</li>
+      <li>Send your flags to Foursquare and track their approval</li>
+    </ul>
+  </div>
+  <div class="span3">
+    <p><strong>Popular Among Foursquare Superusers</strong></p>
+    <ul>
+      <p>Used by <%= number_with_delimiter(User.count, :delimiter => ',') %> superusers</p>
+      <p>Over <%= number_to_human(Flag.count, :delimiter => ",").downcase %> edits made</p>
+    </ul>
+  </div>
+
+  </div>
+  <hr>
+  <div class="row">
+    <div class="center">
+      <%= link_to "Get Started Now", @authorize_url, :class=> "btn btn-primary btn-large center"%>
+    </div>
+    <hr>
+    <p class='small'>4sweep is a Foursquare API tool that connects to your Foursquare account. 4sweep only uses your Foursquare account to submit flags to Foursquare, and collects only the minimum information needed to support that, such as your name and approximate last known location.
+    </p><p class='small'>
+      This service uses the Foursquare® application programming interface but is not endorsed or certified by Foursquare Labs, Inc. All of the Foursquare® logos (including all badges) and trademarks displayed on this service are the property of Foursquare Labs, Inc.Some graphics from <a href="http://subtlepatterns.com/">Subtle Patterns</a> under CC BY-SA 3.0.</p>
+
+  </div>
+</div>

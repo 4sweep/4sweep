@@ -1,0 +1,24 @@
+  <p>Use this flag for places that have permanently closed or temporary events that are now over.  You can also schedule venues to be closed at a future date.</p>
+  <div class="form-group">
+    <div class="btn-group" data-toggle='buttons-radio'>
+      <button class="btn close_when active immediate">Now</button>
+      <button class="btn close_when schedule">Schedule Date</button>
+    </div>
+
+    <br>
+    <div class="date hide" data-date-format="yyyy-mm-dd">
+      <br>
+      When?:
+      <div class="input-append" id="datepicker" data-date-format="yyyy-mm-dd">
+        <input id='scheduled_close' name='scheduled_close' class="datepicker" size="16" type="text" value="">
+        <span class="add-on"><i class="icon-th"></i></span>
+      </div>
+      <div class="closetext"><br></div>
+    </div>
+    Comment:<br>
+    <textarea name='comment' rows="4" placeholder='Why do you think this place is closed? A link to a closing announcement is very useful. (optional)' style='' class='comment'></textarea>
+
+    <div class="describesubmitwhen"></div>
+    <button data-flagtype="CloseFlag" data-problem="closed" class="btn btn-default btn-danger pushflag">Close: Out of Business</button>
+    <button data-flagtype="CloseFlag" data-problem="event_over" class="btn btn-default btn-danger pushflag">Close: Event Over</button>
+  </div>

@@ -1,0 +1,19 @@
+<div class="tips">
+  {{#each tips}}
+  <div class="tip">
+    <div class="bubblecontainer">
+      <span class='username'>
+        <img src="{{user.photo.prefix}}36x36{{user.photo.suffix}}" alt="Photo of {{user.firstName}} {{user.lastName}}" class="userimg" width="36" height="36">
+      </span>
+      <div class="bubble">
+        <span class="tiptext">{{text}}</span>
+        <div class="attribution">
+          – <span class="username">{{user.firstName}} {{user.lastName}}</span> · <span class="date">{{moment createdAt}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <p>No tips found</p>
+  {{/each}}
+</div>

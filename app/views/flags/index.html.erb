@@ -1,0 +1,183 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'flags' %>
+<% end %>
+
+<% content_for :flagcount do %>
+<%= @flagcount == 0 ? "" : @flagcount %>
+<% end %>
+
+<h1>Your Flags (<%= friendly_status(@status) %>)</h1>
+<br>
+
+<div class="center hidden" id='queuebuttons'>
+  <a href="#" class="btn btn-primary runall">Run all flags on this page (<%= @unsubmitted_flags.size %>) now</a>
+  <a href="#" class="btn btn-primary checkall">Check all flags on this page (<%= @unresolved_flags.size %>)</a>
+  <a href="#" class="btn btn-danger cancelall">Cancel all unsubmitted flags on this page (<%= @unsubmitted_flags.size %>)</a>
+</div>
+
+<% if @queue_size > 10 %>
+<br>
+<div class="center row">
+  <div class="alert currentlyprocessing">
+    Flags currently processing: <%= @queue_size %> (for all users)
+  </div>
+</div>
+<% end %>
+
+<div class="row-fluid">
+  <div class="span12">
+
+  <div class="tabbable">
+
+  <ul class="nav nav-tabs">
+    <% @flag_tabs.each do |s| %>
+    <li <% if (@status == s) %>class='active' <% end %> ><a href='?status=<%=s%>' class='statuschange' data-status='<%=s%>' ><%= friendly_status(s).capitalize %> (<%= @total_flags_counts[s] %>)</a></li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <div class='pull-right'>
+    <form method="get" id='pagesizeform'>
+      <input type="hidden" name='page' value='<%= @pagenum %>'>
+      Page Size:
+
+      <%= select_tag "pagesize", options_for_select([50, 100, 250, 500, 1000], @pagesize), {'class' => 'input-small pagesize'} %>
+    </form>
+    </div>
+
+
+    <form class='form-horizontal alert alert-info' id='include_types'>
+    <ul class='include_types inline'>
+    Show Flag Types:
+      <% @flag_types.each_pair do |key, type| %>
+      <li>
+        <label for='<%=key%>'>
+          <%= check_box_tag("include_types[]", key, @selected_types.include?(key), {:id => key, :class => "include_flag_type"} ) %>
+           <%=type[:name]%>
+        </label>
+      </li>
+      <% end %>
+    </ul>
+    </form>
+
+    <div class="center">
+      <%= paginate @flags, :theme => "twitter-bootstrap", :params => (@ordertype == 'last_checked') ? {'order_last_checked' => 1} : {}  %>
+    </div>
+
+    <table class="table-striped table flags">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Date <% if (@ordertype == 'created_at') %><i class="i-sort-down"></i><% end %></a></th>
+          <th>Flagged Item</th>
+          <th>Status</th>
+          <% if @status == 'submitted' %>
+            <th><a href="?page=<%=@pagenum%>&amp;status=submitted&amp;order_last_checked">Last checked
+              <% if (@ordertype == 'last_checked') %><i class="i-sort-down"></i><% end %></a></th>
+          <% end %>
+          <% if @status != 'resolved' %>
+            <th class='span2'>Action</th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @flags.each do |flag| %>
+        <tr id='flagrow_<%= flag.id %>'>
+          <td class='flagname'><%= flag.friendly_name %></td>
+          <td><span title='<%=raw flag.created_at.strftime('%h&nbsp;%d,&nbsp;%Y')%>'><script>document.write(friendlyDate(<%=raw flag.created_at.to_i * 1000%>))</script></span></td>
+          <td class='flaggedItem'>
+            <% if flag.type == 'PhotoFlag' && !flag.itemName.nil? %>
+            <a target="_blank" class='photopopover' href="<%= flag.itemName.gsub("SIZE", "original") %>">Photo</a> by <a href="/#s=usersearch&amp;user=<%= flag.creatorId %>" target="_blank"><%= flag.creatorName %></a>  (<a href="https://foursquare.com/u/<%= flag.creatorId %>" target="_blank"><i class="i-foursquare"></i></a>)
+            at
+            <% end %>
+            <% if flag.type == "TipFlag" && !flag.itemName.nil? %>
+            <a target="_blank" class="tiplink" href="https://foursquare.com/item/<%=flag.itemId%>">Tip</a> by <a href="/#s=usersearch&amp;user=<%= flag.creatorId %>" target="_blank"><%= flag.creatorName %></a> (<a href="https://foursquare.com/u/<%= flag.creatorId %>" target="_blank"><i class="i-foursquare"></i></a>) at
+            <% end %>
+            <a href="/#s=specificvenuesearch&amp;venueid=<%= flag.venueId %>" target="_blank"><%= flag.primaryName || "venue" %></a> (<a href="https://foursquare.com/v/<%= flag.venueId %>" target="_blank"><i class="i-foursquare"></i></a>)
+            <% if flag.secondaryVenueId %> /
+            <a href="/#s=specificvenuesearch&amp;venueid=<%= flag.secondaryVenueId %>" target="_blank">
+              <%= flag.secondaryName %></a> (<a href="https://foursquare.com/v/<%= flag.secondaryVenueId %>" target="_blank"><i class="i-foursquare"></i></a>)
+            <% end %>
+
+            <% if flag.type == "EditVenueFlag" %>
+            <div class='editeddetails'>
+              <% flag.friendly_edited_fields.each do |change| %>
+                <%= change[:field] %>: <%= change[:value] %> <br>
+              <% end %>
+            </div>
+            <% end %>
+
+            <% if flag.type == "TipFlag" %>
+            <div class='tiptext'>
+              &quot;<%= flag.itemName %>&quot;
+            </div>
+            <% end %>
+
+            <% if flag.comment && flag.comment.strip.length > 0%>
+            <div class='flagcomment'>
+              Comment: &quot;<%= flag.comment %>&quot;
+            </div>
+            <% end %>
+          </td>
+          <td class='status'><%= friendly_status(flag.status).capitalize %> <% if flag.resolved_details %><%= flag.resolved_details %><% end %>
+            <% if flag.status == 'queued' || flag.status == 'scheduled' %>
+              <% time = flag.scheduled_time %>
+              <% if time %>
+                 <% if time < Time.now %>
+                 to run as soon as possible
+                <% else %>
+                to run <script>document.write(futureFriendlyDate(<%=raw time.to_i * 1000 %>))</script>
+                <% end %>
+              <% end %>
+              <% if flag.delayed_due_to_rate_limit %>
+              <i class="i-attention-circled" title="Rescheduled due to Foursquare rate limits (Quota Exceeded)"  rel='tooltip'></i>
+              <% end %>
+            <% end %>
+          </td>
+
+          <% if @status == 'submitted' %>
+          <td class='last_checked'><script>document.write(friendlyDate(<%=raw flag.last_checked.to_i * 1000 %>))</script></td>
+          <% end %>
+
+          <% if @status != 'resolved' %>
+          <td>
+            <% if flag.status == 'new' or flag.status == 'failed' %>
+              <a href="#" class='btn btn-primary btn-mini flagrun' data-flagid='<%= h flag.id %>'>Submit</a>
+              <a href="#" class='btn btn-danger btn-mini flagcancel' data-flagid='<%= h flag.id %>'>Cancel</a>
+            <% elsif flag.status == 'queued' || flag.status == 'scheduled' %>
+              <% if flag.status == 'queued' %>
+                <a href="#" class='btn btn-primary btn-mini flagrun' data-flagid='<%= h flag.id %>'>Run Now</a>
+              <% end %>
+              <a href="#" class='btn btn-danger btn-mini flagcancel' data-flagid='<%= h flag.id %>'>Cancel</a>
+            <% end %>
+
+            <% if flag.status == 'submitted' or flag.status == 'alternate resolution' %>
+            <a href="#" class='btn btn-primary btn-mini flagresubmit' data-flagid='<%= h flag.id %>'>Resubmit</a>
+            <a href="#" class='btn btn-warning btn-mini flaghide' title="Move to the 'Other' tab, useful if this was mistakenly submitted and you no longer wish to track it." data-flagid='<%= h flag.id %>'>Hide</a>
+
+            <% end %>
+
+            <% if flag.status != 'resolved' and flag.status != 'canceled' and flag.status != 'cancelled' %>
+            <a href="#" class="btn btn-primary btn-mini flagcheck" data-flagid='<%= h flag.id %>'>Check</a>
+            <% end %>
+
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+        <% if @flags.empty? %>
+        <tr>
+          <td colspan="6">No <%= @status %> flags found.</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="center">
+      <%= paginate @flags, :theme => "twitter-bootstrap", :params => (@ordertype == 'last_checked') ? {'order_last_checked' => 1} : {}  %>
+    </div>
+
+  </div>
+  <br>
+  </div>
+</div>
+
+</div>

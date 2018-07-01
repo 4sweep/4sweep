@@ -1,0 +1,13 @@
+{{#if totalItems}}
+<div class="pagination pagination-small pagination-centered">
+  <ul>
+    <li class="{{#is current 1}}disabled{{/is}}"><a href="#" data-pagenum="1">&laquo;</a></li>
+    {{#each showpages}}
+      {{#if show}}
+      <li class="{{#if active}}active{{/if}}"><a href="#" data-pagenum="{{pagenum}}">{{pagenum}}</a></li>
+      {{/if}}
+    {{/each}}
+    <li class="{{#if onLastPage}}disabled{{/if}}"><a data-pagenum="{{totalPages}}" href="#">&raquo;</a></li>
+  </ul>
+</div>
+{{/if}}

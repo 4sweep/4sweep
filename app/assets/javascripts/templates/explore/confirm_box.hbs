@@ -1,0 +1,51 @@
+{{#if compactView}}
+  {{#with top_flags.[0]}}
+     <h5>{{../description}}: {{primaryName}} {{#if secondaryName}} / {{secondaryName}} {{/if}}</h5>
+     {{#if details}}{{nl2br details}}<br>{{/if}}
+  {{/with}}
+{{else}}
+
+<h5>{{description}}:</h5>
+
+<ul>
+{{#is objectType "venues"}}
+  {{#each top_flags}}
+  <li>
+   {{primaryName}} {{#if secondaryName}} / {{secondaryName}} {{/if}}
+   {{#if details}}: {{nl2br details}}{{/if}}
+  </li>
+  {{/each}}
+{{/is}}
+
+{{#is objectType "photos"}}
+  {{#each top_flags}}
+  <span class="span1 notifythumbnailcontainer">
+    <div class="thumbnail">
+      <img src='{{replace itemName "SIZE" "300x300"}}' width="100" height="100" class="notifythumbnail">
+    </div>
+  </span>
+  {{/each}}
+  <div style="clear:both"></div>
+{{/is}}
+
+{{#is objectType "tips"}}
+  {{#each top_flags}}
+  <li>&quot;{{itemName}}&quot;</li>
+  {{/each}}
+{{/is}}
+</ul>
+
+{{#if has_remaining}}
+<p><strong>– And {{remaining_flags_count}} others –</strong></p>
+{{/if}}
+
+{{/if}}
+
+<small>{{{run_text}}} (or <a class='submitnow'>run immediately</a>)
+  {{#is objectType "venues"}}
+  [<a class="reselect" href="#">Reselect Venues</a>]
+  <div class="clear"></div>
+  {{/is}}
+</small>
+
+

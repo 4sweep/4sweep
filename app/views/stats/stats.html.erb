@@ -1,0 +1,96 @@
+<% content_for :flagcount do %>
+<%= @flagcount == 0 ? "" : @flagcount %>
+<% end %>
+
+<h1>4sweep Flag Stats for <%= @foruser ? @foruser.name : "All Users" %></h1>
+
+<% if @foruser %>
+<div class="row-fluid">
+  <br>
+  <div class="span6 offset3 alert alert-info center">
+  SU Level: <strong><% if @foruser.level && @foruser.level != '' %> SU<%=@foruser.level%> <% else %> None <% end %></strong> &nbsp;&nbsp;
+  Home City: <strong><%= @foruser.hometown %></strong> &nbsp;&nbsp;
+  Foursquare ID: <strong><a href='https://www.foursquare.com/user/<%=@foruser.uid%>' > <%= @foruser.uid %> </a></strong>
+  </div>
+</div>
+<% end %>
+
+<div class="span5 ">
+
+<% unless @foruser %>
+  <h2>By User</h2>
+  <table class='table table-striped'>
+    <tr>
+      <th>User</th>
+      <th>Count</th>
+    </tr>
+    <% @user_counts.each do |statrow| %>
+    <tr>
+      <td><a href='/stats/<%=statrow.user_id%>'><%= statrow.name.truncate(30) %></a> <% if @current_user.level && @current_user.level != '' %> (SU<%=statrow.level%>) <% end %> [<%=statrow.hometown%>]</td>
+      <td><%= statrow.flag_count %></td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
+
+  <h2>By Problem</h2>
+  <table class='table table-striped'>
+    <tr>
+      <th>Problem</th>
+      <th>Count</th>
+    </tr>
+    <% @problem_counts.each do |statrow| %>
+    <tr>
+      <td><%= statrow.problem %></td>
+      <td><%= statrow.flag_count %></td>
+    </tr>
+    <% end %>
+  </table>
+
+  <h2>By Date</h2>
+  <table class='table table-striped'>
+    <tr>
+      <th>Date</th>
+      <th>Count</th>
+    </tr>
+    <% @day_counts.each do |statrow| %>
+    <tr>
+      <td><a href='?date=<%=statrow.date%>'><%= statrow.date %></a></td>
+      <td><%= statrow.flag_count %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="span5 offset1">
+  <h2>By Status</h2>
+
+  <table class='table table-striped'>
+    <tr>
+      <th>Status</th>
+      <th>Count</th>
+    </tr>
+    <% @status_counts.each do |statrow| %>
+    <tr>
+      <td><%= statrow.status %></td>
+      <td><%= statrow.flag_count %></td>
+    </tr>
+    <% end %>
+  </table>
+
+  <h2>By Type</h2>
+
+  <table class='table table-striped'>
+    <tr>
+      <th>Type</th>
+      <th>Count</th>
+    </tr>
+
+    <% @type_counts.each do |statrow| %>
+    <tr>
+      <td><%= statrow.type %></td>
+      <td><%= statrow.flag_count %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

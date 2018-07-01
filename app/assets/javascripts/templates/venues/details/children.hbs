@@ -1,0 +1,32 @@
+<div class="row">
+{{#each children.items}}
+<span class="childvenue span6">
+  <span class="span1">&nbsp;</span>
+  <span class="span2">
+    {{#if photos}}
+    <img src="{{photos.groups.[0].items.[0].prefix}}50x50{{photos.groups.[0].items.[0].suffix}}" alt="Photo of {{name}}" width='50' height='50'>
+    {{else}}
+      {{#if categories.[0]}}
+      <img src="{{categories.0.icon.prefix}}bg_88{{categories.0.icon.suffix}}" alt="{{categories.0.name}}" height='50' width='50'>
+      {{else}}
+      <img src="https://foursquare.com/img/categories_v2/none_bg_64.png" alt="Unknown Category" height='50' width='50'>
+      {{/if}}
+    {{/if}}
+  </span>
+  <span class="span9">
+    <strong>{{name}}</strong><br>
+    {{#if categories.0.name}}{{categories.0.name}}{{else}}No Category{{/if}}<br>
+    {{truncate location.formattedAddress.[0] 35}}
+  </span>
+</span>
+
+{{#ifIsModPlus1 @index 2}}
+</div>
+<div class='row'>
+{{/ifIsModPlus1}}
+
+{{/each}}
+</div>
+
+{{#if children.remaining}}<p>And <strong>{{children.remaining}}</strong> more</p>{{/if}}
+

@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <script src="HoursParser.js"></script>
+    <script src="testcases.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+      .json, .string {
+        padding: 5px;
+        font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    enter hours:<br/>
+    <textarea id="input" rows="10" cols="60">4am-5pm m-f</textarea>
+    <p/>
+    parsed output:
+    <div id="output" class="json"></div>
+  </body>
+  <script>
+    var input = $('#input');
+    var output = $('#output');
+
+    function parseHours() {
+      var hours = fourSq.util.HoursParser.parse(input.val())
+      output.empty();
+      output.append($('<pre>' + stringifyHours(hours) + '</pre>'))
+    };
+
+    function stringifyHours(hours) {
+       return JSON.stringify(hours, undefined, 2).replace(/\n/g, "<br>");
+    }
+
+    input.on('change keyup paste', parseHours);
+    parseHours();
+  </script>
+
+  <h2>Tests/Examples</h2>
+  <div id="test"></div>
+  <script>
+    var testOutput = $('#test');
+
+    _(testcases).each(function(testcase) {
+      console.log(testcase.input)
+      var hours = fourSq.util.HoursParser.parse(testcase.input);
+      var json = stringifyHours(hours)
+      var mismatch = json !== stringifyHours(testcase.output);
+
+      var divStr = '<div class="testcase"><div class="testcaseInput"><div class="label">input:</div><div class="string">' + testcase.input + '</div></div>';
+
+      if (mismatch) {
+        divStr += '<font color="red">ERROR'
+      }
+      divStr += '<div class="testcaseOutput"><div class="label">output:</div><div class="json"><pre>' + json + '</pre></div><hr/></div>'
+      if (mismatch) {
+        divStr += '</font>'
+      }
+
+      testOutput.append($(divStr))
+    });
+  </script>
+</html>

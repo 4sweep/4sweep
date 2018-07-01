@@ -1,0 +1,41 @@
+// Place all the styles related to the Session controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body.session {
+  .jumbotron {
+    color: white;
+    background-image: url('/img/congruent_outline.png');
+
+    h1 {
+      margin-top: 0.5em;
+      font-size: 120px;
+      font-weight: bold;
+    }
+    h2 {
+      font-size: 40px;
+      text-align: center;
+      line-height: 1.25;
+      font-weight: 150;
+      color: #ddd;
+    }
+    min-height: 370px;
+    margin:0;
+  }
+  .container-fluid {
+    padding: 0;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .haspadding {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .small {
+    font-size: 80%;
+    margin-top: 1em;
+  }
+}

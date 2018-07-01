@@ -1,0 +1,40 @@
+— {{stats.displayed}} place(s) displayed
+{{#if suppressplaces}}
+ (
+{{#if stats.filtered}}
+<span class="coolseparator">{{stats.filtered}} place(s) filtered</span>
+{{/if}}
+{{!-- No easy way to iterate through fields, sadly --}}
+{{#if stats.home}}
+<span class="coolseparator">
+{{stats.home}} home(s)
+ <a class='hideshow' data-status='home'>{{#if toggles.home}}shown{{else}}hidden{{/if}}</a>
+</span>
+{{/if}}
+{{#if stats.private}}
+<span class="coolseparator">
+{{stats.private}} private place(s)
+ <a class='hideshow' data-status='private'>{{#if toggles.private}}shown{{else}}hidden{{/if}}</a>
+</span>
+{{/if}}
+{{#if stats.closed}}
+<span class="coolseparator">
+{{stats.closed}} closed place(s)
+ <a class='hideshow' data-status='closed'>{{#if toggles.closed}}shown{{else}}hidden{{/if}}</a>
+</span>
+{{/if}}
+{{#if stats.deleted}}
+<span class="coolseparator">
+{{stats.deleted}} deleted place(s)
+ <a class='hideshow' data-status='deleted'>{{#if toggles.deleted}}shown{{else}}hidden{{/if}}</a>
+</span>
+{{/if}}
+{{#if stats.alreadyflagged}}
+<span class="coolseparator">
+{{stats.alreadyflagged}} already flagged place(s)
+ <a class='hideshow' data-status='alreadyflagged'>{{#if toggles.alreadyflagged}}shown{{else}}hidden{{/if}}</a>
+</span>
+{{/if}}
+)
+{{/if}}
+ —

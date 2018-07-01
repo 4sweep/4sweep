@@ -1,0 +1,47 @@
+<li class="{{>venues/parts/_venueclasses}}" data-venueid='{{venue.id}}'>
+  <span class="img-container category-icon">
+    {{> venues/parts/_categoryicon}}
+  </span>
+  <span class="venueactionscontainer">{{>venues/parts/_venueactions}}</span>
+
+  <div class='pull-right bottom venuebuttons'>
+    <span class="foursweepflags" rel='tooltip' title="Pending 4sweep Flags">
+      <a href="#" class="btn btn-mini btn-info hide foursweepflagsbutton"><i class="i-flag"></i></a>
+    </span>
+    <span class='editdetailscontainer' rel='tooltip' title='Edit Details'><a class='btn btn-mini btn-info {{#is pulling.full "done"}}{{else}}disabled{{/is}} editdetails'><i class='icon-pencil icon-white'></i></a></span>
+    <a class="btn btn-mini btn-info refreshEverything" rel="tooltip" title="Refresh Flag Status"><i class="icon-white i-spin3"></i></a>
+    <a target="_blank" class="btn btn-mini btn-info searchnearby" rel="tooltip" href="#s=venuesearch&amp;ll={{venue.location.lat}},{{venue.location.lng}}&amp;radius=1000&amp;q={{uc venue.name}}" title="Search nearby"><i class="icon-white icon-screenshot"></i></a>
+    <a class='btn btn-mini btn-info pinVenue {{#if status.pinned}}active{{/if}}' rel='tooltip' title='Pin venue (keep on map)'><i class='i-pin'></i></a>
+    <a class='btn btn-mini btn-info zoomtovenue' rel='tooltip' title='Click to keep zoom'><i class='i-zoom-in icon-white'></i></a>
+  </div>
+
+  <div class="info">
+    <span class="namerow">{{>venues/parts/_namerow}}</span>
+    <div class="details">
+      <span class="categories">
+        {{>venues/parts/_categories}}
+      </span>
+
+      <span class='photocountcontainer'><span class="tipcountcontainer"><span class="listedcountcontainer">
+        <span class="stats">
+        {{>venues/parts/_statsrow}}
+        </span>
+      </span></span></span>
+
+      <span class="facebooklinkcontainer"><span class="descriptioncontainer"><span class="attributescontainer">
+      <span class="hourscontainer"><span class="mayorshipcontainer"><span class="userscontainer">
+      <span class="menucontainer"><span class="specialscontainer"><span class="createdcontainer"><span class="childrencontainer"><span class="chaincontainer">
+        <span class='addressrow'>
+        {{>venues/parts/_addressrow}}
+        </span>
+      </span></span></span></span></span></span></span></span></span></span></span><br>
+
+      <span class="editsrow">
+        Created: <span class='createdAt'>{{timeFromMongoId venue.id}}</span>
+        <span class="majoreditcontainer">{{>venues/parts/_majoreditdate}}</span>
+        <span class="pendingflagscontainer">{{>venues/parts/_pendingflagscount}}</span>
+      </span>
+    </div>
+
+  </div>
+</li>

@@ -1,0 +1,24 @@
+<table class="table table-compact">
+  {{#each hours.timeframes}}
+  <tr>
+    <td>
+      {{#each days}}
+      <span class="coolseparator">
+        {{#is this 1}}Mon{{/is}}
+        {{#is this 2}}Tue{{/is}}
+        {{#is this 3}}Wed{{/is}}
+        {{#is this 4}}Thu{{/is}}
+        {{#is this 5}}Fri{{/is}}
+        {{#is this 6}}Sat{{/is}}
+        {{#is this 7}}Sun{{/is}}
+      </span>
+      {{/each}}
+    </td>
+    <td>
+      {{#each open}}
+      {{renderHour start}} – {{renderHour end}} <br>
+      {{/each}}
+    </td>
+  </tr>
+  {{/each}}
+</table>

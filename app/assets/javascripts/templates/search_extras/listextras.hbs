@@ -1,0 +1,29 @@
+<div class="listextras extras well">
+  {{#if photo}}
+  <div class="span3">
+  <img src="{{photo.prefix}}300x300{{photo.suffix}}" alt="Photo by {{photo.user.firstName}} {{photo.user.lastName}}" class='previewphoto'>
+  </div>
+  {{/if}}
+  <div class="span9">
+  <h5><a target="_blank" href="{{canonicalUrl}}">{{name}}</a> by <a target="_blank" href="https://foursquare.com/u/{{user.id}}">{{user.firstName}} {{user.lastName}}</a></h5>
+  <dl class='dl-compact dl-horizontal '>
+    <dt>Venues</dt>
+    <dd>{{num venueCount}} ({{num visitedCount}} visited)</dd>
+
+    {{#if saves.summary}}
+    <dt>Saves</dt>
+    <dd>{{num saves.summary}}</dd>
+    {{/if}}
+    {{#if createdAt}}
+    <dt>Created</dt>
+    <dd>{{moment createdAt}} ({{moment-ago createdAt}})</dd>
+    {{/if}}
+    {{#if updatedAt}}
+    <dt>Updated</dt>
+    <dd>{{moment updatedAt}} ({{moment-ago updatedAt}})</dd>
+    {{/if}}
+  </dl>
+  </div>
+  <div class="clear"></div>
+  {{#if description}}<p style='clear:both'><i class="i-quote-left"></i>{{description}}<i class="i-quote-right"></i></p>{{/if}}
+</div>

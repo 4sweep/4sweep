@@ -1,0 +1,116 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import '4sweep_fontello';
+@import "animation";
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#wrap > .container, #wrap > .container-fluid {
+  padding-top: 50px;
+}
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+#flagcount {
+  margin-left: 0.25em;
+  background-color: #3A87AD;
+  padding: 1px 3px 2px 3px;
+  color: white;
+  border-radius: 2px;
+}
+
+#wrap {
+  min-height: 95%;
+  height: auto !important;
+  height: 95%;
+  margin: 0 auto -27px;
+}
+
+#footer {
+  height: 30px;
+}
+
+.footer {
+  border-top: 2px solid #333;
+  padding: 5px 0 5px 3em;
+  text-align: center;
+}
+
+.footer img {
+  height: 30px;
+  vertical-align: top;
+  top: -5px;
+  position: relative;
+}
+
+#footermiddle {
+  margin: auto;
+  .submitwhen {
+    margin-top: 0;
+  }
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+select.small-select {
+  height: 20px
+}
+
+.navbar-fixed-bottom {
+  background-color: white;
+}

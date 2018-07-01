@@ -1,0 +1,48 @@
+<div class="userextras extras well">
+  <span class="span2 center photocontainer">
+    <img src="{{photo.prefix}}64x64{{photo.suffix}}" class="previewphoto">
+  </span>
+  <span class="span5">
+    <h5><a href="https://foursquare.com/p/{{id}}" target="_blank">{{firstName}} {{lastName}}</a>
+    {{#is type 'chain'}}(Chain){{/is}}
+    {{#is type 'celebrity'}}(Celebrity){{/is}}
+    {{#is type 'venuePage'}}(Venue Page){{/is}}
+    {{#is type 'page'}}(Page){{/is}}
+    {{#if superuser}}(SU{{superuser}}){{/if}}
+    </h5>
+    {{#if homeCity}}{{homeCity}}<br>{{/if}}
+    <span class="relationship">
+      {{#is relationship 'self'}}This is your profile<br>{{/is}}
+      {{#is relationship 'friend'}}You are friends with {{firstName}} {{lastName}}<br>{{/is}}
+      {{#is relationship 'pendingMe'}}You have a pending friend request from {{firstName}} {{lastName}}<br>{{/is}}
+      {{#is relationship 'pendingThem'}}You have sent {{firstName}} {{lastName}} a friend request<br>{{/is}}
+      {{#is relationship 'followingThem'}}You are following {{firstName}} {{lastName}}<br>{{/is}}
+    </span>
+    {{#if contact.facebook}} <span class='coolseparator'><a href="https://facebook.com/{{contact.facebook}}" target="_blank"><i class="i-facebook"></i>Facebook</a></span>{{/if}}
+    {{#if contact.twitter}} <span class='coolseparator'><a href="https://twitter.com/{{contact.twitter}}" class='coolseparator' target="_blank"><i class="i-twitter"></i>@{{contact.twitter}}</a></span>{{/if}}
+    <br>
+    {{#if pageInfo.links.count}}<a href="{{pageInfo.links.items.0.url}}" class='truncateurl'>{{pageInfo.links.items.0.url}}</a><br>{{/if}}
+
+  </span>
+  <span class="span5">
+    {{#if photos.count}}<span class='coolseparator'><a href="https://foursquare.com/user/{{id}}/photos" target="_blank">{{num photos.count}} photos</a> {{#if interactive}}<a href="#" class="btn btn-mini btn-primary editphotos">Edit</a></span>{{/if}}{{/if}}
+    {{#if tips.count}}<span class='coolseparator'><a href="https://foursquare.com/user/{{id}}/list/tips" target="_blank">{{num tips.count}} tips</a> {{#if interactive}}<a href="#" class="btn btn-mini btn-primary edittips">Edit</a></span>{{/if}}{{/if}}
+    <br>
+    {{#if checkins.count}}{{num checkins.count}} checkins<br>{{/if}}
+    {{#if followers.count}}{{num followers.count}} followers<br>{{/if}}
+    {{#if friends.count}}{{num friends.count}} friends<br>{{/if}}
+    {{#if venuelikes.venues.count}}{{num venuelikes.venues.count}} venues liked<br>{{/if}}
+    {{#if listCounts}}Lists: {{num listCounts.created}} created, {{num listCounts.followed}} followed{{/if}}
+  </span>
+  <div class="clear"></div>
+
+  {{#if pageInfo.description}}
+    <p style="clear:both"><i class="i-quote-left"></i>{{pageInfo.description}}<i class="i-quote-right"></i></p>
+  {{else}}
+    {{#if bio}}
+    <p style="clear:both"><i class="i-quote-left"></i>{{bio}}<i class="i-quote-right"></i></p>
+    {{/if}}
+  {{/if}}
+
+</div>
+{{#if storeId}}<p>Store ID: {{storeId}}</p>{{/if}}

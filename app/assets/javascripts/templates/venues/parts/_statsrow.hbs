@@ -1,0 +1,12 @@
+{{num venue.stats.checkinsCount}} Checkins,
+{{num venue.stats.usersCount}} Users,
+{{#if venue.hereNow}}
+  {{num venue.hereNow.count}} Here Now,
+{{/if}}
+{{#if venue.listed}}
+  <a href="https://foursquare.com/v/{{venue.id}}/lists" target="_blank" class="listcount {{#if venue.listed.count}}islisted{{/if}}">{{num venue.listed.count}} Lists</a>,
+{{/if}}
+<a class="tipscount {{#if venue.tips.count}}hastips{{/if}}">{{num venue.stats.tipCount}} Tips</a>{{#if venue.photos}},
+<a class='photocount {{#if venue.photos.count}}hasphotos{{/if}}'>{{num venue.photos.count}} Photos</a>
+{{/if}}
+<br>

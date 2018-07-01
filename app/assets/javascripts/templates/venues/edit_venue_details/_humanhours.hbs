@@ -1,0 +1,23 @@
+{{#if hours.timeframes}}
+<table class="table table-condensed table-striped">
+  {{#each hours.timeframes}}
+  <tr>
+    <td>
+      {{days}}
+    </td>
+    <td>
+      {{#each open}}
+      <span class='coolseparator'>{{renderedTime}}</span>
+      {{/each}}
+    </td>
+  </tr>
+  {{/each}}
+</table>
+{{else}}
+  {{#isin status "ERROR" "POPULARHOURSWARNING"}}
+  <div class="alert alert-error">{{message}}</div>
+  {{else}}
+  <div class="alert alert-info">No hours set</div>
+  {{/isin}}
+{{/if}}
+

@@ -1,0 +1,75 @@
+{{#each items.items}}
+{{#is flags.[0] "spam"}}
+{{else}}
+<span class="itemcontainer">
+<div class='tip item item_{{id}}'>
+  <div class="bubblecontainer">
+    <span class="username">
+      <img src="{{user.photo.prefix}}36x36{{user.photo.suffix}}" class="userimg" width='36' height='36'>
+    </span>
+    <div class="bubble">
+      {{#if photo}}
+      <a target="_blank" class='tipphoto pull-left' href="{{photo.prefix}}original{{photo.suffix}}"><img src='{{photo.prefix}}300x300{{photo.suffix}}' width='150' height='150'></a>
+      {{/if}}
+      <span class="tiptext">{{#is type "merchant_tip"}}<strong>Merchant tip: </strong>{{/is}}{{text}}</span>
+      {{#if endAt}}<br>
+      <strong>Tip Expires:</strong> {{moment endAt}} ({{moment-ago endAt}}) <br>
+      {{/if}}
+      {{#if url}}
+      <br>
+      URL: <a href="{{url}}" target="_blank" rel="nofollow">{{url}}</a>
+      {{/if}}
+      <div class="attribution">
+        – <a class="username" target="_blank"  href="#s=usersearch&amp;user={{user.id}}">{{user.firstName}} {{user.lastName}}</a> ·
+        <span class="date"><a href="{{canonicalUrl}}" target="_blank">{{#moment createdAt}}{{/moment}}</a></span> ·
+        <span class="likes">{{likes.count}} likes / {{saves.count}} saves</span>
+        {{#if venue}}
+        <br>
+        At <a target="_blank" href="#s=specificvenuesearch&amp;venueid={{venue.id}}">{{venue.name}}</a>
+          ({{#if venue.categories.[0]}}<span class='{{#is venue.categories.[0].id "4bf58dd8d48988d103941735"}}warn{{/is}}'>{{venue.categories.[0].name}}</span>
+          {{else}}Uncategorized Venue{{/if}} in {{#location venue.location}}{{/location}})
+          {{#if venue.private}} <span class='warn'>(Private)</span>{{/if}}
+          {{#if venue.closed}} <span class='warn'>(Closed)</span>{{/if}}
+          {{#if venue.locked}} <span class='warn'>(Locked)</span>{{/if}}
+
+        {{/if}}
+      </div>
+      {{#is flags.[0] "no_longer_relevant"}}
+      <br><span class='warn'><i class="icon-warning-sign"></i> This tip is suppressed because it is no longer relevant</span>
+      {{/is}}
+      {{#if venue}}
+        {{#if venue.closed}}
+        <br><span class='warn'><i class="icon-warning-sign"></i> This tip was left at a venue that is now closed</span>
+        {{/if}}
+        {{#if venue.locked}}
+        <br><span class='warn'><i class="icon-warning-sign"></i> This tip was left at a locked venue</span>
+        {{/if}}
+        {{#if venue.private}}
+        <br><span class='warn'><i class="icon-warning-sign"></i> This tip was left at a venue that is private</span>
+        {{/if}}
+        {{#if venue.categories}}
+          {{#is venue.categories.[0].id "4bf58dd8d48988d103941735"}}
+          <br><span class='warn'><i class="icon-warning-sign"></i> This tip was left at a private home</span>
+          {{/is}}
+        {{/if}}
+      {{/if}}
+
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+</span>
+{{/is}}
+{{/each}}
+
+<span class='placeholder {{hasmoreclass}}'>
+  <div class="nomoretext loadmorestatus ">
+    All Tips Displayed
+  </div>
+  <div class="loadingtext loadmorestatus offset1 span5">
+    Loading More Tips <br><br>
+    <div class="progress progress-striped active">
+      <div class="bar" style="width: 100%;"></div>
+    </div>
+  </div>
+</span>

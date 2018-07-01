@@ -1,0 +1,15 @@
+<div class="modal hide fade" id='confirmmodal'>
+  <div class="modal-header"><h2>Are you sure?</h2></div>
+  <div class="modal-body">
+    {{#each extraConfirmation}}
+      <div class="alert alert-danger">
+      <p>{{{this}}}</p>
+      </div>
+    {{/each}}
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger confirm">Confirm</button>
+
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+defaults: &defaults
+
+development:
+  app_id: "REPLACE_ME"
+  app_secret: "REPLACE_ME"
+  callback_url: "http://localhost:3000/session/callback"
+  aws_key: "REPLACE_ME"
+  aws_secret: "REPLACE_ME"
+  s3_bucket: "REPLACE_ME"
+  cloudwatch_key: "REPLACE_ME"
+  cloudwatch_secret: "REPLACE_ME"
+
+test:
+
+production:
+  app_id: "REPLACE_ME"
+  app_secret: "REPLACE_ME"
+  callback_url: "REPLACE_ME"
+  aws_key: "REPLACE_ME"
+  aws_secret: "REPLACE_ME"
+  s3_bucket: "REPLACE_ME"
+  cloudwatch_key: "REPLACE_ME"
+  cloudwatch_secret: "REPLACE_ME"

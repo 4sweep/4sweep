@@ -1,0 +1,6 @@
+<span class="recenttext">{{#if recent}}Other recently selected:{{/if}}</span>
+<ul class='recentlyused'>
+  {{#each recent}}
+  <li><a href="#" class="chooserecentcat" data-catid="{{cat_id}}">{{name}}</a></li>
+  {{/each}}
+</ul>

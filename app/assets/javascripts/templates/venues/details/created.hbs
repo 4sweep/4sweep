@@ -1,0 +1,22 @@
+{{#if created}}
+
+<p>This venue was created at <strong>{{moment created.time}} ({{moment-ago created.time}})</strong></p>
+
+{{#if created.app}}<p>Created via: <strong>{{created.app.name}}</strong></p>{{/if}}
+
+{{#if created.user}}
+{{#with created.user}}
+<div class="well">
+  <img src="{{photo.prefix}}100x100{{photo.suffix}}" alt="{{firstName}} {{lastName}}" class="pull-left previewphoto">
+  <h5>{{firstName}} {{lastName}} {{#if superuser}}(SU{{superuser}}){{/if}}</h5>
+  {{#if homeCity}}{{homeCity}}<br>{{/if}}
+  {{#if bio}}<p>{{bio}}</p>{{/if}}
+  <br>
+  {{#if contact.twitter}}<span class='coolseparator'><i class="i-twitter"></i>@{{contact.twitter}}</span>{{/if}}
+  {{#if contact.facebook}}<span class='coolseparator'><i class="i-facebook"></i>{{contact.facebook}}</span>{{/if}}
+  <div class="clear"></div>
+</div>
+{{/with}}
+{{/if}}
+
+{{/if}}

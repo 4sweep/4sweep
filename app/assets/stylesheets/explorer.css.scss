@@ -1,0 +1,462 @@
+// Place all the styles related to the Explorer controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.icon {
+  vertical-align: bottom;
+}
+#map_canvas {
+  border: 1px solid #aaa;
+  height: 538px;
+  margin-top: 0px;
+  border-radius: 5px;
+  // min-height: 100%;
+}
+
+#primarysearch {
+  position: relative;
+}
+
+#venue_details {
+  height: 40px;
+  border: 1px solid #ddd;
+}
+
+#advlink {
+  position: absolute;
+  font-size: 10px;
+  text-decoration: underline;
+  bottom: 1px;
+  left: 2px;
+}
+.searchstats {
+  font-size: 70%;
+  text-align: center;
+  clear: both;
+}
+.allvenues {
+  overflow-y: scroll;
+  height: 500px;
+}
+.pinned {
+  margin-top: 2px;
+}
+
+a:visited, li a:visited  {
+  color: black;
+}
+
+.massactions a.btn:visited {
+  color: black;
+}
+
+.venues li {
+  font-size: 95%;
+  line-height: 1.3;
+
+  &:hover, &.hoveronicon {
+    background-color: #b7cda9;
+  }
+
+  &.clicked {
+    background-color: #FFAF7A;
+    border-width: 2px;
+  }
+
+  .ratio {
+    position: relative;
+    bottom: 2px;
+    right: 2px;
+  }
+
+  .categories {
+
+    .primary {
+      font-weight: bold;
+    }
+  }
+
+  .discussion {
+    border-bottom: 1px dashed gray;
+    color: red;
+  }
+
+  img.icon {
+    float: left;
+  }
+
+  a.venuename {
+    font-weight: bold;
+  }
+
+  .info {
+    margin-left: 50px;
+  }
+
+  margin-bottom: 4px;
+}
+
+.venuediv {
+  .uservenuenotice {
+    font-size: 80%;
+    font-weight: bold;
+  }
+
+  li.venue {
+    border-radius: 5px;
+    padding: 5px;
+    color: #222;
+    font-size: 80%;
+    border: 1px solid #aaa;
+  }
+  li.venue.pinned {
+    border: 1px solid #D6B106;
+  }
+  li.venue.alreadyflagged {
+    border-color: #ccc;
+    img, a, .label, .info i {
+      opacity: 0.5
+    }
+    .info {
+      color: gray;
+    }
+  }
+  ul {
+    margin-left: 0;
+    list-style: none;
+  }
+}
+
+.venuediv li:hover {
+  // background-color: #FF9933;
+}
+
+a.btn:visited { color: #fff; }
+
+img.icon {
+  background: url(https://s3.amazonaws.com/4sweep-assets/pin-blue-transparent.png);
+  padding: 6px;
+  padding-bottom: 17px;
+  top: -6px;
+  left: -6px;
+}
+
+.searchform .categories {
+  width: 40%;
+}
+
+.searchbar {
+
+  padding-bottom: 0;
+}
+
+.searchdiv.well {
+  .chzn-container {
+    vertical-align: top;
+  }
+  margin-bottom: 10px;
+  padding: 12px;
+
+  .input {
+    margin-bottom: 0;
+  }
+}
+.advancedsearch {
+  display: none;
+  // position: absolute;
+  // top: ;
+  padding-top: 10px;
+}
+.venuedetails {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 500px;
+  overflow: auto;
+
+  h1 {
+    font-size: 14px;
+  }
+}
+
+.btn .expandedicon {
+  display: none;
+}
+
+.btn.visible .expandedicon  {
+  display: inline;
+}
+
+.massactions a {
+  max-height: 18px;
+  margin-right: 2px;
+}
+
+.hideshow {
+  border-bottom: 1px dashed gray;
+}
+
+.home.hidden {
+  display: none;
+}
+
+.venue .info .i {
+  font-size: small;
+}
+
+.photocount.hasphotos, .tipscount.hastips, .listcount.islisted {
+  border-bottom: 1px dashed gray;
+  cursor: pointer;
+}
+
+.searchdiv label {
+  font-size: 90%;
+}
+.venue.private, .venue.home, .venue.merged, .venue.deleted, .venue.closed, .venue.gone {
+  background-color: #eee;
+}
+
+.venue {
+  position: relative;
+  .bottom {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
+.catRotateButtons {
+  position: relative;
+  left: -2em;
+  margin-left: -3em;
+}
+
+.full_category.removed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.full_category.madeprimary {
+  // border-bottom: 1px solid black;
+  // color: gray;
+  font-weight: bold;
+}
+.pending_category {
+  font-style: italic;
+}
+
+.full_category {
+  border-bottom: 1px dashed gray;
+  cursor: pointer;
+}
+.photocount-inner {
+  border-bottom: 1px dashed gray;
+  cursor: pointer;
+}
+
+.popover {
+  width: 400px;
+  max-width: 400px;
+  .close {
+    margin-top: -3px;
+  }
+  .comment {
+    width: 21em;
+  }
+  .popover-title a {
+    border-bottom: 1px dashed gray;
+  }
+  form.venueedit {
+    .control-label {
+      width: 120px;
+    }
+    .control-group {
+      margin-bottom: 4px;
+    }
+    .controls {
+      margin-left: 130px;
+    }
+    input.venuedetails_twitter {
+      width: 324px;
+    }
+    .form-actions {
+      padding-left: 0;
+    }
+    input {
+      width: 350px;
+    }
+    .tab-content {
+      padding: 1em;
+    }
+  }
+}
+
+.popover.wider {
+  width: 400px;
+  max-width: 400px;
+}
+
+.popover.ontop {
+  z-index: 1050;
+}
+
+.popover.superwide {
+  width: 625px;
+  max-width: 625px;
+}
+
+.popover.superduperwide {
+  width: 800px;
+  max-width:800px;
+}
+
+.popover .thumbnails li {
+  margin-left: 0;
+  margin-right: 10px;
+}
+div.submitwhen {
+  margin-bottom: 1em;
+}
+
+.describesubmitwhen {
+  font-size: 70%;
+  a {
+    border-bottom: 1px dashed gray
+  }
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.sortbuttons {
+  margin-top: 3px;
+  a.sortbutton.btn-mini {
+    font-size: 75%;
+  }
+}
+
+.closetext {
+  font-size: 70%;
+  margin-top: -10px;
+  margin-left: 55px;
+  margin-bottom: 10px;
+}
+.addcomment a, a.privateflag {
+  border-bottom: 1px dashed gray;
+}
+a.chooserecentcat {
+  :hover {
+    text: white !important;
+    background-color: white !important;
+    text-decoration: none !important;
+  }
+}
+.bubblecontainer {
+  position: relative;
+}
+.thumbnail .attribution {
+  max-height: 2em;
+  height: 2em;
+  overflow-y: hidden;
+}
+
+.bubble {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.05) 2px 2px 4px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.05) 2px 2px 4px 0;
+  box-shadow: rgba(0, 0, 0, 0.05) 2px 2px 4px 0;
+  background: #fdf7d8;
+  border: 1px solid #f0ebcd;
+  float: left;
+  margin-bottom: 10px;
+  margin-left: 13px;
+  margin-top: 5px;
+  padding: 6px;
+  width: 525px;
+  z-index: 1;
+}
+.bubble:before {
+  margin-top: -10px;
+  border-left-style: none;
+  left: 32px;
+  top: 20px;
+  z-index: 2;
+  border-width: 10px;
+  border-color: transparent;
+  border-right-color: #fdf7d8;
+  border-style: solid;
+  content: "";
+  height: 0;
+  position: absolute;
+  width: 0;
+  content: "";
+  display: block;
+}
+.bubblecontainer img {
+  float: left;
+  position: relative;
+  top: 6px;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+div.clear {
+  clear: both;
+}
+
+.attribution {
+  text-align: right;
+  font-size: 70%;
+}
+
+.venuestatus {
+  font-weight: bold;
+  color: red;
+}
+.venue.filtered {
+  display:none;
+}
+.photo_item img {
+  height: 150px;
+}
+
+.filterrow {
+  text-align: center;
+}
+
+.filterlist table {
+  width: 100%;
+}
+
+.filterlist {
+  select.opselect, select.fieldselect {
+    width: 100%;
+  }
+  .removeposition {
+    text-align: right;
+  }
+  .center {
+    text-align: center;
+  }
+  .noinput {
+    width: 206px;
+  }
+}
+.form-horizontal .filtercontrol.control-group {
+  margin-bottom: 0;
+  label {
+    margin-bottom: 0;
+  }
+}
+form.filterform.form-horizontal {
+  margin-bottom: 4px;
+}
+
+.filterlink {
+  text-align: left;
+  margin-top: -1em;
+}
+
+.hidefilter {
+  left: 20px;
+}

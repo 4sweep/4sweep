@@ -1,0 +1,51 @@
+<div class="modal hide fade" id='pagepicker'>
+  <div class="modal-header"><h2>Page Search Results</h2></div>
+  <div class="modal-body">
+    {{#if results.length}}
+    <div class="alert alert-info">{{results.length}} chains matched your search.  Please select one:</div>
+      {{#each results}}
+
+      <div class="compactchain row-fluid">
+        <span class="span2 center photocontainer">
+          <img src="{{photo.prefix}}64x64{{photo.suffix}}" class="previewphoto">
+        </span>
+        <span class="span8">
+          <h5><a href="#" class='selectpage' data-pageid="{{id}}" target="_blank">{{firstName}} {{lastName}}</a> <a href="https://foursquare.com/p/{{id}}" target="_blank"><i class="i-link-ext"></i></a>
+          {{#is type 'chain'}}(Chain){{/is}}
+          {{#is type 'celebrity'}}(Celebrity){{/is}}
+          {{#is type 'venuePage'}}(Venue Page){{/is}}
+          {{#is type 'page'}}(Page){{/is}}
+          {{#if superuser}}(SU{{superuser}}){{/if}}
+          </h5>
+          {{#if homeCity}}Home City: {{homeCity}} <br>{{/if}}
+
+          <span class="relationship">
+            {{#is relationship 'self'}}This is your profile<br>{{/is}}
+            {{#is relationship 'friend'}}You are friends with {{firstName}} {{lastName}}<br>{{/is}}
+            {{#is relationship 'pendingMe'}}You have a pending friend request from {{firstName}} {{lastName}}<br>{{/is}}
+            {{#is relationship 'pendingThem'}}You have sent {{firstName}} {{lastName}} a friend request<br>{{/is}}
+            {{#is relationship 'followingThem'}}You are following {{firstName}} {{lastName}}<br>{{/is}}
+          </span>
+
+          {{#if contact.facebook}} <span class='coolseparator'><a href="https://facebook.com/{{contact.facebook}}" target="_blank"><i class="i-facebook"></i>Facebook</a></span>{{/if}}
+          {{#if contact.twitter}} <span class='coolseparator'><a href="https://twitter.com/{{contact.twitter}}" class='coolseparator' target="_blank"><i class="i-twitter"></i>@{{contact.twitter}}</a></span>{{/if}}
+
+          <br>
+          {{#if pageInfo.links.count}}<a href="{{pageInfo.links.items.0.url}}" class='truncateurl'>{{pageInfo.links.items.0.url}}</a><br>{{/if}}
+
+          {{#if followers.count}}{{followers.count}} followers<br>{{/if}}
+        </span>
+        <span class="span2">
+          <a href="#" class="btn btn-primary selectpage" data-pageid="{{id}}">Select</a>
+        </span>
+      </div>
+
+      {{/each}}
+    {{else}}
+    <div class="alert alert-info">No chains matching your search were found</div>
+    {{/if}}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  </div>
+</div>

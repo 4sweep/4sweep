@@ -1,0 +1,20 @@
+<p>Filters help you narrow down the results of an existing search.</p>
+
+<p>First, search for a keyword, category, and area in the search bar above the results.
+Next, specify a filter here to narrow your results.  Type a filter or use the Edit
+button to construct it from a drop-down.</p>
+<p><strong>Tips</strong>:</p>
+<ul>
+<li>You can negate any filter by putting a &quot;-&quot; in front of it</li>
+<li>Separate multiple filters with a space or 'AND'. If you specify multiple filters,
+only venues that match ALL of the filters will be shown.</li>
+<li>You can specify multiple strings to match for any field, separated by commas.
+Venues that match ANY of those strings will match your filter.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>category=&quot;Brewery&quot;,&quot;Cocktail Bar&quot;,&quot;Pub&quot;</code>: Category is Brewery, Cocktail Bar or Pub</li>
+<li><code>name:Tesco -name:&quot;Tesco Express&quot; -name:&quot;Tesco Metro&quot;</code>: Name ontains 'Tesco', but not 'Tesco Metro' or 'Tesco Express'.</li>
+<li><code>age > 1 week AND age &lt; 1 month</code>: Venues created between 1 week and 1 month ago</li>
+<li><code>-verified users &lt; 15 age > 1 year</code>: Unverified venues with fewer than 15 users that were created more than a year ago</li>
+</ul>

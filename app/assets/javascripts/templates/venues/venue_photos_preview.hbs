@@ -1,0 +1,14 @@
+<ul class="photos thumbnails">
+  {{#each photos}}
+  <li class="span4">
+    <div class="thumbnail">
+      <img src="{{prefix}}300x300{{suffix}}" class="venueimage" width="150px" height="150px">
+      <div class="attribution">
+        – <span class="username">{{user.firstName}} {{user.lastName}}</span> · <span class="date">{{moment createdAt}}</span>
+      </div>
+    </div>
+  </li>
+  {{else}}
+  <p>No photos found</p>
+  {{/each}}
+</ul>

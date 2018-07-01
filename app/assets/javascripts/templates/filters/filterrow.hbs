@@ -1,0 +1,67 @@
+{{#with filter}}
+<tr class='control-group filterrow'>
+  <td class="fieldposition center span2">
+    <select name="field[]" id="field" class='fieldsselect span2'>
+      <option data-type='text'
+              data-operandplaceholder="e.g., &quot;Broadway Ave.&quot;,&quot;Zoo&quot;"
+              value="any">Any Field</option>
+      <option data-type='text'
+              data-operandplaceholder="e.g., &quot;Volcano&quot;,&quot;Comedy Club&quot;"
+              value="category">Primary Category</option>
+      <option data-type='text'
+              data-operandplaceholder="e.g., &quot;Empire State Building&quot;"
+              value="name">Name</option>
+      <option data-type='text'
+              data-operandplaceholder="e.g., &quot;Broadway&quot;"
+              value="address">Address</option>
+      <option data-type='text'
+              data-operandplaceholder="e.g., &quot;Broadway&quot;"
+              value="crossStreet">Cross Street</option>
+      <option data-type='text'
+              data-operandplaceholder="e.g., &quot;New York&quot;"
+              value="city">City</option>
+      <option data-type="text"
+              data-operandplaceholder="e.g., &quot;New York&quot;"
+              value="state" >State</option>
+      <option data-type='text'
+              value="postalCode">Postal Code</option>
+      <option data-type="text"
+              data-operandplaceholder="e.g., &quot;United States&quot;,&quot;US&quot;"
+              value="country" >Country</option>
+      <option data-type='text'
+              value="twitter">Twitter</option>
+      <option data-type='text'
+              value="facebook">Facebook</option>
+      <option data-type='text'
+              value="phone">Phone</option>
+      <option data-type='text'
+              data-operandplaceholder="e.g., &quot;foursquare.com&quot;"
+              value="url">URL</option>
+      <option data-type='bool'
+              value="private">Private Venue</option>
+      <option data-type='bool'
+              value="locked">Locked Venue</option>
+      <option data-type='bool'
+              value="closed">Closed Venue</option>
+      <option data-type='bool'
+              value="verified">Verified Venue</option>
+{{!--       <option data-type='bool'
+              value="flagged">Already Flagged</option> --}}
+      <option data-type='bool'
+              value="home">Home</option>
+      <option data-type='numeric' value="tips">Tip Count</option>
+      <option data-type='numeric' value="checkins">Checkins Count</option>
+      <option data-type='numeric' value="users">Users Count</option>
+      <option data-type='numeric' value="herenow">Here Now</option>
+      <option data-type='duration' value="age">Venue Age</option>
+    </select>
+  </td>
+  <td class="operatorposition center">
+    {{>filters/_operatorselect}}
+  </td>
+  <td class="operandposition">
+    {{>filters/_operand}}
+  </td>
+  <td class='removeposition'><a class="btn remove"><i class="icon-minus-sign"></i></a></td>
+</tr>
+{{/with}}
