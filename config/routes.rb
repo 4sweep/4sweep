@@ -1,7 +1,8 @@
 Foursweep::Application.routes.draw do
-  constraints(:host => /www.4sweep.com/) do
-    root :to => redirect("https://4sweep.com")
-    match '/*path', :to => redirect {|params| "https://4sweep.com/#{params[:path]}"}
+  constraints(host: /^www\./i) do
+    match '(*any)' => redirect { |params, request|
+      URI.parse(request.url).tap { |uri| uri.host.sub!(/^www\./i, '') }.to_s
+    }
   end
 
   match "changes" => 'changelog#changes'
