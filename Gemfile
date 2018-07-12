@@ -56,7 +56,7 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '3.1.4'
 gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password

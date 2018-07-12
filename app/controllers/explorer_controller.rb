@@ -8,6 +8,7 @@ class ExplorerController < ApplicationController
     @lat ||= 40.664167
     @lng ||= -73.938611
     @client_id = Settings.app_id
+    @google_maps_key = Settings.google_maps_key
   end
 end
 
