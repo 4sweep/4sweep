@@ -144,7 +144,7 @@ class ExportAction extends VenueActionPopover
     data = (id for own id, element of @explorer.selected)
     @openGeneratedLink
       target: "_blank"
-      href: "http://4sq.neuralab.cc/load.php?venues=" + data.join(",")
+      href: "http://4sq.eliotools.site/load.php?venues=" + data.join(",")
 
   exportCSV: () ->
     header = [
