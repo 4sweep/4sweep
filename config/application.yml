@@ -1,6 +1,10 @@
 defaults: &defaults
 
 development:
+
+test:
+
+production:
   app_id: "<%= ENV['FOURSQUARE_CLIENT_ID'] %>"
   app_secret: "<%= ENV['FOURSQUARE_CLIENT_SECRET'] %>"
   callback_url: "<%= ENV['OAUTH_CALLBACK'] %>"
@@ -10,16 +14,3 @@ development:
   cloudwatch_secret: "<%= ENV['CLOUDWATCH_SECRET'] %>"
   google_maps_key: "<%= ENV['GOOGLE_MAPS_KEY'] %>"
   s3_bucket: "<%= ENV['AWS_S3_BUCKET'] %>"
-
-test:
-
-production:
-  app_id: "REPLACE_ME"
-  app_secret: "REPLACE_ME"
-  aws_key: "REPLACE_ME"
-  aws_secret: "REPLACE_ME"
-  callback_url: "REPLACE_ME"
-  cloudwatch_key: "REPLACE_ME"
-  cloudwatch_secret: "REPLACE_ME"
-  google_maps_key: "REPLACE_ME"
-  s3_bucket: "REPLACE_ME"
