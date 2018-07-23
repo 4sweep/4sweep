@@ -1,15 +1,15 @@
 defaults: &defaults
 
 development:
-  app_id: "REPLACE_ME"
-  app_secret: "REPLACE_ME"
-  callback_url: "http://localhost:3000/session/callback"
-  aws_key: "REPLACE_ME"
-  aws_secret: "REPLACE_ME"
-  cloudwatch_key: "REPLACE_ME"
-  cloudwatch_secret: "REPLACE_ME"
-  google_maps_key: "REPLACE_ME"
-  s3_bucket: "REPLACE_ME"
+  app_id: "<%= ENV['FOURSQUARE_CLIENT_ID'] %>"
+  app_secret: "<%= ENV['FOURSQUARE_CLIENT_SECRET'] %>"
+  callback_url: "<%= ENV['OAUTH_CALLBACK'] %>"
+  aws_key: "<%= ENV['AWS_KEY'] %>"
+  aws_secret: "<%= ENV['AWS_SECRET'] %>"
+  cloudwatch_key: "<%= ENV['CLOUDWATCH_KEY'] %>"
+  cloudwatch_secret: "<%= ENV['CLOUDWATCH_SECRET'] %>"
+  google_maps_key: "<%= ENV['GOOGLE_MAPS_KEY'] %>"
+  s3_bucket: "<%= ENV['AWS_S3_BUCKET'] %>"
 
 test:
 
