@@ -11,6 +11,11 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
+.DS_Store
+package-lock.json
 /log/*.log.*
 /log/*.log
 /tmp
+/config/app_environment_variables.rb
+vendor/.DS_Store
+vendor/bundle/

@@ -61,7 +61,7 @@ gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
+gem 'test-unit', '~> 3.0'
 
 gem 'execjs'
 gem "libv8", "= 3.16.14.19"

@@ -155,6 +155,7 @@ GEM
       rack (>= 1.2, < 3)
     pnotify-rails (1.2.2)
     polyglot (0.3.5)
+    power_assert (1.1.3)
     public_suffix (2.0.5)
     rack (1.4.7)
     rack-accept (0.4.5)
@@ -188,7 +189,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rollbar (2.16.2)
+    rollbar (2.16.3)
       multi_json
     rubyzip (1.2.1)
     sass (3.2.14)
@@ -204,9 +205,11 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sshkit (1.16.1)
+    sshkit (1.17.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    test-unit (3.2.8)
+      power_assert
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -221,7 +224,7 @@ GEM
       rack-accept (~> 0.4)
       tilt (>= 1.4, < 3)
     tzinfo (0.3.54)
-    uglifier (4.1.14)
+    uglifier (4.1.16)
       execjs (>= 0.3.0, < 3)
     underscore-rails (1.8.3)
     unf (0.1.4)
@@ -268,6 +271,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   select2-rails (~> 3.5)
   settingslogic
+  test-unit (~> 3.0)
   therubyracer
   turnout
   uglifier
@@ -275,4 +279,4 @@ DEPENDENCIES
   yaml_db
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
