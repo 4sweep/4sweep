@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     end
     logger.error "Foursquare2::APIError: #{error.message}"
     logger.error error.backtrace.join("\n")
-    logger.error "Auth token: #{@current_user.access_token}"
+    #logger.error "Auth token: #{@current_user.access_token}"
     redirect_to :controller => :session, :action => :error
     return
   end

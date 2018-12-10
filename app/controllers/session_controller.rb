@@ -15,13 +15,14 @@ class SessionController < ApplicationController
       # set up new oauth2 client, get token
       begin
         token  = oauth_client.auth_code.get_token(code, :redirect_uri => Settings.callback_url)
+        logger.error "Token: #{token.inspect}"
         cookies.permanent.signed[:access_token] = token.token
       rescue OAuth2::Error => e
         flash[:notice] = "Login Failure: " + e.message
       end
-
     end
 
+    logger.error "Confirm Token: #{cookies.signed[:access_token]}"
     # Now that we have an access token, let's see if we have a user for this person:
     foursquare = Foursquare2::Client.new(:oauth_token => cookies.signed[:access_token], :connection_middleware => [Faraday::Response::Logger, FaradayMiddleware::Instrumentation], :api_version => '20140107')
 
