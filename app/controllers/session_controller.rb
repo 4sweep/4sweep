@@ -19,7 +19,8 @@ class SessionController < ApplicationController
         logger.error "Token: #{token.inspect}"
         cookies.permanent.signed[:access_token] = token.token
       rescue OAuth2::Error => e
-        flash[:notice] = "Login Failure: " + e.message
+        logger.error "Login failure: #{e.message} // #{token.inspect}"
+        flash[:notice] = "Login Failure: #{e.message}"
       end
     end
 
