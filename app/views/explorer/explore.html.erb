@@ -3,13 +3,13 @@
   <%= javascript_include_tag 'advancedsearch' %>
 
   <script type="text/javascript"
-      src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=drawing,geometry">
+          src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=drawing,geometry&amp;key=<%= @google_maps_key %>">
   </script>
 
   <script type="text/javascript">
     var lat =  <%= @lat %>
     var lng =  <%= @lng %>
-    var token = '<%= cookies[:access_token] %>'
+    var token = '<%= cookies.signed[:access_token] %>'
     var sulevel = '<%= @current_user.level %>'
     var categories = <%=raw @categories %>
     var client_id = '<%= @client_id %>'

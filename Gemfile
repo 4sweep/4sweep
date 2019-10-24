@@ -56,12 +56,12 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '3.1.4'
 gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
+gem 'test-unit', '~> 3.0'
 
 gem 'execjs'
 gem "libv8", "= 3.16.14.19"
@@ -69,8 +69,10 @@ gem 'therubyracer'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :production do
+  # Use unicorn as the app server
+  gem 'unicorn'
+end
 
 # Deploy with Capistrano
 group :development do

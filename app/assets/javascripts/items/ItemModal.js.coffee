@@ -236,7 +236,7 @@ class ItemModal
           when textStatus == 'timeout' then "The request timed out. Please try again."
           else
             # Rollbar.error("AJAX Items Modal Error: ", {xhr: xhr, textStatus: textStatus, errorThrown: errorThrown})
-            "An unknown error occurred. Try again, and if the problem continues, please email 4sweep@4sweep.com"
+            "An unknown error occurred. Try again, and if the problem continues, please email foursweep@foursquare.com"
         @modal.find(".placeholder").html(HandlebarsTemplates['items/retry_placeholder']({errorText: errorText}))
 
       data: @requestParams()

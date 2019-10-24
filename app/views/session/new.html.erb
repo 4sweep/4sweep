@@ -32,13 +32,6 @@
       <li>Send your flags to Foursquare and track their approval</li>
     </ul>
   </div>
-  <div class="span3">
-    <p><strong>Popular Among Foursquare Superusers</strong></p>
-    <ul>
-      <p>Used by <%= number_with_delimiter(User.count, :delimiter => ',') %> superusers</p>
-      <p>Over <%= number_to_human(Flag.count, :delimiter => ",").downcase %> edits made</p>
-    </ul>
-  </div>
 
   </div>
   <hr>
@@ -49,7 +42,7 @@
     <hr>
     <p class='small'>4sweep is a Foursquare API tool that connects to your Foursquare account. 4sweep only uses your Foursquare account to submit flags to Foursquare, and collects only the minimum information needed to support that, such as your name and approximate last known location.
     </p><p class='small'>
-      This service uses the Foursquare® application programming interface but is not endorsed or certified by Foursquare Labs, Inc. All of the Foursquare® logos (including all badges) and trademarks displayed on this service are the property of Foursquare Labs, Inc.Some graphics from <a href="http://subtlepatterns.com/">Subtle Patterns</a> under CC BY-SA 3.0.</p>
+      All of the Foursquare® logos (including all badges) and trademarks displayed on this service are the property of Foursquare Labs, Inc. Some graphics from <a href="http://subtlepatterns.com/">Subtle Patterns</a> under CC BY-SA 3.0.</p>
 
   </div>
 </div>

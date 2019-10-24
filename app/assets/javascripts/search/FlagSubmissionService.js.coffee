@@ -49,7 +49,7 @@ class FlagSubmissionService
       when textStatus == 'timeout' then "The request timed out. Please try again."
       else
         # Rollbar.error("AJAX error: ", {xhr: xhr, textStatus: textStatus, errorThrown: errorThrown})
-        "An unknown error occurred. Try again, and if the problem continues, please email 4sweep@4sweep.com"
+        "An unknown error occurred. Try again, and if the problem continues, please email foursweep@foursquare.com"
     $.pnotify
       title: "An error occurred"
       text: "\n" + errorText

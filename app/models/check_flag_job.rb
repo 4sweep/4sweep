@@ -1,28 +1,12 @@
-class SubmitFlagJob < Struct.new(:flag, :token)
+class CheckFlagJob < Struct.new(:flag, :token)
 
   def perform
-    flag.submit(token)
-  end
-
-  def success(job)
-    flag.job_id = nil
-    flag.save
+    flag.access_token = token
+    flag.resolved?
   end
 
   def error(job, exception)
     @exception = exception
-  end
-
-  def failure(job)
-    flag.job_id = nil
-    flag.status = "failed"
-    flag.save
-  end
-
-  def max_attempts
-    # Retries happen at 5 + n^4 seconds, where n = number of attempts
-    # 12 gives last retry at 6 hours
-    return 12
   end
 
   def reschedule_at(time_now, attempts)
