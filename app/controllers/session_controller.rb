@@ -83,7 +83,7 @@ class SessionController < ApplicationController
         Settings.app_secret,
         :authorize_url => "/oauth2/authorize",
         :token_url => "/oauth2/access_token",
-        :site => 'https://foursquare.com')
+        :site => 'https://api.foursquare.com')
   end
 
 end
