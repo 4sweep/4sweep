@@ -96,12 +96,14 @@ class Flag < ActiveRecord::Base
     Delayed::Job.enqueue(CheckFlagJob.new(self, delayed_token), :run_at => 20.seconds.from_now, :queue => 'check', :priority => (type == "PhotoFlag" ? 55 : 45))
 
     flag_json = "NO FLAGS"
-    if result && result.flags
-      flag_json = result.flags.to_json
-    elsif result && result.woes
-      flag_json = result.woes.to_json
+    if result && result.kind_of?(Array)
+      if result.flags
+        flag_json = result.flags.to_json
+      elsif result.woes
+        flag_json = result.woes.to_json
+      end
     end
-    Rails.logger.info("RESPONSE: #{id}\t#{type}\t#{flag_json}")
+    Rails.logger.info("RESPONSE: #{id}\t#{type}\t#{flag_json}\t#{result.inspect}")
     result
   end
 
