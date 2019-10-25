@@ -93,6 +93,10 @@ class FlagsController < ApplicationController
     end
   end
 
+  def show
+    render :json => {}, :status => 404
+  end
+
   def newcount
     render :json => {:newcount => newflags}, status => 200
   end
