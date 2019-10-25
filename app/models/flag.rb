@@ -85,7 +85,7 @@ class Flag < ActiveRecord::Base
       raise e
     end
     Rails.logger.debug("Flag (#{self.type}): #{result.inspect}")
-    if (self.creatorId.nil? && result && result['creator'])
+    if (self.creatorId.nil? && result && result.kind_of?(Array) && result['creator'])
       self.creatorId = result['creator']['id']
       self.creatorName = ((result['creator']['firstName'] || "") + " " + (result['creator']['lastName'] || "")).strip
     end
