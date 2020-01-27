@@ -49,7 +49,7 @@ class ListSearchByUrl extends ListSearch
         oauth_token: token
         m: 'swarm'
       success: (data) =>
-        if (lists = (data.response.lists.items.filter (e) -> e.url.toLowerCase() == targetpath.toLowerCase())).length > 0
+        if (lists = (data.response.lists.items.filter (e) -> e.url.toLowerCase().indexOf(list) >= 0)).length > 0
           @listId = lists[0].id
           ListSearchByUrl.__super__.perform.call(this) # hacky, but essentially super.perform()
         else if data.response.lists.count > tryoffset+limit
