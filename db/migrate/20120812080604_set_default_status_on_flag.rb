@@ -1,4 +1,4 @@
-class SetDefaultStatusOnFlag < ActiveRecord::Migration
+class SetDefaultStatusOnFlag < ActiveRecord::Migration[4.2]
   def up
     change_column :flags, :status, :string, :default => 'new'
   end

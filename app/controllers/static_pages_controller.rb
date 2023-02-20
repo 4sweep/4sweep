@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_filter :require_user, :flag_counts
+  before_action :require_user, :flag_counts
 
   def suggestions
   end
@@ -11,5 +11,8 @@ class StaticPagesController < ApplicationController
   end
 
   def changelog
+  end
+
+  def about
   end
 end

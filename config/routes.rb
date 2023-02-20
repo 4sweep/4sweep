@@ -1,33 +1,32 @@
 Foursweep::Application.routes.draw do
-  constraints(host: /^www\./i) do
-    match '(*any)' => redirect { |params, request|
-      URI.parse(request.url).tap { |uri| uri.host.sub!(/^www\./i, '') }.to_s
-    }
-  end
+  match "(*any)",
+    to: redirect(subdomain: ""),
+    via: :all,
+    constraints: { subdomain: "www" }
 
-  match "changes" => 'changelog#changes'
+  match "changes" => 'changelog#changes', via: [:get, :post]
 
-  match "stats/" => 'stats#stats'
+  match "stats/" => 'stats#stats', via: [:get, :post]
 
-  match "stats/:user_id" => 'stats#stats'
-  match "category_changes" => 'stats#category_changes'
+  match "stats/:user_id" => 'stats#stats', via: [:get, :post]
+  match "category_changes" => 'stats#category_changes', via: [:get, :post]
 
-  match "about" => 'static_pages#about'
-  match "about/faq" => 'static_pages#faq'
-  match "about/changelog" => 'static_pages#changelog'
-  match "about/contact" => 'static_pages#contact'
-  match "about/suggestion" => 'static_pages#suggestion'
+  match "about" => 'static_pages#about', via: [:get, :post]
+  match "about/faq" => 'static_pages#faq', via: [:get, :post]
+  match "about/changelog" => 'static_pages#changelog', via: [:get, :post]
+  match "about/contact" => 'static_pages#contact', via: [:get, :post]
+  match "about/suggestion" => 'static_pages#suggestion', via: [:get, :post]
 
-  match 'heartbeat' => 'heartbeat#heartbeat'
+  match 'heartbeat' => 'heartbeat#heartbeat', via: [:get, :post]
   get "flags/list"
   get "flags/check"
   get "flags/newcount"
-  match "flags/statuses"
+  match "flags/statuses", via: [:get, :post]
   match 'flags/run' => 'flags#run', :via=>:post
   match 'flags/resubmit' => 'flags#resubmit', :via=>:post
   match 'flags/hide' => 'flags#hide', :via=>:post
-  match 'flags/check' => 'flags#check'
-  match 'flags/cancel' => 'flags#cancel'
+  match 'flags/check' => 'flags#check', via: [:get, :post]
+  match 'flags/cancel' => 'flags#cancel', via: [:get, :post]
 
   get "explorer/explore"
 

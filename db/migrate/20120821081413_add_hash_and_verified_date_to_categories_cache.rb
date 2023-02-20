@@ -1,4 +1,4 @@
-class AddHashAndVerifiedDateToCategoriesCache < ActiveRecord::Migration
+class AddHashAndVerifiedDateToCategoriesCache < ActiveRecord::Migration[4.2]
   def change
     add_column :categories_caches, :last_verified, :timestamp
     add_column :categories_caches, :digest, :string

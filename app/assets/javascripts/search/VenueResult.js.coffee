@@ -54,6 +54,7 @@ class VenueResult
     unless @venuedata
       throw "Tried to create a VenueResult without venue data"
     @id = @venuedata.id
+    @createdAt = @venuedata.creationDate
     @existingFoursweepFlags = {}
     @listeners = new Listeners(['fullvenuecomplete', 'merged', 'gone', 'pulling-statuschanged', 'markedflagged',
                                 'unmarkedflagged', 'pulling-edits-done', 'pulling-flags-done', 'pulling-full-done',

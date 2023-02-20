@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
   attr_accessor :code
-  skip_before_filter :set_foursquare_user, :only => [:error]
+  skip_before_action :set_foursquare_user, :only => [:error]
 
   def callback
     code = params[:code]

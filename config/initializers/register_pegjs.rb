@@ -15,7 +15,7 @@ module Pegjs
       else
         allowedStartRules = ""
       end
-      return Pegjs.parse(data, :exportvar => exportvar, :allowedStartRules => allowedStartRules)
+      return Pegjs.parse(data, :allowedStartRules => allowedStartRules)
     end
   end
 
@@ -26,4 +26,6 @@ module Pegjs
   end
 end
 
-Rails.application.assets.register_engine '.pegjs', Pegjs::Template
+Rails.application.config.assets.configure do |env|
+  env.register_engine('.pegjs', Pegjs::Template)
+end

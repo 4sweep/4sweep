@@ -14,7 +14,7 @@ module Pegjs
       if (options[:allowedStartRules].size > 0)
         allowedStartRules = "--allowed-start-rules " + options[:allowedStartRules]
       end
-      stdout, stderr, status = Open3.capture3("pegjs -e #{options[:exportvar]} #{allowedStartRules}", :stdin_data => grammar)
+      stdout, stderr, status = Open3.capture3("peggy --format globals --export-var peggyparser #{allowedStartRules}", :stdin_data => grammar)
       throw stderr unless status.exitstatus.zero?
       return stdout if status.exitstatus.zero?
       raise ExecutionError.new(stderr, status.exitstatus)

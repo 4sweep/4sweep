@@ -48,24 +48,24 @@ Flag Features
 Configuration and setup
 -----------------------
 
-Foursweep is currently built for Rails 3.2 (Ruby 2.0.0) and uses Bootstrap 2.0.  You will need
+Foursweep is currently built for Rails 5.2 (Ruby 2.7.0) and uses Bootstrap 2.0.  You will need
 to install all required gems. It relies on a database supported by ActiveRecord,
 and has only been tested with MySQL 5.5/5.6.
 
-Additionally, you will need to install PEG.js, a JavaScript parser generator
+Additionally, you will need to install peggy, a JavaScript parser generator
 library.  The easiest way to do this is via npm:
 
 ```shell
-$ npm install pegjs
+$ npm install -g peggy
 ```
-After installing PEG.js, make sure that it is executable on your command line:
+After installing peggy, make sure that it is executable on your command line:
 
 ```shell
-$ pegjs -v
+$ peggy -v
 PEG.js 0.8.0
 ```
 
-You only need PEG.js in your development environment. It is used as part of the
+You only need peggy in your development environment. It is used as part of the
 Rails asset pipeline to generate a javascript parser.
 
 

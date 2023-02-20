@@ -1,4 +1,4 @@
-class AddStatusIndexToFlags < ActiveRecord::Migration
+class AddStatusIndexToFlags < ActiveRecord::Migration[4.2]
   def change
     add_index :flags, :status
   end

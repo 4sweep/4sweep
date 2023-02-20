@@ -1,4 +1,4 @@
-class RemoveJsonFieldsFromFlags < ActiveRecord::Migration
+class RemoveJsonFieldsFromFlags < ActiveRecord::Migration[4.2]
   def up
     remove_column :flags, :primaryJSON
     remove_column :flags, :secondaryJSON

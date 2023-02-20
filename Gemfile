@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2'
+gem 'rails', '~> 5.2.8.1'
 gem 'bootstrap-sass', '~> 2.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '~> 0.3.20'
+gem 'mysql2', '~> 0.5.4'
+gem 'protected_attributes_continued'
 
 gem 'rollbar'
 
@@ -34,7 +35,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'pnotify-rails', '~> 1'
 gem 'aws-sdk', '~> 1'
 gem 'turnout'
-gem 'select2-rails', '~> 3.5'
+gem 'select2-rails'
 gem 'underscore-rails'
 gem 'delayed_job_recurring'
 gem 'net-ssh', '~>2.9.2'
@@ -42,21 +43,21 @@ gem 'net-ssh', '~>2.9.2'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'jquery-cookie-rails'
+  gem 'js_cookie_rails'
   gem 'sass', '3.2.14'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails',   '~> 5.0.0'
+  gem 'coffee-rails', '~> 5.0.0'
 
   gem 'pegjs', :path => 'vendor/ruby-pegjs'
   gem 'fontello_rails_converter',  '0.3.3'
-  gem 'handlebars_assets', '~> 0.18.0'
+  gem 'handlebars_assets', '~> 0.23.9'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier'
 end
 
-gem 'jquery-rails', '3.1.4'
+gem 'jquery-rails', '4.5.0'
 gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
@@ -64,8 +65,7 @@ gem 'jquery-ui-rails'
 gem 'test-unit', '~> 3.0'
 
 gem 'execjs'
-gem "libv8", "= 3.16.14.19"
-gem 'therubyracer'
+# gem "libv8", "= 8.4.255.0"
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

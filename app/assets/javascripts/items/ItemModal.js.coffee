@@ -27,7 +27,7 @@ class ItemModal
     closed: @checkCookie("closed_visible")
 
   checkCookie: (cookiename) ->
-    ($.cookie(cookiename) || "hidden") == "shown"
+    (Cookies.get(cookiename) || "hidden") == "shown"
 
   clearItems: () ->
     @modal.find(".modal-body").html(HandlebarsTemplates["#{@type}s/grid"]())

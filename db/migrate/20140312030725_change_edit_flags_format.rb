@@ -1,4 +1,4 @@
-class ChangeEditFlagsFormat < ActiveRecord::Migration
+class ChangeEditFlagsFormat < ActiveRecord::Migration[4.2]
   def up
     EditVenueFlag.all.each do |flag|
       newvalues = flag.edits 

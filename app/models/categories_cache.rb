@@ -4,7 +4,7 @@ class CategoriesCache < ActiveRecord::Base
   MAX_AGE = 1.hour
 
   def self.latest
-    cat = first(:order => "created_at desc")
+    cat = order(:created_at).last
     cat ||= fetch
     if (cat.last_verified == nil) or (Time.now - cat.last_verified > MAX_AGE) and (Delayed::Job.where('queue = ?', 'category_refresh').count == 0)
       delay(:queue => "category_refresh", :priority => 10).fetch
@@ -15,7 +15,7 @@ class CategoriesCache < ActiveRecord::Base
   def self.fetch
     foursquare_userless = Foursquare2::Client.new(:client_id => Settings.app_id, :client_secret => Settings.app_secret, :api_version => "20140218")
     c = foursquare_userless.venue_categories.to_json
-    latest = first(:order => "created_at desc")
+    latest = order(:created_at).last
     test = new(:categories => c)
     if latest && test.digest == latest.digest
       latest.last_verified = Time.now

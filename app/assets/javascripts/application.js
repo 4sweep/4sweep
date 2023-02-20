@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.cookie
+//= require js.cookie
 //= require jquery-ui/effect.all
-//= require select2
+//= require select2-full
 //= require bootstrap-dropdown
 //= require bootstrap-tooltip
 //= require bootstrap-popover

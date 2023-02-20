@@ -1,4 +1,4 @@
-class MakeUserCacheLarger < ActiveRecord::Migration
+class MakeUserCacheLarger < ActiveRecord::Migration[4.2]
   def up
     change_column :users, :user_cache, :text, :limit => 16777215 
   end

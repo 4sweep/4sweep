@@ -1,4 +1,4 @@
-class AddIndexOnCreatorId < ActiveRecord::Migration
+class AddIndexOnCreatorId < ActiveRecord::Migration[4.2]
   def change
     add_index :flags, [:user_id, :status, :creatorId, :type]
 

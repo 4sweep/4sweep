@@ -305,6 +305,7 @@ expression =
   negatedexpression / positiveexpression / ""
 
 positiveunparenthesized =
+  boolvalued / numbervalued / durationvalued / textvalued / anyfield
 
 positiveexpression =
   boolvalued / numbervalued / durationvalued / textvalued / anyfield
@@ -405,7 +406,7 @@ boolvalued =
   }
 }
 
-boolfield = (private / verified / home / locked / closed) /* FIXME: 'homexxx' parses as a boolfield instead of text; add flagged here */
+boolfield = (private / verified / home / locked / closed) /* FIXME: 'asdfaaaaaavasaa' parses as a boolfield instead of text; hi there test add flagged here */
 
 private = "private"i {return fields['private'] }
 verified = "verified"i {return fields.verified}
@@ -430,7 +431,7 @@ durationvalued =
 
 agefield = "age"i {return fields.age }
 duration =
-  val:integer " "+ unit:("minute"/"hour"/"day"/"week"/"month"/"year") "s"? {return {
+  val:integer " "+ unit:("minute"/"hour"/"day"/"week"/"month"/"year"/"second") "s"? {return {
     'value': (val * units[unit]),
     'text': text(),
     'type': 'duration',

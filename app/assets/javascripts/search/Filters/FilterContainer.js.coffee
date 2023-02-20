@@ -23,7 +23,7 @@ class FilterContainer
       e.preventDefault()
       @hideFilter()
 
-    @showFilter() if $.cookie("showfilter") == 'true'
+    @showFilter() if Cookies.get("showfilter") == 'true'
 
     @container.find(".filtererror").tooltip
       trigger: "manual"
@@ -69,7 +69,7 @@ class FilterContainer
   showFilter: (val) ->
     @container.find(".filterlink").hide()
     @container.find(".filterform").show()
-    $.cookie("showfilter", "true")
+    Cookies.set("showfilter", "true")
     if val
       @container.find("input.filter").val(val)
       @container.find("input.filter").keyup()
@@ -79,7 +79,7 @@ class FilterContainer
     @container.find("input.filter").keyup()
     @container.find(".filterlink").show()
     @container.find(".filterform").hide()
-    $.cookie("showfilter", "false")
+    Cookies.set("showfilter", "false")
 
   setupFilterEditor: () ->
     filter = @container.find(".filter")

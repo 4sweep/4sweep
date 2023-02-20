@@ -1,4 +1,4 @@
-class FixIndexesOnFlags < ActiveRecord::Migration
+class FixIndexesOnFlags < ActiveRecord::Migration[4.2]
   def up
     remove_index :flags, :user_id
     add_index :flags, [:user_id, :status, :venueId]

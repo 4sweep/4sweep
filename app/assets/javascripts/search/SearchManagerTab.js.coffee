@@ -2,7 +2,7 @@ class SearchManagerTab
   constructor: (@tab, @explorer, @locationManager) ->
 
   toggles: () ->
-    $("a[href=\##{@tab.attr('id')}][data-toggle='tab']")
+    $("a[href=\"\##{@tab.attr('id')}\"][data-toggle='tab']")
 
   shown: () ->
     @locationManager.setActiveTab(this)
@@ -46,14 +46,14 @@ class PrimaryVenueSearchTab extends SearchManagerTab
     super()
 
   createSearch: (location = @locationManager.location(true)) ->
-    new PrimaryVenueSearch(@tab.find(".query").val(), location, @tab.find("input.categories").select2('val'), {loadMoreContainer: @tab.find(".loadmorecontainer")})
+    new PrimaryVenueSearch(@tab.find(".query").val(), location, @tab.find("input.categories").select2('data').map((x) -> x.id), {loadMoreContainer: @tab.find(".loadmorecontainer")})
 window.PrimaryVenueSearchTab = PrimaryVenueSearchTab
 
 class GlobalSearchTab extends SearchManagerTab
   displayControls: ['global']
   setLocationTypeOnShown: 'global'
   createSearch: () ->
-    new GlobalVenueSearch(@tab.find(".query").val(), @tab.find(".categories").select2('val'))
+    new GlobalVenueSearch(@tab.find(".query").val(), @tab.find(".categories").select2('data').map((x) -> x.id))
   setupEvents: () ->
     new CategorySelector().setupCategories @tab.find("input.categories"),
       allowMultiple: true
@@ -115,7 +115,7 @@ class MyHistorySearchTab extends SearchManagerTab
   displayControls: ['global']
   setLocationTypeOnShown: 'global'
   createSearch: ()->
-    new MyCheckinHistorySearch(@tab.find(".categories").select2('val'), @tab.find(".myhistory-start").val(), @tab.find(".myhistory-end").val(), 1, {loadMoreContainer: @tab.find(".loadmorecontainer")})
+    new MyCheckinHistorySearch(@tab.find(".categories").select2('data').map((x) -> x.id), @tab.find(".myhistory-start").val(), @tab.find(".myhistory-end").val(), 1, {loadMoreContainer: @tab.find(".loadmorecontainer")})
   setupEvents: () ->
     new CategorySelector().setupCategories @tab.find("input.categories"),
       allowMultiple: true
@@ -141,7 +141,7 @@ class ListSearchTab extends SearchManagerTab
     super()
 
   createSearch: (location = @locationManager.location()) ->
-    new ListSearchByUrl(@tab.find(".listurl").val(), location, @tab.find(".categories").select2('val'))
+    new ListSearchByUrl(@tab.find(".listurl").val(), location, @tab.find(".categories").select2('data').map((x) -> x.id))
 window.ListSearchTab = ListSearchTab
 
 

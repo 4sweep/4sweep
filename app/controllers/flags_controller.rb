@@ -1,5 +1,5 @@
 class FlagsController < ApplicationController
-  before_filter :require_user
+  before_action :require_user
 
   FLAG_TYPES = {
     "merge_flags" => {
@@ -75,7 +75,7 @@ class FlagsController < ApplicationController
 
     @flag_tabs = ['new', 'queued', 'submitted', 'resolved', 'scheduled', 'hidden/canceled', 'alternate resolution', 'other']
 
-    @total_flags_counts = @current_user.flags.count(:group => :status)
+    @total_flags_counts = @current_user.flags.group(:status).count
     @total_flags_counts.default = 0
 
     @allflagscount = @total_flags_counts.values.sum

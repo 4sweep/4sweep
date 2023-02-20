@@ -1,5 +1,5 @@
 class StatsController < ApplicationController
-  before_filter :require_user, :except => :category_changes
+  before_action :require_user, :except => :category_changes
 
   def stats
 
@@ -23,11 +23,16 @@ class StatsController < ApplicationController
       datefilter = true #no op
     end
 
-    @user_counts = obj.select("users.name, users.level, users.hometown, user_id, count(*) as flag_count").joins(:user).group('user_id').order('flag_count desc').where(datefilter, params[:date])
-    @type_counts = obj.select("type, count(*) as flag_count").group("type").order("flag_count desc").where(datefilter, params[:date])
-    @problem_counts = obj.select("problem, count(*) as flag_count").group("problem").order("flag_count desc").where("problem is not null").where(datefilter, params[:date])
-    @status_counts = obj.select("status, count(*) as flag_count").group("status").order("flag_count desc").where(datefilter, params[:date])
-    @day_counts = obj.select("date(created_at) as date, count(*) as flag_count").group("date(created_at)").order("date desc").where(datefilter, params[:date])
+    @user_counts = obj.select("users.name, users.level, users.hometown, user_id, count(*) as flag_count").joins(:user).group('user_id').order('flag_count desc')
+    @user_counts = @user_counts.where("date(flags.created_at) = ?", params[:date]) if params[:date]
+    @type_counts = obj.select("type, count(*) as flag_count").group("type").order("flag_count desc")
+    @type_counts = @type_counts.where("date(flags.created_at) = ?", params[:date]) if params[:date]
+    @problem_counts = obj.select("problem, count(*) as flag_count").group("problem").order("flag_count desc").where("problem is not null")
+    @problem_counts = @problem_counts.where("date(flags.created_at) = ?", params[:date]) if params[:date]
+    @status_counts = obj.select("status, count(*) as flag_count").group("status").order("flag_count desc")
+    @status_counts = @status_counts.where("date(flags.created_at) = ?", params[:date]) if params[:date]
+    @day_counts = obj.select("date(created_at) as date, count(*) as flag_count").group("date(created_at)").order("date desc")
+    @day_counts = @day_counts.where("date(flags.created_at) = ?", params[:date]) if params[:date]
 
   end
 

@@ -1,4 +1,4 @@
-class MakeDigestsUnique < ActiveRecord::Migration
+class MakeDigestsUnique < ActiveRecord::Migration[4.2]
   def up
     digests = CategoriesCache.all.map {|e| e.digest}.uniq
     digests.each do |d|

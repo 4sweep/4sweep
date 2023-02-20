@@ -15,11 +15,7 @@ class Explorer
     @setupPopoverButtons()
     @setupSearchTabs()
     @setupSorting()
-    @sort = JSON.parse($.cookie("sort")) ||
-      type: "natural"
-      name: "Natural"
-      dir: "up"
-      icon: "alt"  # alt = generic, name = alpha, number = numeric
+    @sort = JSON.parse(Cookies.get("sort") || '{ "type": "natural", "name": "Natural", "dir": "up", "icon": "alt"}')
     @sortResults() # Just to update icon
 
     @disableShiftSelection()
@@ -69,7 +65,7 @@ class Explorer
 
   sortResults: ->
     # save sort prefs
-    $.cookie("sort", JSON.stringify @sort)
+    Cookies.set("sort", JSON.stringify @sort)
 
     #update sort button
     @elem.find(".sortrefreshbutton").addClass("hide")
@@ -178,15 +174,15 @@ class Explorer
   setupSubmitwhen: ->
     $(".submitwhen .submitautomatically").click (e) =>
       e.preventDefault()
-      $.cookie("submitwhen", "automatically")
+      Cookies.set("submitwhen", "automatically")
       @listeners.notify("submitautomaticallychanged", true)
     $(".submitwhen .submitwait").click (e) =>
       e.preventDefault()
-      $.cookie("submitwhen", "wait")
+      Cookies.set("submitwhen", "wait")
       @listeners.notify("submitautomaticallychanged", false)
 
     # Initialize to value of cookie
-    submitwhen = $.cookie("submitwhen") || 'automatically'
+    submitwhen = Cookies.get("submitwhen") || 'automatically'
     $(".submitwhen .submit#{submitwhen}").click()
 
     $(".submitwhen-help").popover(

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   attr_accessor :current_user
   helper_method :current_user
-  before_filter :set_foursquare_user
+  before_action :set_foursquare_user
 
   def set_foursquare_user
     @current_user = get_current_user

@@ -1,4 +1,21 @@
-@import "compass/css3/columns";
+// @import "compass/css3/columns";
+@mixin column-break-after($value: auto){
+  -webkit-column-break-after: $value;
+  -moz-page-break-after: $value;
+  break-after: $value;
+}
+
+@mixin column-break-before($value: auto){
+  -webkit-column-break-before: $value;
+  -moz-page-break-before: $value;
+  break-before: $value;
+}
+
+@mixin columns($columnCount) {
+  -webkit-column-count: $columnCount;
+     -moz-column-count: $columnCount;
+          column-count: $columnCount;
+}
 
 .foursweep-search {
   .nav-tabs li a {

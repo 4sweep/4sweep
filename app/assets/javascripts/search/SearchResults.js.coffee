@@ -14,7 +14,7 @@ class SearchResults
     @listeners = new Listeners(['clearedresults', 'resultadded', 'newsearchrequested', 'resultsupdated'])
     @toggles = {}
     for field in TOGGLEABLE_FIELDS
-      @toggles[field.field] = if $.cookie("show#{field.field}") == undefined then field.default else ($.cookie("show#{field.field}") == "true")
+      @toggles[field.field] = if Cookies.get("show#{field.field}") == undefined then field.default else (Cookies.get("show#{field.field}") == "true")
 
   addResult: (venue) ->
     if @results[venue.venueresult.id]
