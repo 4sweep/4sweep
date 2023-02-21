@@ -63,7 +63,7 @@ class ExportAction extends VenueActionPopover
     popover.find(".addaction").click (e) ->
       e.preventDefault()
       return if $(this).hasClass("disabled")
-      self.addSelectedToList(popover.find('.list-chooser').select2('data'))
+      self.addSelectedToList(popover.find('.list-chooser').select2('data')[0].id)
 
     popover.find(".exportvenueids").click (e) ->
       e.preventDefault()

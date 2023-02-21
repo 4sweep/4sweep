@@ -28,7 +28,7 @@ class RecategorizeFlagPopover extends VenueFlagPopover
     popover = @trigger.data('popover')?.tip()
     extras =
       itemId: popover.find(".cat-chooser").select2('val')
-      itemName: popover.find(".cat-chooser").select2('data').text
+      itemName: popover.find(".cat-chooser").select2('data')[0].text
     $.extend super(), extras
 
 window.RecategorizeFlagPopover = RecategorizeFlagPopover
