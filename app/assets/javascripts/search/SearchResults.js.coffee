@@ -139,7 +139,7 @@ class SearchResults
     unless @search.suppressFilters
       item = $(elem).data('status')
       @toggles[item] = !@toggles[item]
-      $.cookie("show#{item}", @toggles[item])
+      Cookies.set("show#{item}", @toggles[item])
       for id, venueresult of @results
         venueresult.toggleVisibilityByStatuses(map, @toggles)
       @showStats()

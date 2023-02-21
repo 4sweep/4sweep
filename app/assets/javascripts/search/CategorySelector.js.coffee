@@ -29,37 +29,38 @@ class CategorySelector
   #   'rotateButtonsSpanSelector'
   setupCategories: (selector, options = {}) ->
     CategorySelector.categoryData ||= @setupCategoryData()
-    selector.select2
+    updatedSelector = selector.select2
       data: CategorySelector.categoryData
       multiple: options.allowMultiple == true
-      formatResultCssClass: (object) ->
-        'category-indent-' + object.level + " " + if object.hasChildren then " optionbold" else ""
+      theme: "classic"
+      templateResult: (object) ->
+        $('<span class="category-indent-' + object.level + " " + (if object.hasChildren then " optionbold" else "") + '">' + object.text + '</span>')
 
-    @setupRecentChoices(selector, options.recentChoicesSelector) if options.recentChoicesSelector?
-    @setupRotateButtons(selector, options.rotateButtonsSpanSelector) if options.rotateButtonsSpanSelector?
+    @setupRecentChoices(updatedSelector, options.recentChoicesSelector) if options.recentChoicesSelector?
+    @setupRotateButtons(updatedSelector, options.rotateButtonsSpanSelector) if options.rotateButtonsSpanSelector?
 
   setupRecentChoices: (selector, recentChoicesSelector) ->
-    recentlyused = JSON.parse($.cookie("recentlyused")) || []
+    recentlyused = if Cookies.get("recentlyused") then JSON.parse(Cookies.get("recentlyused")) else []
     if recentlyused.length > 0
-      $(selector).select2('val', recentlyused[0]['cat_id'])
+      $(selector).val(recentlyused[0]['cat_id']).trigger("change")
       @showRecentlyUsed(recentlyused, recentChoicesSelector)
 
     $(selector).change (e) =>
       cat_id = $(e.target).select2('val')
-      cat_name = $(e.target).select2('data').text
+      cat_name = $(e.target).select2('data')[0].text
 
-      recentlyused = JSON.parse($.cookie("recentlyused")) || []
+      recentlyused = if Cookies.get("recentlyused") then JSON.parse(Cookies.get("recentlyused")) else []
       return if (recentlyused.length > 0 && recentlyused[0]['cat_id'] == cat_id)
 
       recentlyused = $.grep recentlyused, ((e, i) -> e['cat_id'] == cat_id), true
       recentlyused.unshift({cat_id: cat_id, name: cat_name})
       recentlyused = recentlyused[0..6]
-      $.cookie('recentlyused', JSON.stringify(recentlyused))
+      Cookies.set('recentlyused', JSON.stringify(recentlyused))
       @showRecentlyUsed(recentlyused, recentChoicesSelector)
 
     $(recentChoicesSelector).on "click", ".chooserecentcat", (e) =>
       e.preventDefault()
-      $(selector).select2('val', $(e.target).data('catid')).trigger('change')
+      $(selector).val($(e.target).data('catid')).trigger('change')
 
   setupRotateButtons: (selector, rotateButtonsSpanSelector) ->
     rotateButtonsSpanSelector.find(".catrotate").click (e) ->
@@ -67,7 +68,7 @@ class CategorySelector
       field = $(this).data('rotate') + "Id"
       data = selector.select2('data')[0]
       if data?[field]
-        selector.select2('val', [data[field]])
+        selector.val([data[field]]).trigger("change")
       true
 
   showRecentlyUsed: (recentlyused, recentChoicesSelector) ->

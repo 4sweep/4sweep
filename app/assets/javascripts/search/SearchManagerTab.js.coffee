@@ -40,13 +40,13 @@ class PrimaryVenueSearchTab extends SearchManagerTab
   displayControls: ['near', 'box', 'circle', 'polygon']
 
   setupEvents: () ->
-    new CategorySelector().setupCategories @tab.find("input.categories"),
+    new CategorySelector().setupCategories @tab.find("select.categories"),
       allowMultiple: true
       rotateButtonsSpanSelector: @tab.find(".catRotateButtons")
     super()
 
   createSearch: (location = @locationManager.location(true)) ->
-    new PrimaryVenueSearch(@tab.find(".query").val(), location, @tab.find("input.categories").select2('data').map((x) -> x.id), {loadMoreContainer: @tab.find(".loadmorecontainer")})
+    new PrimaryVenueSearch(@tab.find(".query").val(), location, @tab.find("select.categories").select2('data').map((x) -> x.id), {loadMoreContainer: @tab.find(".loadmorecontainer")})
 window.PrimaryVenueSearchTab = PrimaryVenueSearchTab
 
 class GlobalSearchTab extends SearchManagerTab
@@ -55,7 +55,7 @@ class GlobalSearchTab extends SearchManagerTab
   createSearch: () ->
     new GlobalVenueSearch(@tab.find(".query").val(), @tab.find(".categories").select2('data').map((x) -> x.id))
   setupEvents: () ->
-    new CategorySelector().setupCategories @tab.find("input.categories"),
+    new CategorySelector().setupCategories @tab.find("select.categories"),
       allowMultiple: true
       rotateButtonsSpanSelector: @tab.find(".catRotateButtons")
     super()
@@ -117,7 +117,7 @@ class MyHistorySearchTab extends SearchManagerTab
   createSearch: ()->
     new MyCheckinHistorySearch(@tab.find(".categories").select2('data').map((x) -> x.id), @tab.find(".myhistory-start").val(), @tab.find(".myhistory-end").val(), 1, {loadMoreContainer: @tab.find(".loadmorecontainer")})
   setupEvents: () ->
-    new CategorySelector().setupCategories @tab.find("input.categories"),
+    new CategorySelector().setupCategories @tab.find("select.categories"),
       allowMultiple: true
       rotateButtonsSpanSelector: @tab.find(".catRotateButtons")
     @tab.find('.input-daterange').datepicker
@@ -135,7 +135,7 @@ class ListSearchTab extends SearchManagerTab
   displayControls: ['global', 'box', 'polygon']
 
   setupEvents: () ->
-    new CategorySelector().setupCategories @tab.find("input.categories"),
+    new CategorySelector().setupCategories @tab.find("select.categories"),
       allowMultiple: true
       rotateButtonsSpanSelector: @tab.find(".catRotateButtons")
     super()

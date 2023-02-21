@@ -97,7 +97,7 @@ class DetailsEditor
     mapsInitialized = false
     venuedata = @venueresult.venuedata
     self = this
-    popover.find("a[href=#relocate]").on('shown', (e) ->
+    popover.find("a[href=\"#relocate\"]").on('shown', (e) ->
       return if mapsInitialized
       relocateMap = new google.maps.Map document.getElementById("relocateMap"),
         zoom: 17

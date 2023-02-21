@@ -125,7 +125,7 @@ class ItemModal
       e.preventDefault()
       newVis = if $(this).text() == "shown" then "hidden" else "shown"
       $(this).text(newVis)
-      $.cookie($(this).data("visibility-type") + "_visible", newVis)
+      Cookies.set($(this).data("visibility-type") + "_visible", newVis)
       self.toggleItemVisibility()
 
   filterItems: (filter = "") ->

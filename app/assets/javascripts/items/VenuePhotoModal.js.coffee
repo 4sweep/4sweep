@@ -3,8 +3,8 @@ class VenuePhotoModal extends PhotoModal
 
   DEFAULT_GROUP: ""
   group: () ->
-    if $.cookie("photosort") && $.cookie("photosort") in ["", "venue"]
-      $.cookie("photosort")
+    if Cookies.get("photosort") && Cookies.get("photosort") in ["", "venue"]
+      Cookies.get("photosort")
     else
       @DEFAULT_GROUP
 
@@ -26,7 +26,7 @@ class VenuePhotoModal extends PhotoModal
     @modal.find(".photosort").val(@group())
 
     @modal.find(".photosort").change (e) ->
-      $.cookie("photosort", $(this).val())
+      Cookies.set("photosort", $(this).val())
       self.clearItems()
       self.loadMore()
 

@@ -4,8 +4,8 @@ class VenueTipModal extends TipModal
   DEFAULT_SORT: "popular"
 
   order: () ->
-    if $.cookie("tipsort") && $.cookie("tipsort") in ["popular", "recent"]
-      $.cookie("tipsort")
+    if Cookies.get("tipsort") && Cookies.get("tipsort") in ["popular", "recent"]
+      Cookies.get("tipsort")
     else
       @DEFAULT_SORT
 
@@ -28,7 +28,7 @@ class VenueTipModal extends TipModal
     @modal.find(".tipsort").val(@order())
 
     @modal.find(".tipsort").change (e) ->
-      $.cookie("tipsort", $(this).val())
+      Cookies.set("tipsort", $(this).val())
       self.clearItems()
       self.loadMore()
 

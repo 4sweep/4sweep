@@ -57,8 +57,8 @@ class PhotoModal extends ItemModal
         {size: size, span: 'span4', text: "Large", request: "500x500", height: "400px", width: "400px"}
 
   photoSize: () ->
-    if $.cookie("photosize") && $.cookie("photosize") in ["tiny", "small", "medium", "large"]
-      $.cookie("photosize")
+    if Cookies.get("photosize") && Cookies.get("photosize") in ["tiny", "small", "medium", "large"]
+      Cookies.get("photosize")
     else
       @DEFAULT_SIZE
 
@@ -88,7 +88,7 @@ class PhotoModal extends ItemModal
     @modal.find("input:radio[name=photosize][value='#{@photoSize()}']").prop("checked", true)
 
     @modal.find("input:radio[name=photosize]").change (e) ->
-      $.cookie("photosize", $(this).val())
+      Cookies.set("photosize", $(this).val())
       self.clearItems()
       self.loadMore()
       self.markAlreadyFlagged()
